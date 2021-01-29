@@ -1,4 +1,25 @@
 {
+  "name": "repeet",
+  "version": "0.0.1",
+  "description": "A gaming experiment with React Native",
+  "author": "e-libs",
+  "contributors": [
+    {
+      "name": "Eric Marques",
+      "email": "eric@e-libs.dev",
+      "url": "https://github.com/emarques3"
+    }
+  ],
+  "homepage": "https://github.com/e-libs/repeet#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e-libs/repeet"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "game"
+  ],
   "main": "index.js",
   "scripts": {
     "android": "react-native run-android",
