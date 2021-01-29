@@ -1,0 +1,12 @@
+{
+  "name": "repeet",
+  "displayName": "repeet",
+  "expo": {
+    "name": "repeet",
+    "slug": "repeet",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
