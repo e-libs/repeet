@@ -1,17 +1,24 @@
 import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { useShell } from 'domains/shell/data/hooks/useShell';
-import { Text, View } from 'react-native';
+import { v4 as uuid } from 'react-native-uuid';
 
 export const Sample = () => {
   const { testAction, testSelectorValue } = useShell();
 
-  testAction({ test1: 'aaa1' });
+  const test = async () => {
+    const x = uuid();
+    console.log('ID', x);
 
-  console.log('testSelectorValue', testSelectorValue);
+    testAction({ test1: x });
+  };
 
   return (
     <View>
-      <Text>Sample</Text>
+      <Text>Sample {testSelectorValue}</Text>
+      <TouchableOpacity onPress={test} style={{ backgroundColor: 'red' }}>
+        <Text></Text>
+      </TouchableOpacity>
     </View>
   );
 };
