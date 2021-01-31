@@ -3,9 +3,11 @@ import { useShell } from 'domains/shell/data/hooks/useShell';
 import { Text, View } from 'react-native';
 
 export const Sample = () => {
-  const { testAction } = useShell();
+  const { testAction, testSelectorValue } = useShell();
 
-  testAction({ test1: 'aaa' });
+  testAction({ test1: 'aaa1' });
+
+  console.log('testSelectorValue', testSelectorValue);
 
   return (
     <View>
