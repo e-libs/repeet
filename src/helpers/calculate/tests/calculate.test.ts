@@ -1,4 +1,4 @@
-import { calculate } from '../';
+import { calculate } from 'helpers/calculate';
 
 describe('Calculate', () => {
   it('works', () => {
