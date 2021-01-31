@@ -1,2 +1,5 @@
-0.0.1 (January 29th, 2021)
+0.0.1 (January 30th, 2021)
   - Creating project
+  - Setting up environment
+  - Configuring tests
+  - Configuring lint
