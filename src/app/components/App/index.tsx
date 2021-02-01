@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { Provider } from 'react-redux';
 import { store, persistor } from 'app/store';
 import { Sample } from 'app/components/Sample';
@@ -11,6 +11,11 @@ export default function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <MainView color="#FFF">
+          <Image
+            resizeMode="contain"
+            source={require('assets/images/logo.png')}
+            style={{ width: 350, height: 120 }}
+          />
           <Text>Repeet</Text>
           <Sample />
         </MainView>
