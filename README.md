@@ -1,4 +1,4 @@
-![](src/assets/images/logo.png)
+![](src/assets/images/logo-docs.jpeg)
 
 # repeet
 
