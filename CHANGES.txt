@@ -1,3 +1,6 @@
+0.0.3 (February 1st, 2021)
+  - Adding localization structure (i18next + react-i18next)
+
 0.0.2 (January 31st, 2021)
   - Configuring Redux
   - Setting up redux-persist
