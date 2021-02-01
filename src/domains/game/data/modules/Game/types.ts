@@ -6,6 +6,7 @@ export type Game = {
   currentSequence: Sequence;
   playerSequence: Sequence;
   rightSequences: number;
+  level: number; // TODO: check if it makes sense
   isOver: boolean;
   // timeLeft: number;
 };
