@@ -20,6 +20,7 @@ module.exports = function(api) {
           ],
           alias: {
             app: './src/app',
+            assets: './src/assets',
             domains: './src/domains',
             helpers: './src/helpers',
           },

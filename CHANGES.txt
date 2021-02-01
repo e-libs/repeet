@@ -1,3 +1,10 @@
+0.0.2 (January 31st, 2021)
+  - Configuring Redux
+  - Setting up redux-persist
+  - Adding logo
+  - Adding styled-components
+
+
 0.0.1 (January 30th, 2021)
   - Creating project
   - Setting up environment
