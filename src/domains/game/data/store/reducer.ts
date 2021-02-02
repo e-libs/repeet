@@ -9,18 +9,15 @@ const initialState: GameState = {
   currentSequence: undefined,
   playerSequence: undefined,
   rightSequences: 0,
-  level: 0,
+  level: 1,
   isOver: false,
 };
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
   switch (action.type) {
     case INIT_GAME: {
-      const { level } = action.payload;
-
       return {
         ...initialState,
-        level,
       };
     }
     case SET_SEQUENCE: {

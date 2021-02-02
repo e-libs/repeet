@@ -3,13 +3,14 @@ import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 
 export type GameState = Game;
 
-export type InitGameAction = {
-  level: number;
-};
+// export type InitGameAction = {
+//   level: number;
+// };
 
 export type SetSequenceAction = {
   sequence: Sequence;
 };
 
 // Group all Game actions
-export type GameActions = InitGameAction & SetSequenceAction;
+export type GameActions = SetSequenceAction;
+// export type GameActions = InitGameAction & SetSequenceAction;
