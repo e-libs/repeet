@@ -6,13 +6,8 @@ import { Sequencer } from 'domains/game/components/Sequencer';
 import { KeyPad } from 'domains/player/components/KeyPad';
 
 export const Game = () => {
-  const { currentSequence } = useGame();
-
+  const { addPlayerMove, currentSequence } = useGame();
   console.log('CURR', currentSequence);
-
-  const keyPressed = (id: number) => {
-    console.log('>>> ', id);
-  };
 
   return (
     <MainView>
@@ -24,7 +19,7 @@ export const Game = () => {
         <Text style={{ color: 'green' }}>TIMER</Text>
       </TimerView>
       <PlayerView>
-        <KeyPad onKeyPress={keyPressed} />
+        <KeyPad onKeyPress={addPlayerMove} />
       </PlayerView>
     </MainView>
   );

@@ -6,8 +6,8 @@ import { initialAttempts } from 'domains/game/data/modules/Game/constants';
 const initialState: GameState = {
   score: 0,
   attempts: initialAttempts,
-  currentSequence: undefined,
-  playerSequence: undefined,
+  currentSequence: [],
+  playerSequence: [],
   rightSequences: 0,
   level: 1,
   isOver: false,

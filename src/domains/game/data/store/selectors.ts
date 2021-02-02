@@ -10,7 +10,12 @@ export const getGameLevel = createSelector<GlobalState, GameState, number>(
   ({ level }) => level,
 );
 
-export const getCurrentSequence = createSelector<GlobalState, GameState, Sequence | undefined>(
+export const getCurrentSequence = createSelector<GlobalState, GameState, Sequence>(
   getGame,
   ({ currentSequence }) => currentSequence,
+);
+
+export const getPlayerSequence = createSelector<GlobalState, GameState, Sequence>(
+  getGame,
+  ({ playerSequence }) => playerSequence,
 );
