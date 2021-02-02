@@ -1,5 +1,5 @@
 import type { Action } from 'redux-actions';
-import { INIT_GAME, SET_SEQUENCE } from 'domains/game/data/store/actionTypes';
+import { INIT_GAME, RESET_GAME, SET_SEQUENCE } from 'domains/game/data/store/actionTypes';
 import type { GameState, GameActions } from 'domains/game/data/store/types';
 import { initialAttempts } from 'domains/game/data/modules/Game/constants';
 
@@ -15,7 +15,8 @@ const initialState: GameState = {
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
   switch (action.type) {
-    case INIT_GAME: {
+    case INIT_GAME:
+    case RESET_GAME: {
       return {
         ...initialState,
       };
