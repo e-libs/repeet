@@ -1,16 +1,24 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { MainView } from 'screens/Game/styles';
+import { MainView, HeaderView, PlayerView, SequencerView, TimerView } from 'screens/Game/styles';
 import { useGame } from 'domains/game/data/hooks/useGame';
+import { Sequencer } from 'domains/game/components/Sequencer';
 
 export const Game = () => {
-  const { level } = useGame();
-
-  console.log('LEVEL', level);
+  useGame();
 
   return (
-    <MainView color="#99F">
-      <Text>Game</Text>
+    <MainView>
+      <HeaderView />
+      <SequencerView>
+        <Sequencer />
+      </SequencerView>
+      <TimerView>
+        <Text style={{ color: 'green' }}>TIMER</Text>
+      </TimerView>
+      <PlayerView>
+        <Text style={{ color: 'green' }}>PLAYER</Text>
+      </PlayerView>
     </MainView>
   );
 };
