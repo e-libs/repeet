@@ -1,8 +1,6 @@
 import type { Game } from 'domains/game/data/modules/Game/types';
 
-export type GameState = {
-  status: Game;
-};
+export type GameState = Game;
 
 export type InitGameAction = {
   level: number;

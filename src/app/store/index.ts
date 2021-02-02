@@ -13,9 +13,9 @@ const rootPersistConfig = {
 };
 
 const combinedReducers = combineReducers<GlobalState>({
-  game: gameReducer, // not persisted
-  player: playerReducer, // not persisted
-  shell: shellReducer, // persisted
+  game: gameReducer,
+  player: playerReducer,
+  shell: shellReducer,
 });
 
 const persisted = persistReducer(rootPersistConfig, combinedReducers);
