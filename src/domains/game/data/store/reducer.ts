@@ -1,5 +1,5 @@
 import type { Action } from 'redux-actions';
-import { INIT_GAME } from 'domains/game/data/store/actionTypes';
+import { INIT_GAME, SET_SEQUENCE } from 'domains/game/data/store/actionTypes';
 import type { GameState, GameActions } from 'domains/game/data/store/types';
 import { initialAttempts } from 'domains/game/data/modules/Game/constants';
 
@@ -21,6 +21,14 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       return {
         ...initialState,
         level,
+      };
+    }
+    case SET_SEQUENCE: {
+      const { sequence } = action.payload;
+
+      return {
+        ...state,
+        currentSequence: sequence,
       };
     }
     default:

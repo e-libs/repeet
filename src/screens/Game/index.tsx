@@ -5,7 +5,9 @@ import { useGame } from 'domains/game/data/hooks/useGame';
 import { Sequencer } from 'domains/game/components/Sequencer';
 
 export const Game = () => {
-  useGame();
+  const { currentSequence } = useGame();
+
+  console.log('CURR', currentSequence);
 
   return (
     <MainView>

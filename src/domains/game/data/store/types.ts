@@ -1,4 +1,5 @@
 import type { Game } from 'domains/game/data/modules/Game/types';
+import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 
 export type GameState = Game;
 
@@ -6,10 +7,9 @@ export type InitGameAction = {
   level: number;
 };
 
-// TODO: remove
-export type TempGameAction = {
-  otherField: string;
+export type SetSequenceAction = {
+  sequence: Sequence;
 };
 
-// Pipe all Game actions
-export type GameActions = InitGameAction & TempGameAction;
+// Group all Game actions
+export type GameActions = InitGameAction & SetSequenceAction;
