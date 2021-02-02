@@ -27,3 +27,7 @@ export const Blue: Sign = {
 export const standardPool = [Red, Green, Yellow, Blue];
 
 export type AvailableSigns = typeof Red | typeof Green | typeof Yellow | typeof Blue;
+
+export const getSignByNumber = (id: number): Sign =>
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  standardPool.find((item) => item.number === id)!;

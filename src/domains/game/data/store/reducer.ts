@@ -1,5 +1,10 @@
 import type { Action } from 'redux-actions';
-import { INIT_GAME, RESET_GAME, SET_SEQUENCE } from 'domains/game/data/store/actionTypes';
+import {
+  INIT_GAME,
+  MAKE_MOVE,
+  RESET_GAME,
+  SET_SEQUENCE,
+} from 'domains/game/data/store/actionTypes';
 import type { GameState, GameActions } from 'domains/game/data/store/types';
 import { initialAttempts } from 'domains/game/data/modules/Game/constants';
 
@@ -27,6 +32,17 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       return {
         ...state,
         currentSequence: sequence,
+      };
+    }
+    case MAKE_MOVE: {
+      const { sign } = action.payload;
+      console.log('received', sign);
+      console.log('player before', state.playerSequence);
+      const newSequence = [...state.playerSequence, sign];
+      console.log('player after', newSequence);
+      return {
+        ...state,
+        playerSequence: newSequence,
       };
     }
     default:

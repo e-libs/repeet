@@ -6,8 +6,9 @@ import { Sequencer } from 'domains/game/components/Sequencer';
 import { KeyPad } from 'domains/player/components/KeyPad';
 
 export const Game = () => {
-  const { addPlayerMove, currentSequence } = useGame();
-  console.log('CURR', currentSequence);
+  const { addPlayerMove, currentSequence, playerSequence } = useGame();
+  console.log('CURRENT', currentSequence);
+  console.log('PLAYER', playerSequence);
 
   return (
     <MainView>

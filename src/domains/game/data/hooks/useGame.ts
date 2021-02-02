@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initGame, resetGame, setSequence } from 'domains/game/data/store/actions';
+import { initGame, makeMove, resetGame, setSequence } from 'domains/game/data/store/actions';
 import {
   getGameLevel,
   getCurrentSequence,
@@ -8,6 +8,7 @@ import {
 } from 'domains/game/data/store/selectors';
 import type { SetSequenceAction } from 'domains/game/data/store/types';
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
+import { getSignByNumber } from 'domains/game/data/modules/Sign';
 
 export const useGame = () => {
   const level = useSelector(getGameLevel);
@@ -25,10 +26,12 @@ export const useGame = () => {
 
     const move = validateMove(currentSequence, playerSequence, id);
 
+    console.log(move);
     if (move === 'GOOD') {
-      console.log('GOOD!');
+      const sign = getSignByNumber(id);
+      dispatch(makeMove({ sign }));
     } else if (move === 'BAD') {
-      console.log('BAD!');
+      // do something
     }
   };
 
@@ -36,7 +39,6 @@ export const useGame = () => {
 
   useEffect(() => {
     start();
-    // TODO: check consecutive calls
     addSequence({ sequence: getRandomSequence() });
 
     return () => {
@@ -48,6 +50,7 @@ export const useGame = () => {
     addPlayerMove,
     currentSequence,
     level,
+    playerSequence,
     start,
   };
 };
