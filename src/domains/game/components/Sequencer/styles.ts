@@ -7,4 +7,5 @@ export const Container = styled.View`
 export const Line = styled.View`
   flex: 1;
   flex-direction: row;
+  background-color: white;
 `;

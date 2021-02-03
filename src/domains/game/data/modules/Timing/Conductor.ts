@@ -19,7 +19,6 @@ export class EventManager {
   }
 
   twinkle(keyName: string) {
-    console.log('TWINKLE', keyName);
     this.events.emit(keyName, '');
   }
 
@@ -32,9 +31,6 @@ export class EventManager {
   }
 
   twinkleSequence(sequence: Sequence, interval: number): void {
-    // TODO: emit events for sequence
-    console.log('EMIT FOR', sequence);
-
     sequence.forEach(this.delayLoop(interval));
   }
 }

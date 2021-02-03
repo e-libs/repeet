@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Animated } from 'react-native';
 import { v4 as uuid } from 'uuid';
 import { Box } from 'domains/game/components/Sign/styles';
 import type { AvailableSigns } from 'domains/game/data/modules/Sign';
@@ -10,12 +11,32 @@ type SignProps = {
 };
 
 export const Sign = ({ sign }: SignProps) => {
+  const highlight = useRef(new Animated.Value(1)).current;
+
+  const blink = useCallback((): void => {
+    highlight.setValue(0);
+    Animated.timing(highlight, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  }, [highlight]);
+
   useEffect(() => {
     const id = uuid();
     Conductor.on(sign.name, id, () => {
-      console.log('COMPONENT BLINKING', sign.name);
+      // TODO: check
+      setTimeout(() => blink(), 500);
     });
-  }, []);
 
-  return <Box sign={sign} />;
+    return () => {
+      Conductor.off(id);
+    };
+  }, [blink]);
+
+  return (
+    <Animated.View style={{ flex: 1, opacity: highlight }}>
+      <Box sign={sign} />
+    </Animated.View>
+  );
 };
