@@ -21,6 +21,7 @@ import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
+import { Baton } from 'domains/game/data/modules/Timing/Conductor';
 
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
@@ -61,6 +62,11 @@ export const useGame = () => {
       // TODO: finish game attempts
     }
   }, [attemptsLeft]);
+
+  useEffect(() => {
+    // TODO: trigger sequence twinkling
+    Baton.twinkleSequence(currentSequence);
+  }, [currentSequence]);
 
   useEffect(() => {
     if (playerSequence.length === currentSequence.length) {
