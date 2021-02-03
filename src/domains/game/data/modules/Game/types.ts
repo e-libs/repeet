@@ -10,3 +10,9 @@ export type Game = {
   score: number;
   // timeLeft: number;
 };
+
+export type Level = {
+  name: string;
+  number: number;
+  // scoreMet: number;
+};

@@ -19,6 +19,7 @@ export const Game = ({ navigation }: Props) => {
     attemptsLeft,
     currentSequence,
     isGameOver,
+    level,
     playerSequence,
     rightSequences,
     score,
@@ -27,7 +28,7 @@ export const Game = ({ navigation }: Props) => {
   console.log('CURRENT', currentSequence);
   console.log('PLAYER', playerSequence);
   console.log('ATTEMPTS', attemptsLeft);
-  console.log(`NAILED ${rightSequences}, SCORE: ${score}`);
+  console.log(`NAILED ${rightSequences}, SCORE: ${score}, LEVEL: ${level}`);
   console.log('');
 
   if (isGameOver) {
