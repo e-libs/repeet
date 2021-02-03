@@ -34,3 +34,8 @@ export const getRightSequences = createSelector<GlobalState, GameState, number>(
   getGame,
   ({ rightSequences }) => rightSequences,
 );
+
+export const getScore = createSelector<GlobalState, GameState, number>(
+  getGame,
+  ({ score }) => score,
+);

@@ -13,8 +13,9 @@ import {
   getCurrentSequence,
   getGameLevel,
   getIsGameOver,
-  getRightSequences,
   getPlayerSequence,
+  getRightSequences,
+  getScore,
 } from 'domains/game/data/store/selectors';
 import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
@@ -30,6 +31,7 @@ export const useGame = () => {
   const level = useSelector(getGameLevel);
   const playerSequence = useSelector(getPlayerSequence);
   const rightSequences = useSelector(getRightSequences);
+  const score = useSelector(getScore);
 
   const dispatch = useDispatch();
 
@@ -85,6 +87,7 @@ export const useGame = () => {
     level,
     playerSequence,
     rightSequences,
+    score,
     start,
   };
 };

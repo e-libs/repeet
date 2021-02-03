@@ -1,6 +1,6 @@
 import type { Action } from 'redux-actions';
 import type { GameState, GameActions } from 'domains/game/data/store/types';
-import { initialAttempts } from 'domains/game/data/modules/Game/constants';
+import { increaseScoreFactor, initialAttempts } from 'domains/game/data/modules/Game/constants';
 import {
   INIT_GAME,
   MAKE_MOVE,
@@ -54,6 +54,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         currentSequence: sequence,
         playerSequence: [],
         rightSequences: state.rightSequences + 1,
+        score: state.score + increaseScoreFactor,
       };
     }
     case RESET_MOVE: {
