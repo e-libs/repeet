@@ -6,6 +6,7 @@ import { useGame } from 'domains/game/data/hooks/useGame';
 import { Sequencer } from 'domains/game/components/Sequencer';
 import { KeyPad } from 'domains/player/components/KeyPad';
 import type { RootStackParamList } from 'screens/types';
+import { logSequenceOutput } from 'helpers/logSequenceOutput';
 
 type GameScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -25,15 +26,16 @@ export const Game = ({ navigation }: Props) => {
     score,
   } = useGame();
 
-  console.log('CURRENT', currentSequence);
-  console.log('PLAYER', playerSequence);
-  console.log('ATTEMPTS', attemptsLeft);
-  console.log(`NAILED ${rightSequences}, SCORE: ${score}, LEVEL: ${level}`);
+  logSequenceOutput('CURRENT', currentSequence);
+  logSequenceOutput('PLAYER ', playerSequence);
+  console.log(
+    `ATTEMPTS ${attemptsLeft} NAILED ${rightSequences}, SCORE: ${score}, LEVEL: ${level}`,
+  );
   console.log('');
 
   if (isGameOver) {
     // TODO: temporary so it won't complain, will be replaced by modal + redirect
-    window.setTimeout(() => navigation.navigate('Home'), 2000);
+    window.setTimeout(() => navigation.navigate('Home'), 500);
   }
 
   return (
