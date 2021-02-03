@@ -4,10 +4,6 @@ import type { Sign } from 'domains/game/data/modules/Sign/types';
 
 export type GameState = Game;
 
-// export type InitGameAction = {
-//   level: number;
-// };
-
 export type SetSequenceAction = {
   sequence: Sequence;
 };
@@ -16,6 +12,9 @@ export type MoveAction = {
   sign: Sign;
 };
 
+export type SetAttempts = {
+  attempts: number;
+};
+
 // Group all Game actions
-export type GameActions = MoveAction & SetSequenceAction;
-// export type GameActions = InitGameAction & SetSequenceAction;
+export type GameActions = MoveAction & SetSequenceAction & SetAttempts;

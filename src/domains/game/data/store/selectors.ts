@@ -19,3 +19,8 @@ export const getPlayerSequence = createSelector<GlobalState, GameState, Sequence
   getGame,
   ({ playerSequence }) => playerSequence,
 );
+
+export const getAttemptsLeft = createSelector<GlobalState, GameState, number>(
+  getGame,
+  ({ attempts }) => attempts,
+);

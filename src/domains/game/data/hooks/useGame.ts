@@ -1,7 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initGame, makeMove, resetGame, setSequence } from 'domains/game/data/store/actions';
 import {
+  initGame,
+  makeMove,
+  resetGame,
+  resetMove,
+  setAttempts,
+  setSequence,
+} from 'domains/game/data/store/actions';
+import {
+  getAttemptsLeft,
   getGameLevel,
   getCurrentSequence,
   getPlayerSequence,
@@ -14,6 +22,7 @@ export const useGame = () => {
   const level = useSelector(getGameLevel);
   const currentSequence = useSelector(getCurrentSequence);
   const playerSequence = useSelector(getPlayerSequence);
+  const attemptsLeft = useSelector(getAttemptsLeft);
 
   const dispatch = useDispatch();
 
@@ -22,20 +31,24 @@ export const useGame = () => {
   const reset = () => dispatch(resetGame());
 
   const addPlayerMove = (id: number) => {
-    console.log('PLAYING', id);
-
     const move = validateMove(currentSequence, playerSequence, id);
 
-    console.log(move);
     if (move === 'GOOD') {
       const sign = getSignByNumber(id);
       dispatch(makeMove({ sign }));
     } else if (move === 'BAD') {
-      // do something
+      dispatch(resetMove());
     }
   };
 
   const addSequence = (payload: SetSequenceAction) => dispatch(setSequence(payload));
+
+  useEffect(() => {
+    if (attemptsLeft === 0) {
+      console.log('GAME OVER');
+      // TODO: finish game attempts
+    }
+  }, [attemptsLeft]);
 
   useEffect(() => {
     start();
@@ -48,6 +61,7 @@ export const useGame = () => {
 
   return {
     addPlayerMove,
+    attemptsLeft,
     currentSequence,
     level,
     playerSequence,
