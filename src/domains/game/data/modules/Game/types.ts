@@ -1,12 +1,12 @@
 import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 
 export type Game = {
-  score: number;
   attempts: number;
   currentSequence: Sequence;
+  isOver: boolean;
+  level: number; // TODO: check if it makes sense
   playerSequence: Sequence;
   rightSequences: number;
-  level: number; // TODO: check if it makes sense
-  isOver: boolean;
+  score: number;
   // timeLeft: number;
 };

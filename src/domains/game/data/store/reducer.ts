@@ -11,13 +11,13 @@ import {
 } from 'domains/game/data/store/actionTypes';
 
 const initialState: GameState = {
-  score: 0,
   attempts: initialAttempts,
   currentSequence: [],
+  isOver: false,
+  level: 1,
   playerSequence: [],
   rightSequences: 0,
-  level: 1,
-  isOver: false,
+  score: 0,
 };
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
@@ -46,9 +46,12 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       };
     }
     case RESET_MOVE: {
+      const attempts = state.attempts - 1;
+
       return {
         ...state,
-        attempts: state.attempts - 1,
+        attempts,
+        isOver: attempts === 0,
         playerSequence: [],
       };
     }

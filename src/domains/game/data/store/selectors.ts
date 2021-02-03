@@ -24,3 +24,8 @@ export const getAttemptsLeft = createSelector<GlobalState, GameState, number>(
   getGame,
   ({ attempts }) => attempts,
 );
+
+export const getIsGameOver = createSelector<GlobalState, GameState, boolean>(
+  getGame,
+  ({ isOver }) => isOver,
+);

@@ -5,24 +5,27 @@ import {
   makeMove,
   resetGame,
   resetMove,
-  setAttempts,
   setSequence,
 } from 'domains/game/data/store/actions';
 import {
   getAttemptsLeft,
-  getGameLevel,
   getCurrentSequence,
+  getGameLevel,
+  getIsGameOver,
   getPlayerSequence,
 } from 'domains/game/data/store/selectors';
 import type { SetSequenceAction } from 'domains/game/data/store/types';
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
+import { useIsMounted } from 'helpers/useIsMounted';
 
 export const useGame = () => {
+  const isMounted = useIsMounted();
   const level = useSelector(getGameLevel);
   const currentSequence = useSelector(getCurrentSequence);
   const playerSequence = useSelector(getPlayerSequence);
   const attemptsLeft = useSelector(getAttemptsLeft);
+  const isGameOver = useSelector(getIsGameOver);
 
   const dispatch = useDispatch();
 
@@ -44,6 +47,7 @@ export const useGame = () => {
   const addSequence = (payload: SetSequenceAction) => dispatch(setSequence(payload));
 
   useEffect(() => {
+    if (!isMounted) return;
     if (attemptsLeft === 0) {
       console.log('GAME OVER');
       // TODO: finish game attempts
@@ -51,8 +55,10 @@ export const useGame = () => {
   }, [attemptsLeft]);
 
   useEffect(() => {
-    start();
-    addSequence({ sequence: getRandomSequence() });
+    if (isMounted) {
+      start();
+      addSequence({ sequence: getRandomSequence() });
+    }
 
     return () => {
       reset();
@@ -63,6 +69,7 @@ export const useGame = () => {
     addPlayerMove,
     attemptsLeft,
     currentSequence,
+    isGameOver,
     level,
     playerSequence,
     start,
