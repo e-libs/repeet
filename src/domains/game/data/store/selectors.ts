@@ -29,3 +29,8 @@ export const getIsGameOver = createSelector<GlobalState, GameState, boolean>(
   getGame,
   ({ isOver }) => isOver,
 );
+
+export const getRightSequences = createSelector<GlobalState, GameState, number>(
+  getGame,
+  ({ rightSequences }) => rightSequences,
+);

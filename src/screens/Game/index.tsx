@@ -14,10 +14,18 @@ type Props = {
 };
 
 export const Game = ({ navigation }: Props) => {
-  const { addPlayerMove, attemptsLeft, isGameOver, currentSequence, playerSequence } = useGame();
+  const {
+    addPlayerMove,
+    attemptsLeft,
+    currentSequence,
+    isGameOver,
+    playerSequence,
+    rightSequences,
+  } = useGame();
   console.log('CURRENT', currentSequence);
   console.log('PLAYER', playerSequence);
   console.log('ATTEMPTS', attemptsLeft);
+  console.log('NAILED', rightSequences);
   console.log('');
 
   if (isGameOver) {

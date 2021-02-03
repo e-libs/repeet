@@ -4,6 +4,7 @@ import { initialAttempts } from 'domains/game/data/modules/Game/constants';
 import {
   INIT_GAME,
   MAKE_MOVE,
+  NEXT_ROUND,
   RESET_GAME,
   RESET_MOVE,
   SET_ATTEMPTS,
@@ -43,6 +44,16 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       return {
         ...state,
         playerSequence: newSequence,
+      };
+    }
+    case NEXT_ROUND: {
+      const { sequence } = action.payload;
+
+      return {
+        ...state,
+        currentSequence: sequence,
+        playerSequence: [],
+        rightSequences: state.rightSequences + 1,
       };
     }
     case RESET_MOVE: {

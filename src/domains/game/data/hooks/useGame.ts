@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   initGame,
   makeMove,
+  nextRound,
   resetGame,
   resetMove,
   setSequence,
@@ -12,20 +13,23 @@ import {
   getCurrentSequence,
   getGameLevel,
   getIsGameOver,
+  getRightSequences,
   getPlayerSequence,
 } from 'domains/game/data/store/selectors';
-import type { SetSequenceAction } from 'domains/game/data/store/types';
+import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
 
 export const useGame = () => {
+  // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
-  const level = useSelector(getGameLevel);
-  const currentSequence = useSelector(getCurrentSequence);
-  const playerSequence = useSelector(getPlayerSequence);
   const attemptsLeft = useSelector(getAttemptsLeft);
+  const currentSequence = useSelector(getCurrentSequence);
   const isGameOver = useSelector(getIsGameOver);
+  const level = useSelector(getGameLevel);
+  const playerSequence = useSelector(getPlayerSequence);
+  const rightSequences = useSelector(getRightSequences);
 
   const dispatch = useDispatch();
 
@@ -46,6 +50,8 @@ export const useGame = () => {
 
   const addSequence = (payload: SetSequenceAction) => dispatch(setSequence(payload));
 
+  const setNextRound = (payload: NextRoundAction) => dispatch(nextRound(payload));
+
   useEffect(() => {
     if (!isMounted) return;
     if (attemptsLeft === 0) {
@@ -53,6 +59,12 @@ export const useGame = () => {
       // TODO: finish game attempts
     }
   }, [attemptsLeft]);
+
+  useEffect(() => {
+    if (playerSequence.length === currentSequence.length) {
+      setNextRound({ sequence: getRandomSequence() });
+    }
+  }, [playerSequence]);
 
   useEffect(() => {
     if (isMounted) {
@@ -72,6 +84,7 @@ export const useGame = () => {
     isGameOver,
     level,
     playerSequence,
+    rightSequences,
     start,
   };
 };

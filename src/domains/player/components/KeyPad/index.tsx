@@ -1,7 +1,6 @@
 import React from 'react';
 import { Key } from 'domains/player/components/Key';
 import { Container, Line } from 'domains/player/components/KeyPad/styles';
-// import { RoundResult } from '../../../game/data/sequences/types';
 import { Red, Green, Yellow, Blue } from 'domains/game/data/modules/Sign';
 
 type KeyPadProps = {
