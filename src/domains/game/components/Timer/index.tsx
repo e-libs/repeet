@@ -29,7 +29,11 @@ export const Timer = () => {
   }, []);
 
   const list = () =>
-    numberToEmptyArray(timeBars).map((i) => <Indicator active={timeLeft >= i + 1}>I</Indicator>);
+    numberToEmptyArray(timeBars).map((i) => (
+      <Indicator active={timeLeft >= i + 1} key={`i${i}`}>
+        I
+      </Indicator>
+    ));
 
   return (
     <Container>

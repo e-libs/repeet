@@ -23,7 +23,7 @@ import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
 import { getId } from 'helpers/getId';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
-import { ROUND_OVER_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { ROUND_OVER_EVENT, initialInterval } from 'domains/game/data/modules/Timing/constants';
 
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
@@ -50,7 +50,7 @@ export const useGame = () => {
       dispatch(makeMove({ sign }));
     } else if (move === 'BAD') {
       dispatch(resetMove());
-      Conductor.twinkleSequence(currentSequence, 400);
+      Conductor.twinkleSequence(currentSequence, initialInterval);
     }
   };
 
@@ -67,13 +67,13 @@ export const useGame = () => {
 
   useEffect(() => {
     // TODO: trigger sequence twinkling
-    Conductor.twinkleSequence(currentSequence, 400);
+    Conductor.twinkleSequence(currentSequence, initialInterval);
 
     const id = getId();
 
     Conductor.on(ROUND_OVER_EVENT, id, () => {
       dispatch(resetMove());
-      Conductor.twinkleSequence(currentSequence, 400);
+      Conductor.twinkleSequence(currentSequence, initialInterval);
     });
 
     return () => {
