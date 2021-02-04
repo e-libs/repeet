@@ -9,11 +9,11 @@ export type Game = {
   rightSequences: number;
   wrongSequences: number;
   score: number;
-  // timeLeft: number;
+  speed: number;
 };
 
 export type Level = {
   name: string;
   number: number;
-  // scoreMet: number;
+  speed: number;
 };

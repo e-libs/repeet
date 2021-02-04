@@ -39,3 +39,8 @@ export const getScore = createSelector<GlobalState, GameState, number>(
   getGame,
   ({ score }) => score,
 );
+
+export const getSpeed = createSelector<GlobalState, GameState, number>(
+  getGame,
+  ({ speed }) => speed,
+);

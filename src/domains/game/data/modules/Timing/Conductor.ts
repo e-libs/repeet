@@ -92,8 +92,6 @@ export class EventManager {
         setTimeout(() => {
           if (!this.isActive) return;
 
-          console.log('tick', time);
-
           this.setTimeBar(time);
 
           if (time === lastIndex) {
@@ -115,7 +113,7 @@ export class EventManager {
 
         if (i === lastIndex) {
           setTimeout(() => {
-            this.startTimer(delay);
+            this.startTimer(delay * 1.5);
           }, currentDelay * 0.5);
         }
       }, currentDelay);
