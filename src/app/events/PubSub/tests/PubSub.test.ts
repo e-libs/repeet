@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'react-native-uuid';
+import { getId } from 'helpers/getId';
 import { PubSub } from 'app/events/PubSub';
 
 describe('The PubSub', () => {
@@ -28,7 +28,7 @@ describe('The PubSub', () => {
     const anotherEvent = { type: 'event2', id: 'id2', action };
 
     pubSub.on(someEvent.type, someEvent.id, someEvent.action);
-    pubSub.on(someEvent.type, uuid(), someEvent.action);
+    pubSub.on(someEvent.type, getId(), someEvent.action);
     pubSub.on(anotherEvent.type, anotherEvent.id, anotherEvent.action);
 
     expect(pubSub.listeners.length).toBe(3);

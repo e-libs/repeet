@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
-import { v4 as uuid } from 'uuid';
+import { getId } from 'helpers/getId';
 import { Box } from 'domains/game/components/Sign/styles';
 import type { AvailableSigns } from 'domains/game/data/modules/Sign';
 // TODO: check the best import flow
@@ -23,7 +23,7 @@ export const Sign = ({ sign }: SignProps) => {
   }, [highlight]);
 
   useEffect(() => {
-    const id = uuid();
+    const id = getId();
     Conductor.on(sign.name, id, () => {
       // TODO: check
       setTimeout(() => blink(), 500);
