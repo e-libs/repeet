@@ -19,6 +19,7 @@ const initialState: GameState = {
   level: 0,
   playerSequence: [],
   rightSequences: 0,
+  wrongSequences: 0,
   score: 0,
 };
 
@@ -69,6 +70,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         attempts,
         isOver: attempts === 0,
         playerSequence: [],
+        wrongSequences: state.wrongSequences - +1,
       };
     }
     // TODO: check if it's still necessary

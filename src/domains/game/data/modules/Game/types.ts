@@ -7,6 +7,7 @@ export type Game = {
   level: number; // TODO: check if it makes sense
   playerSequence: Sequence;
   rightSequences: number;
+  wrongSequences: number;
   score: number;
   // timeLeft: number;
 };
