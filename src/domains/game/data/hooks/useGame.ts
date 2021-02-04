@@ -73,7 +73,7 @@ export const useGame = () => {
     const id = getId();
 
     Conductor.on(ROUND_OVER_EVENT, id, () => {
-      console.log('USE GAAAAAME', currentSequence);
+      dispatch(resetMove());
       Conductor.twinkleSequence(currentSequence, 400);
     });
 

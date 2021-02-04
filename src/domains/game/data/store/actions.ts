@@ -20,5 +20,5 @@ export const makeMove = createAction<MoveAction>(MAKE_MOVE);
 export const nextRound = createAction<NextRoundAction>(NEXT_ROUND);
 export const resetGame = createAction(RESET_GAME);
 export const resetMove = createAction(RESET_MOVE);
-export const setAttempts = createAction<SetAttempts>(SET_ATTEMPTS);
+export const setAttempts = createAction<SetAttemptsAction>(SET_ATTEMPTS);
 export const setSequence = createAction<SetSequenceAction>(SET_SEQUENCE);
