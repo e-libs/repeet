@@ -3,6 +3,7 @@ import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 import { PubSub } from 'app/events/PubSub';
 import type { IPubSub } from 'app/events/PubSub/types';
 import {
+  KEYPAD_EVENT,
   ROUND_OVER_EVENT,
   TIME_BAR_EVENT,
   TIMER_EVENT,
@@ -53,10 +54,12 @@ export class EventManager {
     this.events.emit(TIME_BAR_EVENT, '0');
     this.events.emit(ROUND_OVER_EVENT);
     this.events.emit(TIMER_EVENT, 'false');
+    this.events.emit(KEYPAD_EVENT, 'false');
   }
 
   startTimer(delay: number) {
     this.events.emit(TIMER_EVENT, 'true');
+    this.events.emit(KEYPAD_EVENT, 'true');
     const iterations = numberToEmptyArray(timeBars);
     const iterationsPlusLast = [...iterations, iterations[iterations.length - 1] + 1];
     iterationsPlusLast.forEach(this.delayTimer(delay, iterations.length));

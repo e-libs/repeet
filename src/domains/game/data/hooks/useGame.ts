@@ -74,17 +74,6 @@ export const useGame = () => {
   useEffect(() => {
     // TODO: trigger sequence twinkling
     Conductor.twinkleSequence(currentSequence, initialInterval);
-
-    // const id = getId();
-
-    // Conductor.on(ROUND_OVER_EVENT, id, () => {
-    //   dispatch(resetMove());
-    //   Conductor.twinkleSequence(currentSequence, initialInterval);
-    // });
-
-    // return () => {
-    //   Conductor.off(id);
-    // };
   }, [currentSequence]);
 
   useEffect(() => {
@@ -103,7 +92,7 @@ export const useGame = () => {
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());
-        Conductor.twinkleSequence(currentSequence, initialInterval);
+        addSequence({ sequence: getRandomSequence() });
       });
     }
 

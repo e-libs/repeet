@@ -19,7 +19,6 @@ export const Timer = () => {
     });
 
     Conductor.on(TIME_BAR_EVENT, id, (time: string) => {
-      // console.log('UPDATE TIMER', time);
       setTimeLeft(parseInt(time, 10));
     });
 
