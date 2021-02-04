@@ -13,11 +13,22 @@ import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 export class EventManager {
   protected events: IPubSub<string>;
 
-  private localTimer: any;
-  private localTimer1: any;
+  private isActive = false;
+
+  // private localTimer: any;
+
+  // private localTimer1: any;
 
   constructor() {
     this.events = new PubSub<string>();
+  }
+
+  init() {
+    this.isActive = true;
+  }
+
+  stop() {
+    this.isActive = false;
   }
 
   on(keyName: string, eventId: string, callback: (value: string) => void) {
@@ -46,27 +57,26 @@ export class EventManager {
 
   startTimer(delay: number) {
     this.events.emit(TIMER_EVENT, 'true');
-    const aux = numberToEmptyArray(timeBars);
-    aux.forEach(this.delayTimer(delay, aux.length - 1));
+    const iterations = numberToEmptyArray(timeBars);
+    const iterationsPlusLast = [...iterations, iterations[iterations.length - 1] + 1];
+    iterationsPlusLast.forEach(this.delayTimer(delay, iterations.length));
   }
 
   resetTimer() {
-    clearTimeout(this.localTimer);
-    clearTimeout(this.localTimer1);
     this.events.emit(TIMER_EVENT, 'false');
   }
 
   delayTimer(delay: number, lastIndex: number) {
     return (time: number) => {
-      const currentDelay = time * delay; // TODO: add difficulty incremental factor
+      const currentDelay = time * delay;
 
-      this.localTimer = setTimeout(() => {
+      setTimeout(() => {
+        if (!this.isActive) return;
+
         this.setTimeBar(time);
 
         if (time === lastIndex) {
-          this.localTimer1 = setTimeout(() => {
-            this.setRoundOver();
-          }, currentDelay / 2); // TODO: improve
+          this.setRoundOver();
         }
       }, currentDelay);
     };
@@ -74,15 +84,17 @@ export class EventManager {
 
   delayLoop(delay: number, lastIndex: number) {
     return (key: Sign, i: number) => {
-      const currentDelay = i * delay; // TODO: add difficulty incremental factor
+      const currentDelay = i * delay;
 
       setTimeout(() => {
+        if (!this.isActive) return;
+
         this.twinkle(key.name);
 
         if (i === lastIndex) {
           setTimeout(() => {
             this.startTimer(delay);
-          }, currentDelay * 0.7);
+          }, currentDelay * 0.5);
         }
       }, currentDelay);
     };

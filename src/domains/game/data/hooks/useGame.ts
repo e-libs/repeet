@@ -38,9 +38,15 @@ export const useGame = () => {
 
   const dispatch = useDispatch();
 
-  const start = () => dispatch(initGame());
+  const start = () => {
+    Conductor.init();
+    dispatch(initGame());
+  };
 
-  const reset = () => dispatch(resetGame());
+  const reset = () => {
+    Conductor.stop();
+    dispatch(resetGame());
+  };
 
   const addPlayerMove = (id: number) => {
     const move = validateMove(currentSequence, playerSequence, id);
@@ -69,16 +75,16 @@ export const useGame = () => {
     // TODO: trigger sequence twinkling
     Conductor.twinkleSequence(currentSequence, initialInterval);
 
-    const id = getId();
+    // const id = getId();
 
-    Conductor.on(ROUND_OVER_EVENT, id, () => {
-      dispatch(resetMove());
-      Conductor.twinkleSequence(currentSequence, initialInterval);
-    });
+    // Conductor.on(ROUND_OVER_EVENT, id, () => {
+    //   dispatch(resetMove());
+    //   Conductor.twinkleSequence(currentSequence, initialInterval);
+    // });
 
-    return () => {
-      Conductor.off(id);
-    };
+    // return () => {
+    //   Conductor.off(id);
+    // };
   }, [currentSequence]);
 
   useEffect(() => {
@@ -89,13 +95,21 @@ export const useGame = () => {
   }, [playerSequence]);
 
   useEffect(() => {
+    const id = getId();
+
     if (isMounted) {
       start();
       addSequence({ sequence: getRandomSequence() });
+
+      Conductor.on(ROUND_OVER_EVENT, id, () => {
+        dispatch(resetMove());
+        Conductor.twinkleSequence(currentSequence, initialInterval);
+      });
     }
 
     return () => {
       reset();
+      Conductor.off(id);
     };
   }, []);
 
