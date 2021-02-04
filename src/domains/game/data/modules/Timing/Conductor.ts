@@ -36,7 +36,6 @@ export class EventManager {
 
   setRoundOver() {
     // TODO: TEMP
-    console.log('ROUND OVER');
     this.events.emit(TIME_BAR_EVENT, '0');
     this.events.emit(ROUND_OVER_EVENT);
     this.events.emit(TIMER_EVENT, 'false');
@@ -65,8 +64,6 @@ export class EventManager {
   }
 
   delayLoop(delay: number, lastIndex: number) {
-    console.log('delayLoop', delay, lastIndex);
-
     return (key: Sign, i: number) => {
       const currentDelay = i * delay; // TODO: add difficulty incremental factor
 
@@ -83,7 +80,6 @@ export class EventManager {
   }
 
   twinkleSequence(sequence: Sequence, interval: number) {
-    console.log('twinks', sequence.length);
     sequence.forEach(this.delayLoop(interval, sequence.length - 1));
   }
 }

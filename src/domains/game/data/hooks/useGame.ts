@@ -61,7 +61,6 @@ export const useGame = () => {
   useEffect(() => {
     if (!isMounted) return;
     if (attemptsLeft === 0) {
-      console.log('GAME OVER');
       // TODO: finish game attempts
     }
   }, [attemptsLeft]);
