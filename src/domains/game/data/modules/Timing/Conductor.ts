@@ -34,15 +34,16 @@ export class EventManager {
     this.events.emit(TIME_BAR_EVENT, (timeBars - time).toString());
   }
 
-  setGameOver() {
+  setRoundOver() {
     // TODO: TEMP
     console.log('ROUND OVER');
     this.events.emit(TIME_BAR_EVENT, '0');
     this.events.emit(ROUND_OVER_EVENT);
+    this.events.emit(TIMER_EVENT, 'false');
   }
 
   startTimer(delay: number) {
-    this.events.emit(TIMER_EVENT);
+    this.events.emit(TIMER_EVENT, 'true');
     const aux = numberToEmptyArray(timeBars);
     aux.forEach(this.delayTimer(delay, aux.length - 1));
   }
@@ -56,7 +57,7 @@ export class EventManager {
 
         if (time === lastIndex) {
           setTimeout(() => {
-            this.setGameOver();
+            this.setRoundOver();
           }, currentDelay / 2); // TODO: improve
         }
       }, currentDelay);
@@ -65,7 +66,7 @@ export class EventManager {
 
   delayLoop(delay: number, lastIndex: number) {
     console.log('delayLoop', delay, lastIndex);
-    
+
     return (key: Sign, i: number) => {
       const currentDelay = i * delay; // TODO: add difficulty incremental factor
 

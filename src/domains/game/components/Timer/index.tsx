@@ -14,8 +14,8 @@ export const Timer = () => {
   useEffect(() => {
     const id = getId();
 
-    Conductor.on(TIMER_EVENT, id, () => {
-      setDisplay(true);
+    Conductor.on(TIMER_EVENT, id, (displayTimer: string) => {
+      setDisplay(displayTimer === 'true');
     });
 
     Conductor.on(TIME_BAR_EVENT, id, (time: string) => {
