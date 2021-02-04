@@ -35,7 +35,7 @@ export interface IPubSub<T> {
    * @param type The event type string
    * @param value The value to be passed/emmited
    */
-  emit(type: string, value: T): void;
+  emit(type: string, value?: T): void;
   /**
    * Removes an event from the listeners
    * @param id The unique ID of the event to be removed
