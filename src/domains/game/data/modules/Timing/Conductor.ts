@@ -22,16 +22,29 @@ export class EventManager {
     this.events.emit(keyName, '');
   }
 
-  delayLoop(delay: number) {
+  startTimer() {
+    console.log('LAST!');
+    this.events.emit('TIMER', '');
+  }
+
+  delayLoop(delay: number, lastIndex: number) {
     return (key: Sign, i: number) => {
+      const currentDelay = i * delay;
+
       setTimeout(() => {
         this.twinkle(key.name);
-      }, i * delay);
+
+        if (i === lastIndex) {
+          setTimeout(() => {
+            this.startTimer();
+          }, currentDelay);
+        }
+      }, currentDelay);
     };
   }
 
   twinkleSequence(sequence: Sequence, interval: number): void {
-    sequence.forEach(this.delayLoop(interval));
+    sequence.forEach(this.delayLoop(interval, sequence.length - 1));
   }
 }
 

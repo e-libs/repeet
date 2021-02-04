@@ -4,6 +4,7 @@ import { useAttempts } from 'domains/game/data/hooks/useAttempts';
 
 export const AttemptsDial = () => {
   const { attemptsLeft } = useAttempts();
+
   return (
     <Container>
       <Indicator active={attemptsLeft >= 1}>I</Indicator>
