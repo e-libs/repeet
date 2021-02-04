@@ -48,6 +48,7 @@ export const useGame = () => {
       dispatch(makeMove({ sign }));
     } else if (move === 'BAD') {
       dispatch(resetMove());
+      Conductor.twinkleSequence(currentSequence, 400);
     }
   };
 
