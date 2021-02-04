@@ -16,9 +16,7 @@ export class EventManager {
 
   private isActive = false;
 
-  // private localTimer: any;
-
-  // private localTimer1: any;
+  private timers: NodeJS.Timeout[] = [];
 
   constructor() {
     this.events = new PubSub<string>();
@@ -30,6 +28,7 @@ export class EventManager {
 
   stop() {
     this.isActive = false;
+    this.clearTimeouts();
   }
 
   on(keyName: string, eventId: string, callback: (value: string) => void) {
@@ -49,8 +48,17 @@ export class EventManager {
     this.events.emit(TIME_BAR_EVENT, (timeBars - time).toString());
   }
 
+  setFail() {
+    // TODO: TEMP
+    this.clearTimeouts();
+    this.events.emit(TIME_BAR_EVENT, '0');
+    this.events.emit(TIMER_EVENT, 'false');
+    this.events.emit(KEYPAD_EVENT, 'false');
+  }
+
   setRoundOver() {
     // TODO: TEMP
+    this.clearTimeouts();
     this.events.emit(TIME_BAR_EVENT, '0');
     this.events.emit(ROUND_OVER_EVENT);
     this.events.emit(TIMER_EVENT, 'false');
@@ -65,23 +73,34 @@ export class EventManager {
     iterationsPlusLast.forEach(this.delayTimer(delay, iterations.length));
   }
 
+  clearTimeouts() {
+    this.timers.forEach((timer) => clearTimeout(timer));
+    this.timers = [];
+  }
+
   resetTimer() {
+    this.clearTimeouts();
     this.events.emit(TIMER_EVENT, 'false');
+    this.events.emit(KEYPAD_EVENT, 'false');
   }
 
   delayTimer(delay: number, lastIndex: number) {
     return (time: number) => {
       const currentDelay = time * delay;
 
-      setTimeout(() => {
-        if (!this.isActive) return;
+      this.timers.push(
+        setTimeout(() => {
+          if (!this.isActive) return;
 
-        this.setTimeBar(time);
+          console.log('tick', time);
 
-        if (time === lastIndex) {
-          this.setRoundOver();
-        }
-      }, currentDelay);
+          this.setTimeBar(time);
+
+          if (time === lastIndex) {
+            this.setRoundOver();
+          }
+        }, currentDelay),
+      );
     };
   }
 
