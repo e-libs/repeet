@@ -84,6 +84,7 @@ export const useGame = () => {
   useEffect(() => {
     if (playerSequence.length === currentSequence.length) {
       setNextRound({ sequence: getRandomSequence() });
+      Conductor.resetTimer();
     }
   }, [playerSequence]);
 

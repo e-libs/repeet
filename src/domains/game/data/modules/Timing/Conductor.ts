@@ -13,6 +13,9 @@ import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 export class EventManager {
   protected events: IPubSub<string>;
 
+  private localTimer: any;
+  private localTimer1: any;
+
   constructor() {
     this.events = new PubSub<string>();
   }
@@ -47,15 +50,21 @@ export class EventManager {
     aux.forEach(this.delayTimer(delay, aux.length - 1));
   }
 
+  resetTimer() {
+    clearTimeout(this.localTimer);
+    clearTimeout(this.localTimer1);
+    this.events.emit(TIMER_EVENT, 'false');
+  }
+
   delayTimer(delay: number, lastIndex: number) {
     return (time: number) => {
       const currentDelay = time * delay; // TODO: add difficulty incremental factor
 
-      setTimeout(() => {
+      this.localTimer = setTimeout(() => {
         this.setTimeBar(time);
 
         if (time === lastIndex) {
-          setTimeout(() => {
+          this.localTimer1 = setTimeout(() => {
             this.setRoundOver();
           }, currentDelay / 2); // TODO: improve
         }
