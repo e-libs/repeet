@@ -23,6 +23,7 @@ module.exports = function(api) {
             assets: './src/assets',
             domains: './src/domains',
             helpers: './src/helpers',
+            screens: './src/screens',
           },
         },
       ],

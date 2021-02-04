@@ -18,7 +18,8 @@
       "app/*": ["./src/app/*"],
       "assets/*": ["./src/assets/*"],
       "domains/*": ["./src/domains/*"],
-      "helpers/*": ["./src/helpers/*"]
+      "helpers/*": ["./src/helpers/*"],
+      "screens/*": ["./src/screens/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

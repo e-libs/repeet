@@ -1,3 +1,9 @@
+0.0.4 (February 3rd, 2021)
+  - Adding main game logic (sequences, retries, game over, level up)
+  - Creating UI components
+  - Abstracting uuid logic
+  - Providing console log colored output
+
 0.0.3 (February 1st, 2021)
   - Adding localization structure (i18next + react-i18next)
 
