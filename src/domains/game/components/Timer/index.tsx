@@ -4,19 +4,23 @@ import { Container, Indicator } from 'domains/game/components/Timer/styles';
 // TODO: check the best import flow
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { getId } from 'helpers/getId';
-import { TIMER_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
+import { TIME_BAR_EVENT, TIMER_EVENT, timeBars } from 'domains/game/data/modules/Timing/constants';
 
 export const Timer = () => {
   const [display, setDisplay] = useState(false);
-
-  const timeBars = 2;
+  const [timeLeft, setTimeLeft] = useState(timeBars);
 
   useEffect(() => {
     const id = getId();
 
     Conductor.on(TIMER_EVENT, id, () => {
-      console.log('UPDATE STATE');
       setDisplay(true);
+    });
+
+    Conductor.on(TIME_BAR_EVENT, id, (time: string) => {
+      // console.log('UPDATE TIMER', time);
+      setTimeLeft(parseInt(time, 10));
     });
 
     return () => {
@@ -24,14 +28,12 @@ export const Timer = () => {
     };
   }, []);
 
+  const list = () =>
+    numberToEmptyArray(timeBars).map((i) => <Indicator active={timeLeft >= i + 1}>I</Indicator>);
+
   return (
     <Container>
-      <View style={{ display: display ? 'flex' : 'none', flexDirection: 'row' }}>
-        <Indicator active={timeBars >= 1}>I</Indicator>
-        <Indicator active={timeBars >= 2}>I</Indicator>
-        <Indicator active={timeBars >= 3}>I</Indicator>
-        <Indicator active={timeBars >= 4}>I</Indicator>
-      </View>
+      <View style={{ display: display ? 'flex' : 'none', flexDirection: 'row' }}>{list()}</View>
     </Container>
   );
 };

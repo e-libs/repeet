@@ -21,7 +21,9 @@ import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
+import { getId } from 'helpers/getId';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
+import { ROUND_OVER_EVENT } from 'domains/game/data/modules/Timing/constants';
 
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
@@ -67,6 +69,17 @@ export const useGame = () => {
   useEffect(() => {
     // TODO: trigger sequence twinkling
     Conductor.twinkleSequence(currentSequence, 400);
+
+    const id = getId();
+
+    Conductor.on(ROUND_OVER_EVENT, id, () => {
+      console.log('USE GAAAAAME', currentSequence);
+      Conductor.twinkleSequence(currentSequence, 400);
+    });
+
+    return () => {
+      Conductor.off(id);
+    };
   }, [currentSequence]);
 
   useEffect(() => {
