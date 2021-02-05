@@ -1,6 +1,7 @@
 export default {
   translation: {
-    sample: 'Exemplo',
-    name: 'Nome',
+    home: {
+      tapToStart: 'Toque para começar',
+    },
   },
 };
