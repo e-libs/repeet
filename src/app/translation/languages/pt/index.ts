@@ -10,5 +10,10 @@ export default {
         no: 'Não',
       },
     },
+    gameOver: {
+      message: 'Não foi dessa vez...',
+      tryAgain: 'Jogar de novo',
+      exit: 'Sair',
+    },
   },
 };

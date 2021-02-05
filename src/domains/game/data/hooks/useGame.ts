@@ -75,8 +75,8 @@ export const useGame = () => {
   }, [attemptsLeft]);
 
   useEffect(() => {
-    Conductor.twinkleSequence(currentSequence, speed);
-  }, [currentSequence]);
+    if (!isGameOver) Conductor.twinkleSequence(currentSequence, speed);
+  }, [currentSequence, isGameOver]);
 
   useEffect(() => {
     if (playerSequence.length === currentSequence.length) {

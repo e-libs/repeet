@@ -10,5 +10,10 @@ export default {
         no: 'No',
       },
     },
+    gameOver: {
+      message: 'Better luck next time',
+      tryAgain: 'Play again',
+      exit: 'Exit',
+    },
   },
 };
