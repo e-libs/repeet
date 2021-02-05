@@ -15,13 +15,13 @@ export const SequencerView = styled.View`
 `;
 
 export const TimerView = styled.View`
-  flex: 1;
+  flex: 1.1;
   flex-direction: row;
   background-color: #000000;
 `;
 
 export const PlayerView = styled.View`
-  background-color: #111111;
+  background-color: #000000;
   flex: 5;
   padding: 5px 5px 20px;
 `;

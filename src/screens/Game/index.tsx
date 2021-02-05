@@ -5,6 +5,7 @@ import { MainView, HeaderView, PlayerView, SequencerView, TimerView } from 'scre
 import { useGame } from 'domains/game/data/hooks/useGame';
 import { Sequencer } from 'domains/game/components/Sequencer';
 import { KeyPad } from 'domains/player/components/KeyPad';
+import { StatusBar } from 'domains/game/components/StatusBar';
 import type { RootStackParamList } from 'screens/types';
 import { logSequenceOutput } from 'helpers/logSequenceOutput';
 
@@ -24,12 +25,13 @@ export const Game = ({ navigation }: Props) => {
     playerSequence,
     rightSequences,
     score,
+    speed,
   } = useGame();
 
   logSequenceOutput('CURRENT', currentSequence);
   logSequenceOutput('PLAYER ', playerSequence);
   console.log(
-    `ATTEMPTS ${attemptsLeft} NAILED ${rightSequences}, SCORE: ${score}, LEVEL: ${level}`,
+    `SPEED: ${speed}, SCORE: ${score}, LEVEL: ${level},  NAILED ${rightSequences}, ATTEMPTS ${attemptsLeft}`,
   );
   console.log('');
 
@@ -45,7 +47,7 @@ export const Game = ({ navigation }: Props) => {
         <Sequencer />
       </SequencerView>
       <TimerView>
-        <Text style={{ color: 'green' }}>TIMER</Text>
+        <StatusBar />
       </TimerView>
       <PlayerView>
         <KeyPad onKeyPress={addPlayerMove} />

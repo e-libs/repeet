@@ -16,12 +16,15 @@ import {
   getPlayerSequence,
   getRightSequences,
   getScore,
+  getSpeed,
 } from 'domains/game/data/store/selectors';
 import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
 import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
+import { getId } from 'helpers/getId';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
+import { ROUND_OVER_EVENT } from 'domains/game/data/modules/Timing/constants';
 
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
@@ -33,12 +36,19 @@ export const useGame = () => {
   const playerSequence = useSelector(getPlayerSequence);
   const rightSequences = useSelector(getRightSequences);
   const score = useSelector(getScore);
+  const speed = useSelector(getSpeed);
 
   const dispatch = useDispatch();
 
-  const start = () => dispatch(initGame());
+  const start = () => {
+    Conductor.init();
+    dispatch(initGame());
+  };
 
-  const reset = () => dispatch(resetGame());
+  const reset = () => {
+    Conductor.stop();
+    dispatch(resetGame());
+  };
 
   const addPlayerMove = (id: number) => {
     const move = validateMove(currentSequence, playerSequence, id);
@@ -48,7 +58,8 @@ export const useGame = () => {
       dispatch(makeMove({ sign }));
     } else if (move === 'BAD') {
       dispatch(resetMove());
-      Conductor.twinkleSequence(currentSequence, 400);
+      Conductor.setFail();
+      Conductor.twinkleSequence(currentSequence, speed);
     }
   };
 
@@ -59,30 +70,37 @@ export const useGame = () => {
   useEffect(() => {
     if (!isMounted) return;
     if (attemptsLeft === 0) {
-      console.log('GAME OVER');
       // TODO: finish game attempts
     }
   }, [attemptsLeft]);
 
   useEffect(() => {
-    // TODO: trigger sequence twinkling
-    Conductor.twinkleSequence(currentSequence, 400);
+    Conductor.twinkleSequence(currentSequence, speed);
   }, [currentSequence]);
 
   useEffect(() => {
     if (playerSequence.length === currentSequence.length) {
       setNextRound({ sequence: getRandomSequence() });
+      Conductor.resetTimer();
     }
   }, [playerSequence]);
 
   useEffect(() => {
+    const id = getId();
+
     if (isMounted) {
       start();
       addSequence({ sequence: getRandomSequence() });
+
+      Conductor.on(ROUND_OVER_EVENT, id, () => {
+        dispatch(resetMove());
+        addSequence({ sequence: getRandomSequence() });
+      });
     }
 
     return () => {
       reset();
+      Conductor.off(id);
     };
   }, []);
 
@@ -95,6 +113,7 @@ export const useGame = () => {
     playerSequence,
     rightSequences,
     score,
+    speed,
     start,
   };
 };
