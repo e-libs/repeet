@@ -12,7 +12,7 @@ export default () => (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        // gestureEnabled: false,
+        // gestureEnabled: false, // TODO: activate
       }}
     >
       <Stack.Screen name="Home" component={Home} />
