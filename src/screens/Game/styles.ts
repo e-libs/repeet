@@ -21,7 +21,7 @@ export const TimerView = styled.View`
 `;
 
 export const PlayerView = styled.View`
-  background-color: #111111;
+  background-color: #000000;
   flex: 5;
   padding: 5px 5px 20px;
 `;
