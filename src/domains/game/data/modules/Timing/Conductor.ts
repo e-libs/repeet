@@ -12,14 +12,14 @@ import {
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 
 export class EventManager {
-  protected events: IPubSub<string>;
+  protected events: IPubSub<any>;
 
   private isActive = false;
 
   private timers: NodeJS.Timeout[] = [];
 
   constructor() {
-    this.events = new PubSub<string>();
+    this.events = new PubSub<boolean>();
   }
 
   init() {
@@ -31,7 +31,7 @@ export class EventManager {
     this.clearTimeouts();
   }
 
-  on(keyName: string, eventId: string, callback: (value: string) => void) {
+  on<T>(keyName: string, eventId: string, callback: (value: T) => void) {
     this.events.on(keyName, eventId, callback);
   }
 
@@ -44,30 +44,27 @@ export class EventManager {
   }
 
   setTimeBar(time: number) {
-    // TODO: TEMP
-    this.events.emit(TIME_BAR_EVENT, (timeBars - time).toString());
+    this.events.emit(TIME_BAR_EVENT, timeBars - time);
   }
 
   setFail() {
-    // TODO: TEMP
     this.clearTimeouts();
-    this.events.emit(TIME_BAR_EVENT, '0');
-    this.events.emit(TIMER_EVENT, 'false');
-    this.events.emit(KEYPAD_EVENT, 'false');
+    this.events.emit(TIME_BAR_EVENT, 0);
+    this.events.emit(TIMER_EVENT, false);
+    this.events.emit(KEYPAD_EVENT, false);
   }
 
   setRoundOver() {
-    // TODO: TEMP
     this.clearTimeouts();
-    this.events.emit(TIME_BAR_EVENT, '0');
+    this.events.emit(TIME_BAR_EVENT, 0);
     this.events.emit(ROUND_OVER_EVENT);
-    this.events.emit(TIMER_EVENT, 'false');
-    this.events.emit(KEYPAD_EVENT, 'false');
+    this.events.emit(TIMER_EVENT, false);
+    this.events.emit(KEYPAD_EVENT, false);
   }
 
   startTimer(delay: number) {
-    this.events.emit(TIMER_EVENT, 'true');
-    this.events.emit(KEYPAD_EVENT, 'true');
+    this.events.emit(TIMER_EVENT, true);
+    this.events.emit(KEYPAD_EVENT, true);
     const iterations = numberToEmptyArray(timeBars);
     const iterationsPlusLast = [...iterations, iterations[iterations.length - 1] + 1];
     iterationsPlusLast.forEach(this.delayTimer(delay, iterations.length));
@@ -80,8 +77,8 @@ export class EventManager {
 
   resetTimer() {
     this.clearTimeouts();
-    this.events.emit(TIMER_EVENT, 'false');
-    this.events.emit(KEYPAD_EVENT, 'false');
+    this.events.emit(TIMER_EVENT, false);
+    this.events.emit(KEYPAD_EVENT, false);
   }
 
   delayTimer(delay: number, lastIndex: number) {

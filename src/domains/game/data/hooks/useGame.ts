@@ -75,7 +75,6 @@ export const useGame = () => {
   }, [attemptsLeft]);
 
   useEffect(() => {
-    // TODO: trigger sequence twinkling
     Conductor.twinkleSequence(currentSequence, speed);
   }, [currentSequence]);
 
@@ -114,6 +113,7 @@ export const useGame = () => {
     playerSequence,
     rightSequences,
     score,
+    speed,
     start,
   };
 };

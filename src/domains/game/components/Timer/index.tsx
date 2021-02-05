@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Container, Indicator } from 'domains/game/components/Timer/styles';
-// TODO: check the best import flow
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { getId } from 'helpers/getId';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
@@ -14,12 +13,12 @@ export const Timer = () => {
   useEffect(() => {
     const id = getId();
 
-    Conductor.on(TIMER_EVENT, id, (displayTimer: string) => {
-      setDisplay(displayTimer === 'true');
+    Conductor.on(TIMER_EVENT, id, (displayTimer: boolean) => {
+      setDisplay(displayTimer);
     });
 
-    Conductor.on(TIME_BAR_EVENT, id, (time: string) => {
-      setTimeLeft(parseInt(time, 10));
+    Conductor.on(TIME_BAR_EVENT, id, (time: number) => {
+      setTimeLeft(time);
     });
 
     return () => {

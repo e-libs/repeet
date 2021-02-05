@@ -16,9 +16,5 @@ export type NextRoundAction = {
   sequence: Sequence;
 };
 
-export type SetAttemptsAction = {
-  attempts: number;
-};
-
 // Group all Game actions
-export type GameActions = MoveAction & NextRoundAction & SetSequenceAction & SetAttemptsAction;
+export type GameActions = MoveAction & NextRoundAction & SetSequenceAction;

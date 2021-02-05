@@ -1,5 +1,5 @@
 export type GameRecord = {
-  player: string; // TODO: replace with player entity
+  player: string;
   date: Date;
   score: number;
   totalSequences: number;

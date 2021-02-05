@@ -4,7 +4,7 @@ export type Game = {
   attempts: number;
   currentSequence: Sequence;
   isOver: boolean;
-  level: number; // TODO: check if it makes sense
+  level: number;
   playerSequence: Sequence;
   rightSequences: number;
   wrongSequences: number;

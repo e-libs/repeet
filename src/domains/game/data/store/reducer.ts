@@ -9,7 +9,6 @@ import {
   NEXT_ROUND,
   RESET_GAME,
   RESET_MOVE,
-  SET_ATTEMPTS,
   SET_SEQUENCE,
 } from 'domains/game/data/store/actionTypes';
 
@@ -75,15 +74,6 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         isOver: attempts === 0,
         playerSequence: [],
         wrongSequences: state.wrongSequences - +1,
-      };
-    }
-    // TODO: check if it's still necessary
-    case SET_ATTEMPTS: {
-      const { attempts } = action.payload;
-
-      return {
-        ...state,
-        attempts,
       };
     }
     default:

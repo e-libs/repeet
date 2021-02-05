@@ -20,8 +20,8 @@ export const Key = ({ color, id, onPress }: KeyProps) => {
   useEffect(() => {
     const eventId = getId();
 
-    Conductor.on(KEYPAD_EVENT, eventId, (enableButton: string) => {
-      setEnabled(enableButton === 'true');
+    Conductor.on(KEYPAD_EVENT, eventId, (enableButton: boolean) => {
+      setEnabled(enableButton);
     });
   }, []);
 

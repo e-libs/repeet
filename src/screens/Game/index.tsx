@@ -25,12 +25,13 @@ export const Game = ({ navigation }: Props) => {
     playerSequence,
     rightSequences,
     score,
+    speed,
   } = useGame();
 
   logSequenceOutput('CURRENT', currentSequence);
   logSequenceOutput('PLAYER ', playerSequence);
   console.log(
-    `ATTEMPTS ${attemptsLeft} NAILED ${rightSequences}, SCORE: ${score}, LEVEL: ${level}`,
+    `SPEED: ${speed}, SCORE: ${score}, LEVEL: ${level},  NAILED ${rightSequences}, ATTEMPTS ${attemptsLeft}`,
   );
   console.log('');
 
