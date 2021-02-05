@@ -14,16 +14,29 @@ export const ModalView = styled.View`
   align-items: center;
 `;
 
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const ConfirmText = styled.Text`
+  font-size: 30px;
+  margin-bottom: 30px;
+`;
+
 export const ConfirmButton = styled.TouchableHighlight`
-  background-color: #f194ff;
+  background-color: #c70039;
   border-radius: 20px;
-  padding: 20px;
+  padding: 20px 50px;
+  margin: 0 10px;
 `;
 
 export const CancelButton = styled.TouchableHighlight`
-  background-color: yellow;
+  background-color: #658d9a;
   border-radius: 20px;
-  padding: 20px;
+  padding: 20px 50px;
+  margin: 0 10px;
 `;
 
 export const ButtonText = styled.Text`

@@ -40,10 +40,14 @@ export const Game = ({ navigation }: Props) => {
     window.setTimeout(() => navigation.navigate('Home'), 500);
   }
 
+  const exitGame = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <MainView>
       <HeaderView>
-        <Header />
+        <Header onExit={exitGame} />
       </HeaderView>
       <SequencerView>
         <Sequencer />

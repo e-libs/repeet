@@ -1,9 +1,12 @@
 import React from 'react';
-import { Modal, Text } from 'react-native';
+import { Modal } from 'react-native';
+import { useTranslation } from 'app/translation';
 import {
+  ButtonContainer,
   ButtonText,
   CancelButton,
   ConfirmButton,
+  ConfirmText,
   Container,
   ModalView,
 } from 'domains/shell/components/ExitModal/styles';
@@ -14,18 +17,24 @@ type ExitModalProps = {
   onExit: () => void;
 };
 
-export const ExitModal = ({ isOpen, onCancel, onExit }: ExitModalProps) => (
-  <Modal animationType="fade" transparent={true} visible={isOpen} onRequestClose={onExit}>
-    <Container>
-      <ModalView>
-        <Text>Exit game?</Text>
-        <CancelButton onPress={onCancel}>
-          <ButtonText>Cancel</ButtonText>
-        </CancelButton>
-        <ConfirmButton onPress={onExit}>
-          <ButtonText>Yes</ButtonText>
-        </ConfirmButton>
-      </ModalView>
-    </Container>
-  </Modal>
-);
+export const ExitModal = ({ isOpen, onCancel, onExit }: ExitModalProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <Modal animationType="fade" transparent={true} visible={isOpen} onRequestClose={onExit}>
+      <Container>
+        <ModalView>
+          <ConfirmText>{t('header.exitModal.confirmExit')}</ConfirmText>
+          <ButtonContainer>
+            <CancelButton onPress={onCancel}>
+              <ButtonText>{t('header.exitModal.no')}</ButtonText>
+            </CancelButton>
+            <ConfirmButton onPress={onExit}>
+              <ButtonText>{t('header.exitModal.yes')}</ButtonText>
+            </ConfirmButton>
+          </ButtonContainer>
+        </ModalView>
+      </Container>
+    </Modal>
+  );
+};
