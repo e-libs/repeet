@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { MainView, HeaderView, PlayerView, SequencerView, TimerView } from 'screens/Game/styles';
 import { useGame } from 'domains/game/data/hooks/useGame';
 import { Sequencer } from 'domains/game/components/Sequencer';
 import { KeyPad } from 'domains/player/components/KeyPad';
 import { StatusBar } from 'domains/game/components/StatusBar';
+import { Header } from 'domains/game/components/Header';
 import type { RootStackParamList } from 'screens/types';
 import { logSequenceOutput } from 'helpers/logSequenceOutput';
 
@@ -42,7 +42,9 @@ export const Game = ({ navigation }: Props) => {
 
   return (
     <MainView>
-      <HeaderView />
+      <HeaderView>
+        <Header />
+      </HeaderView>
       <SequencerView>
         <Sequencer />
       </SequencerView>
