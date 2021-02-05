@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { Container, Indicator } from 'domains/game/components/Timer/styles';
+import { Indicator } from 'domains/game/components/Timer/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { getId } from 'helpers/getId';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
@@ -33,9 +33,5 @@ export const Timer = () => {
       </Indicator>
     ));
 
-  return (
-    <Container>
-      <View style={{ display: display ? 'flex' : 'none', flexDirection: 'row' }}>{list()}</View>
-    </Container>
-  );
+  return <View style={{ display: display ? 'flex' : 'none', flexDirection: 'row' }}>{list()}</View>;
 };

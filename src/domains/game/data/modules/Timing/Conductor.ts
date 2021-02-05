@@ -28,7 +28,7 @@ export class EventManager {
 
   stop() {
     this.isActive = false;
-    this.clearTimeouts();
+    this.setRoundOver();
   }
 
   on<T>(keyName: string, eventId: string, callback: (value: T) => void) {
@@ -103,17 +103,19 @@ export class EventManager {
     return (key: Sign, i: number) => {
       const currentDelay = i * delay;
 
-      setTimeout(() => {
-        if (!this.isActive) return;
+      this.timers.push(
+        setTimeout(() => {
+          if (!this.isActive) return;
 
-        this.twinkle(key.name);
+          this.twinkle(key.name);
 
-        if (i === lastIndex) {
-          setTimeout(() => {
-            this.startTimer(delay * 1.5);
-          }, currentDelay * 0.5);
-        }
-      }, currentDelay);
+          if (i === lastIndex) {
+            setTimeout(() => {
+              this.startTimer(delay * 1.5);
+            }, currentDelay * 0.5);
+          }
+        }, currentDelay),
+      );
     };
   }
 

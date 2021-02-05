@@ -15,7 +15,7 @@ export const SequencerView = styled.View`
 `;
 
 export const TimerView = styled.View`
-  flex: 1;
+  flex: 1.1;
   flex-direction: row;
   background-color: #000000;
 `;
