@@ -26,10 +26,10 @@ export const ExitModal = ({ isOpen, onCancel, onExit }: ExitModalProps) => {
         <ModalView>
           <ConfirmText>{t('header.exitModal.confirmExit')}</ConfirmText>
           <ButtonContainer>
-            <CancelButton onPress={onCancel}>
+            <CancelButton onPress={onCancel} underlayColor="#3c535b">
               <ButtonText>{t('header.exitModal.no')}</ButtonText>
             </CancelButton>
-            <ConfirmButton onPress={onExit}>
+            <ConfirmButton onPress={onExit} underlayColor="#6d0d28">
               <ButtonText>{t('header.exitModal.yes')}</ButtonText>
             </ConfirmButton>
           </ButtonContainer>

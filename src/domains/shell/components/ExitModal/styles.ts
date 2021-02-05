@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const ModalView = styled.View`
   margin: 20px;
-  background-color: white;
+  background-color: #fff;
   border-radius: 20px;
   padding: 35px;
   align-items: center;
@@ -28,19 +28,20 @@ export const ConfirmText = styled.Text`
 export const ConfirmButton = styled.TouchableHighlight`
   background-color: #c70039;
   border-radius: 20px;
-  padding: 20px 50px;
+  padding: 20px 30px;
   margin: 0 10px;
 `;
 
 export const CancelButton = styled.TouchableHighlight`
   background-color: #658d9a;
   border-radius: 20px;
-  padding: 20px 50px;
+  padding: 20px 30px;
   margin: 0 10px;
 `;
 
 export const ButtonText = styled.Text`
-  color: white;
+  color: #fff;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
 `;

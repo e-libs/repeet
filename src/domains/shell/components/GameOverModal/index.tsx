@@ -26,10 +26,10 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
         <ModalView>
           <FarewellMessage>{t('gameOver.message')}</FarewellMessage>
           <ButtonContainer>
-            <TryAgainButton onPress={onTryAgain}>
+            <TryAgainButton onPress={onTryAgain} underlayColor="#adcb72">
               <ButtonText color="#000">{t('gameOver.tryAgain')}</ButtonText>
             </TryAgainButton>
-            <ExitButton onPress={onExit}>
+            <ExitButton onPress={onExit} underlayColor="#595959">
               <ButtonText color="#ff3a3a">{t('gameOver.exit')}</ButtonText>
             </ExitButton>
           </ButtonContainer>
