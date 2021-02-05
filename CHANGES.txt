@@ -1,3 +1,8 @@
+0.0.5 (February 4th, 2021)
+  - Fixing major sequencing flow
+  - Adding progress bar
+  - Creating incremental difficulty mechanism
+
 0.0.4 (February 3rd, 2021)
   - Adding main game logic (sequences, retries, game over, level up)
   - Creating UI components
