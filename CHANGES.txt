@@ -1,3 +1,9 @@
+0.0.7 (February 5th, 2021)
+  - Adding transitions between screens
+  - Adding Exit modal
+  - Adding Game Over modal
+  - Improving navigation, preventing stuck conditions
+
 0.0.6 (February 4th, 2021)
   - Adding header with score
 
