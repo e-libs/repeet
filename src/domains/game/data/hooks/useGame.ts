@@ -44,7 +44,7 @@ export const useGame = () => {
 
   const dispatch = useDispatch();
 
-  const start = () => {
+  const init = () => {
     Conductor.init();
     dispatch(initGame());
   };
@@ -75,6 +75,11 @@ export const useGame = () => {
 
   const setNextRound = (payload: NextRoundAction) => dispatch(nextRound(payload));
 
+  const start = () => {
+    init();
+    addSequence({ sequence: getRandomSequence() });
+  };
+
   useEffect(() => {
     if (!isMounted) return;
     if (attemptsLeft === 0) {
@@ -87,7 +92,7 @@ export const useGame = () => {
   }, [currentSequence, isGameOver]);
 
   useEffect(() => {
-    if (playerSequence.length === currentSequence.length) {
+    if (playerSequence.length > 0 && playerSequence.length === currentSequence.length) {
       setNextRound({ sequence: getRandomSequence() });
       Conductor.resetTimer();
     }
@@ -98,7 +103,6 @@ export const useGame = () => {
 
     if (isMounted) {
       start();
-      addSequence({ sequence: getRandomSequence() });
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());

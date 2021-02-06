@@ -19,11 +19,11 @@ const initialState: GameState = {
   isOver: false,
   level: 0,
   playerSequence: [],
-  rightSequences: 0,
-  wrongSequences: 0,
-  score: 0,
-  speed: initialInterval, 
   quit: false,
+  rightSequences: 0,
+  score: 0,
+  speed: initialInterval,
+  wrongSequences: 0,
 };
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
