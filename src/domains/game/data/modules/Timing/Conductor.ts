@@ -7,7 +7,6 @@ import {
   ROUND_OVER_EVENT,
   TIME_BAR_EVENT,
   TIMER_EVENT,
-  timeBars,
 } from 'domains/game/data/modules/Timing/constants';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 
@@ -18,12 +17,15 @@ export class EventManager {
 
   private timers: NodeJS.Timeout[] = [];
 
+  private poolSize = 0;
+
   constructor() {
     this.events = new PubSub<boolean>();
   }
 
-  init() {
+  init(poolSize: number) {
     this.isActive = true;
+    this.poolSize = poolSize;
   }
 
   stop() {
@@ -44,7 +46,7 @@ export class EventManager {
   }
 
   setTimeBar(time: number) {
-    this.events.emit(TIME_BAR_EVENT, timeBars - time);
+    this.events.emit(TIME_BAR_EVENT, this.poolSize - time);
   }
 
   setFail() {
@@ -65,7 +67,7 @@ export class EventManager {
   startTimer(delay: number) {
     this.events.emit(TIMER_EVENT, true);
     this.events.emit(KEYPAD_EVENT, true);
-    const iterations = numberToEmptyArray(timeBars);
+    const iterations = numberToEmptyArray(this.poolSize);
     const iterationsPlusLast = [...iterations, iterations[iterations.length - 1] + 1];
     iterationsPlusLast.forEach(this.delayTimer(delay, iterations.length));
   }

@@ -4,11 +4,14 @@ import { Indicator } from 'domains/game/components/Timer/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { getId } from 'helpers/getId';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
-import { TIME_BAR_EVENT, TIMER_EVENT, timeBars } from 'domains/game/data/modules/Timing/constants';
+import { TIME_BAR_EVENT, TIMER_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { useConfig } from 'domains/config/data/hooks/useConfig';
 
 export const Timer = () => {
+  const { currentPoolSize } = useConfig();
+
   const [display, setDisplay] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(timeBars);
+  const [timeLeft, setTimeLeft] = useState(currentPoolSize);
 
   useEffect(() => {
     const id = getId();
@@ -27,7 +30,7 @@ export const Timer = () => {
   }, []);
 
   const list = () =>
-    numberToEmptyArray(timeBars).map((i) => (
+    numberToEmptyArray(currentPoolSize).map((i) => (
       <Indicator active={timeLeft >= i + 1} key={`i${i}`}>
         I
       </Indicator>
