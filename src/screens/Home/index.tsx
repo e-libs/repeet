@@ -15,7 +15,7 @@ type Props = {
 export const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
 
-  const { currentMode, switchMode, currentPoolSize } = useConfig();
+  const { currentMode, switchMode } = useConfig();
 
   return (
     <MainView>
@@ -28,7 +28,7 @@ export const Home = ({ navigation }: Props) => {
         <TapToStart color="#427FA7">{t('home.tapToStart')}</TapToStart>
       </TouchableOpacity>
       <TouchableOpacity onPress={switchMode}>
-        <Text>{currentMode}</Text>
+        <Text style={{ marginTop: 50 }}>mode: {currentMode}</Text>
       </TouchableOpacity>
     </MainView>
   );

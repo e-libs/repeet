@@ -1,3 +1,6 @@
+0.0.8 (February 5th, 2021)
+  - Adding extended mode (6 buttons)
+
 0.0.7 (February 5th, 2021)
   - Adding transitions between screens
   - Adding Exit modal
