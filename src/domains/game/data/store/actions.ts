@@ -4,6 +4,7 @@ import {
   INIT_GAME,
   MAKE_MOVE,
   NEXT_ROUND,
+  QUIT_GAME,
   RESET_GAME,
   RESET_MOVE,
   SET_SEQUENCE,
@@ -15,3 +16,4 @@ export const nextRound = createAction<NextRoundAction>(NEXT_ROUND);
 export const resetGame = createAction(RESET_GAME);
 export const resetMove = createAction(RESET_MOVE);
 export const setSequence = createAction<SetSequenceAction>(SET_SEQUENCE);
+export const quitGame = createAction(QUIT_GAME);

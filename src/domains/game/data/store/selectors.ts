@@ -44,3 +44,8 @@ export const getSpeed = createSelector<GlobalState, GameState, number>(
   getGame,
   ({ speed }) => speed,
 );
+
+export const getHasQuit = createSelector<GlobalState, GameState, boolean>(
+  getGame,
+  ({ quit }) => quit,
+);

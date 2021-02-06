@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { MainView, HeaderView, PlayerView, SequencerView, TimerView } from 'screens/Game/styles';
 import { useGame } from 'domains/game/data/hooks/useGame';
@@ -8,6 +8,7 @@ import { StatusBar } from 'domains/game/components/StatusBar';
 import { Header } from 'domains/game/components/Header';
 import type { RootStackParamList } from 'screens/types';
 import { logSequenceOutput } from 'helpers/logSequenceOutput';
+import { GameOverModal } from 'domains/shell/components/GameOverModal';
 
 type GameScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -20,13 +21,17 @@ export const Game = ({ navigation }: Props) => {
     addPlayerMove,
     attemptsLeft,
     currentSequence,
+    hasQuit,
     isGameOver,
     level,
     playerSequence,
+    quit,
     rightSequences,
     score,
     speed,
+    start,
   } = useGame();
+  const [choseExit, setChoseExit] = useState(false);
 
   logSequenceOutput('CURRENT', currentSequence);
   logSequenceOutput('PLAYER ', playerSequence);
@@ -35,15 +40,29 @@ export const Game = ({ navigation }: Props) => {
   );
   console.log('');
 
-  if (isGameOver) {
-    // TODO: temporary so it won't complain, will be replaced by modal + redirect
-    window.setTimeout(() => navigation.navigate('Home'), 500);
-  }
+  const goHome = () => {
+    setChoseExit(true);
+    navigation.navigate('Home');
+  };
+
+  const tryAgain = () => {
+    start();
+  };
+
+  const exitGame = () => {
+    quit();
+    navigation.navigate('Home');
+  };
 
   return (
     <MainView>
+      <GameOverModal
+        isOpen={!hasQuit && isGameOver && !choseExit}
+        onExit={goHome}
+        onTryAgain={tryAgain}
+      />
       <HeaderView>
-        <Header />
+        <Header isGameOver={isGameOver} onExit={exitGame} />
       </HeaderView>
       <SequencerView>
         <Sequencer />

@@ -4,6 +4,7 @@ import {
   initGame,
   makeMove,
   nextRound,
+  quitGame,
   resetGame,
   resetMove,
   setSequence,
@@ -12,6 +13,7 @@ import {
   getAttemptsLeft,
   getCurrentSequence,
   getGameLevel,
+  getHasQuit,
   getIsGameOver,
   getPlayerSequence,
   getRightSequences,
@@ -29,8 +31,10 @@ import { ROUND_OVER_EVENT } from 'domains/game/data/modules/Timing/constants';
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
+
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
+  const hasQuit = useSelector(getHasQuit);
   const isGameOver = useSelector(getIsGameOver);
   const level = useSelector(getGameLevel);
   const playerSequence = useSelector(getPlayerSequence);
@@ -40,7 +44,7 @@ export const useGame = () => {
 
   const dispatch = useDispatch();
 
-  const start = () => {
+  const init = () => {
     Conductor.init();
     dispatch(initGame());
   };
@@ -48,6 +52,10 @@ export const useGame = () => {
   const reset = () => {
     Conductor.stop();
     dispatch(resetGame());
+  };
+
+  const quit = () => {
+    dispatch(quitGame());
   };
 
   const addPlayerMove = (id: number) => {
@@ -67,19 +75,17 @@ export const useGame = () => {
 
   const setNextRound = (payload: NextRoundAction) => dispatch(nextRound(payload));
 
-  useEffect(() => {
-    if (!isMounted) return;
-    if (attemptsLeft === 0) {
-      // TODO: finish game attempts
-    }
-  }, [attemptsLeft]);
+  const start = () => {
+    init();
+    addSequence({ sequence: getRandomSequence() });
+  };
 
   useEffect(() => {
-    Conductor.twinkleSequence(currentSequence, speed);
-  }, [currentSequence]);
+    if (!isGameOver) Conductor.twinkleSequence(currentSequence, speed);
+  }, [currentSequence, isGameOver]);
 
   useEffect(() => {
-    if (playerSequence.length === currentSequence.length) {
+    if (playerSequence.length > 0 && playerSequence.length === currentSequence.length) {
       setNextRound({ sequence: getRandomSequence() });
       Conductor.resetTimer();
     }
@@ -90,7 +96,6 @@ export const useGame = () => {
 
     if (isMounted) {
       start();
-      addSequence({ sequence: getRandomSequence() });
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());
@@ -108,9 +113,11 @@ export const useGame = () => {
     addPlayerMove,
     attemptsLeft,
     currentSequence,
+    hasQuit,
     isGameOver,
     level,
     playerSequence,
+    quit,
     rightSequences,
     score,
     speed,
