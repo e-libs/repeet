@@ -21,9 +21,11 @@ export const Game = ({ navigation }: Props) => {
     addPlayerMove,
     attemptsLeft,
     currentSequence,
+    hasQuit,
     isGameOver,
     level,
     playerSequence,
+    quit,
     rightSequences,
     score,
     speed,
@@ -48,14 +50,19 @@ export const Game = ({ navigation }: Props) => {
   };
 
   const exitGame = () => {
+    quit();
     navigation.navigate('Home');
   };
 
   return (
     <MainView>
-      <GameOverModal isOpen={isGameOver && !choseExit} onExit={goHome} onTryAgain={tryAgain} />
+      <GameOverModal
+        isOpen={!hasQuit && isGameOver && !choseExit}
+        onExit={goHome}
+        onTryAgain={tryAgain}
+      />
       <HeaderView>
-        <Header onExit={exitGame} />
+        <Header isGameOver={isGameOver} onExit={exitGame} />
       </HeaderView>
       <SequencerView>
         <Sequencer />

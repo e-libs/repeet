@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BackButton,
   BackButtonIcon,
@@ -8,7 +8,12 @@ import {
 import { useScore } from 'domains/game/data/hooks/useScore';
 import { ExitModal } from 'domains/shell/components/ExitModal';
 
-export const Header = ({ onExit }: { onExit: () => void }) => {
+type HeaderProps = {
+  isGameOver: boolean;
+  onExit: () => void;
+};
+
+export const Header = ({ isGameOver, onExit }: HeaderProps) => {
   const { score } = useScore();
 
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
@@ -25,6 +30,10 @@ export const Header = ({ onExit }: { onExit: () => void }) => {
     setIsExitModalOpen(false);
     onExit();
   };
+
+  useEffect(() => {
+    setIsExitModalOpen(false);
+  }, [isGameOver]);
 
   return (
     <Container>
