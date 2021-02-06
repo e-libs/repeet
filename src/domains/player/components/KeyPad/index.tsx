@@ -1,7 +1,15 @@
 import React from 'react';
 import { Key } from 'domains/player/components/Key';
 import { Container, Line } from 'domains/player/components/KeyPad/styles';
-import { Red, Green, Yellow, Blue } from 'domains/game/data/modules/Sign';
+import {
+  Red,
+  Green,
+  Yellow,
+  Blue,
+  Purple,
+  Wine,
+  standardPoolSize,
+} from 'domains/game/data/modules/Sign';
 
 type KeyPadProps = {
   onKeyPress: (id: number) => void;
@@ -23,6 +31,12 @@ export const KeyPad = ({ onKeyPress }: KeyPadProps) => {
         <Key id={Yellow.number} color={Yellow.color} onPress={onBoxClick}></Key>
         <Key id={Blue.number} color={Blue.color} onPress={onBoxClick}></Key>
       </Line>
+      {standardPoolSize === 6 && (
+        <Line>
+          <Key id={Purple.number} color={Purple.color} onPress={onBoxClick}></Key>
+          <Key id={Wine.number} color={Wine.color} onPress={onBoxClick}></Key>
+        </Line>
+      )}
     </Container>
   );
 };

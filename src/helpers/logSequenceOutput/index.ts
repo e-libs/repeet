@@ -1,5 +1,5 @@
 import type { Sequence } from 'domains/game/data/modules/Sequence/types';
-import { Green, Red, Yellow, Blue } from 'domains/game/data/modules/Sign';
+import { Green, Red, Yellow, Blue, Purple, Wine } from 'domains/game/data/modules/Sign';
 
 type outputColor = {
   preffix: string;
@@ -11,6 +11,8 @@ const mappedOutputColors: Record<string, outputColor> = {
   Green: { preffix: '\x1b[42m', name: Green.name },
   Yellow: { preffix: '\x1b[43m', name: Yellow.name },
   Blue: { preffix: '\x1b[44m', name: Blue.name },
+  Purple: { preffix: '\x1b[45m', name: Purple.name },
+  Wine: { preffix: '\x1b[2m\x1b[41m', name: Wine.name },
 };
 
 export const logSequenceOutput = (label: string, sequence: Sequence) => {
