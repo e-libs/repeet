@@ -15,7 +15,7 @@ type Props = {
 export const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
 
-  const { currentMode, switchMode } = useConfig();
+  const { currentMode, switchMode, currentPoolSize } = useConfig();
 
   return (
     <MainView>
