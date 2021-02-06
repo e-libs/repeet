@@ -7,6 +7,7 @@ import {
   INIT_GAME,
   MAKE_MOVE,
   NEXT_ROUND,
+  QUIT_GAME,
   RESET_GAME,
   RESET_MOVE,
   SET_SEQUENCE,
@@ -18,10 +19,11 @@ const initialState: GameState = {
   isOver: false,
   level: 0,
   playerSequence: [],
+  quit: false,
   rightSequences: 0,
-  wrongSequences: 0,
   score: 0,
   speed: initialInterval,
+  wrongSequences: 0,
 };
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
@@ -30,6 +32,12 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
     case RESET_GAME: {
       return {
         ...initialState,
+      };
+    }
+    case QUIT_GAME: {
+      return {
+        ...state,
+        quit: true,
       };
     }
     case SET_SEQUENCE: {
@@ -71,7 +79,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       return {
         ...state,
         attempts,
-        isOver: attempts === 0,
+        isOver: attempts <= 0,
         playerSequence: [],
         wrongSequences: state.wrongSequences - +1,
       };

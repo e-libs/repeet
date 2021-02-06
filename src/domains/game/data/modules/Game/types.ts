@@ -10,6 +10,7 @@ export type Game = {
   wrongSequences: number;
   score: number;
   speed: number;
+  quit: boolean;
 };
 
 export type Level = {
