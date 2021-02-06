@@ -27,10 +27,13 @@ import { useIsMounted } from 'helpers/useIsMounted';
 import { getId } from 'helpers/getId';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { ROUND_OVER_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { useConfig } from 'domains/config/data/hooks/useConfig';
 
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
+
+  const { currentPoolSize } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -45,7 +48,7 @@ export const useGame = () => {
   const dispatch = useDispatch();
 
   const init = () => {
-    Conductor.init();
+    Conductor.init(currentPoolSize);
     dispatch(initGame());
   };
 
@@ -77,7 +80,7 @@ export const useGame = () => {
 
   const start = () => {
     init();
-    addSequence({ sequence: getRandomSequence() });
+    addSequence({ sequence: getRandomSequence(currentPoolSize) });
   };
 
   useEffect(() => {
@@ -86,7 +89,7 @@ export const useGame = () => {
 
   useEffect(() => {
     if (playerSequence.length > 0 && playerSequence.length === currentSequence.length) {
-      setNextRound({ sequence: getRandomSequence() });
+      setNextRound({ sequence: getRandomSequence(currentPoolSize) });
       Conductor.resetTimer();
     }
   }, [playerSequence]);
@@ -99,7 +102,7 @@ export const useGame = () => {
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());
-        addSequence({ sequence: getRandomSequence() });
+        addSequence({ sequence: getRandomSequence(currentPoolSize) });
       });
     }
 

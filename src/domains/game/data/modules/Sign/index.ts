@@ -24,9 +24,33 @@ export const Blue: Sign = {
   number: 4,
 };
 
+export const Purple: Sign = {
+  color: '#3C1361',
+  name: 'Purple',
+  number: 5,
+};
+
+export const Wine: Sign = {
+  color: '#800000',
+  name: 'Wine',
+  number: 6,
+};
+
 export const standardPool = [Red, Green, Yellow, Blue];
 
-export type AvailableSigns = typeof Red | typeof Green | typeof Yellow | typeof Blue;
+export const standardPoolSize = standardPool.length;
+
+export const extendedPool = [Red, Green, Yellow, Blue, Purple, Wine];
+
+export const extendedPoolSize = extendedPool.length;
+
+export type AvailableSigns =
+  | typeof Red
+  | typeof Green
+  | typeof Yellow
+  | typeof Blue
+  | typeof Purple
+  | typeof Wine;
 
 export const getSignByNumber = (id: number): Sign =>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
