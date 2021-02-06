@@ -4,7 +4,7 @@ import type { ConfigState, GameMode } from 'domains/config/data/store/types';
 
 export const getConfig = (state: GlobalState) => state.config;
 
-export const getGameLevel = createSelector<GlobalState, ConfigState, GameMode>(
+export const getGameMode = createSelector<GlobalState, ConfigState, GameMode>(
   getConfig,
   ({ mode }) => mode,
 );
