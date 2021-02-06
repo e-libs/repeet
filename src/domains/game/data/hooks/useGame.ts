@@ -81,13 +81,6 @@ export const useGame = () => {
   };
 
   useEffect(() => {
-    if (!isMounted) return;
-    if (attemptsLeft === 0) {
-      // TODO: finish game attempts
-    }
-  }, [attemptsLeft]);
-
-  useEffect(() => {
     if (!isGameOver) Conductor.twinkleSequence(currentSequence, speed);
   }, [currentSequence, isGameOver]);
 

@@ -11,7 +11,7 @@ export default {
       },
     },
     gameOver: {
-      message: 'Better luck next time',
+      message: 'Better luck next time...',
       tryAgain: 'Play again',
       exit: 'Exit',
     },

@@ -79,7 +79,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       return {
         ...state,
         attempts,
-        isOver: attempts === 0,
+        isOver: attempts <= 0,
         playerSequence: [],
         wrongSequences: state.wrongSequences - +1,
       };
