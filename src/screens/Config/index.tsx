@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import type { RootStackParamList } from 'screens/types';
-import { useConfig } from 'domains/config/data/hooks/useConfig';
 import { ConfigContainer, HeaderContainer, MainView } from 'screens/Config/styles';
 import { BackButton } from 'domains/shell/components/BackButton';
+import { ConfigPanel } from 'domains/config/components/ConfigPanel';
 
 type ConfigScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Config'>;
 
@@ -13,8 +12,6 @@ type Props = {
 };
 
 export const Config = ({ navigation }: Props) => {
-  const { currentMode, switchMode } = useConfig();
-
   const goBack = () => {
     navigation.navigate('Home');
   };
@@ -25,9 +22,7 @@ export const Config = ({ navigation }: Props) => {
         <BackButton onPress={goBack} />
       </HeaderContainer>
       <ConfigContainer>
-        <TouchableOpacity onPress={switchMode}>
-          <Text style={{ marginTop: 50 }}>mode: {currentMode}</Text>
-        </TouchableOpacity>
+        <ConfigPanel />
       </ConfigContainer>
     </MainView>
   );
