@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {
-  BackButton,
-  BackButtonIcon,
-  Container,
-  Score,
-} from 'domains/game/components/Header/styles';
+import { Container, Score } from 'domains/game/components/Header/styles';
 import { useScore } from 'domains/game/data/hooks/useScore';
 import { ExitModal } from 'domains/shell/components/ExitModal';
+import { BackButton } from 'domains/shell/components/BackButton';
 
 type HeaderProps = {
   isGameOver: boolean;
@@ -38,9 +34,7 @@ export const Header = ({ isGameOver, onExit }: HeaderProps) => {
   return (
     <Container>
       <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
-      <BackButton onPress={openExitModal}>
-        <BackButtonIcon>‹</BackButtonIcon>
-      </BackButton>
+      <BackButton onPress={openExitModal} />
       <Score>{score}</Score>
     </Container>
   );

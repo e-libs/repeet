@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components/native';
 
 export const MainView = styled.View`
   flex: 1;
-  justify-content: space-between;
 `;
 
 export const ConfigContainer = styled.View`
@@ -14,6 +13,6 @@ export const ConfigContainer = styled.View`
 export const HeaderContainer = styled.View`
   flex: 1;
   justify-content: flex-end;
-  align-items: flex-end;
-  padding-right: 20px;
+  align-items: flex-start;
+  padding-left: 20px;
 `;
