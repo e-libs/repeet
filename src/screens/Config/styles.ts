@@ -5,8 +5,6 @@ export const MainView = styled.View`
 `;
 
 export const ConfigContainer = styled.View`
-  align-items: center;
-  justify-content: center;
   flex: 7;
 `;
 
