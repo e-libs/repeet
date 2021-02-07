@@ -15,5 +15,17 @@ export default {
       tryAgain: 'Jogar de novo',
       exit: 'Sair',
     },
+    config: {
+      title: 'Configurações',
+      mode: 'Modo',
+      default: {
+        label: 'Padrão',
+        description: 'O modo padrão é o clássico, com 4 botões',
+      },
+      extended: {
+        label: 'Avançado',
+        description: 'O modo avançado possui 6 botões. Pode ficar muito mais difícil',
+      },
+    },
   },
 };

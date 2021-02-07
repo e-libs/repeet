@@ -16,6 +16,7 @@ export default {
       exit: 'Exit',
     },
     config: {
+      title: 'Configurations',
       mode: 'Mode',
       default: {
         label: 'Default',

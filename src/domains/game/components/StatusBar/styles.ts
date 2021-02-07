@@ -15,3 +15,8 @@ export const GameProgressBar = styled.View`
   flex-direction: row;
   justify-content: center;
 `;
+
+export const AttemptsDialContainer = styled.View`
+  right: 20px;
+  position: absolute;
+`;

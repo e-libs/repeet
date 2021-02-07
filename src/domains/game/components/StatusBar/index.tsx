@@ -4,6 +4,7 @@ import { AttemptsDial } from 'domains/game/components/AttemptsDial';
 import { ProgressBar } from 'domains/game/components/ProgressBar';
 import { Timer } from 'domains/game/components/Timer';
 import {
+  AttemptsDialContainer,
   Container,
   GameStatusBar,
   GameProgressBar,
@@ -15,9 +16,9 @@ export const StatusBar = () => (
       <View>
         <Timer />
       </View>
-      <View style={{ right: 20, position: 'absolute' }}>
+      <AttemptsDialContainer>
         <AttemptsDial />
-      </View>
+      </AttemptsDialContainer>
     </GameStatusBar>
     <GameProgressBar>
       <ProgressBar />

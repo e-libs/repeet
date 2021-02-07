@@ -15,11 +15,3 @@ export const Score = styled.Text`
   font-weight: 500;
   font-family: Verdana;
 `;
-
-export const BackButton = styled.TouchableOpacity``;
-
-export const BackButtonIcon = styled.Text`
-  color: #315f7e;
-  font-size: 65px;
-  font-family: Verdana;
-`;
