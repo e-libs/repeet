@@ -1,11 +1,11 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { Image, TouchableOpacity } from 'react-native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { MainView, TapToStart, HomeContainer, ConfigContainer } from 'screens/Home/styles';
 import type { RootStackParamList } from 'screens/types';
 import { useTranslation } from 'app/translation';
+import { RotatingIcon } from 'domains/shell/components/RotatingIcon';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -21,9 +21,7 @@ export const Home = ({ navigation }: Props) => {
   return (
     <MainView>
       <ConfigContainer>
-        <TouchableOpacity onPress={openMenu}>
-          <FontAwesomeIcon icon={faCog} size={45} />
-        </TouchableOpacity>
+        <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
       </ConfigContainer>
       <HomeContainer>
         <TouchableOpacity onPress={() => navigation.navigate('Game')}>
