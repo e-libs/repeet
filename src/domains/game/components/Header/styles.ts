@@ -15,3 +15,7 @@ export const Score = styled.Text`
   font-weight: 500;
   font-family: Verdana;
 `;
+
+export const BackButtonContainer = styled.View`
+  bottom: 13px;
+`;

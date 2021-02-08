@@ -22,7 +22,7 @@ export const Home = ({ navigation }: Props) => {
     <MainView>
       <ConfigContainer>
         <TouchableOpacity onPress={openMenu}>
-          <FontAwesomeIcon icon={faCog} size={40} />
+          <FontAwesomeIcon icon={faCog} size={45} />
         </TouchableOpacity>
       </ConfigContainer>
       <HomeContainer>
