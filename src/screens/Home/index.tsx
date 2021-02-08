@@ -1,5 +1,7 @@
 import React from 'react';
-import { Image, TouchableOpacity, Text } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { Image, TouchableOpacity } from 'react-native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { MainView, TapToStart, HomeContainer, ConfigContainer } from 'screens/Home/styles';
 import type { RootStackParamList } from 'screens/types';
@@ -20,7 +22,7 @@ export const Home = ({ navigation }: Props) => {
     <MainView>
       <ConfigContainer>
         <TouchableOpacity onPress={openMenu}>
-          <Text style={{ fontSize: 40 }}>G</Text>
+          <FontAwesomeIcon icon={faCog} size={40} />
         </TouchableOpacity>
       </ConfigContainer>
       <HomeContainer>
