@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { AttemptsDial } from 'domains/game/components/AttemptsDial';
 import { ProgressBar } from 'domains/game/components/ProgressBar';
 import { Timer } from 'domains/game/components/Timer';
@@ -8,14 +7,17 @@ import {
   Container,
   GameStatusBar,
   GameProgressBar,
+  LeftSpacer,
+  TimerContainer,
 } from 'domains/game/components/StatusBar/styles';
 
 export const StatusBar = () => (
   <Container>
     <GameStatusBar>
-      <View>
+      <LeftSpacer />
+      <TimerContainer>
         <Timer />
-      </View>
+      </TimerContainer>
       <AttemptsDialContainer>
         <AttemptsDial />
       </AttemptsDialContainer>

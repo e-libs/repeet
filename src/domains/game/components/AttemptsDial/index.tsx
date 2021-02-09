@@ -1,5 +1,10 @@
 import React from 'react';
-import { Container, Indicator } from 'domains/game/components/AttemptsDial/styles';
+import {
+  Container,
+  DialContainer,
+  Indicator,
+  LeftSpacer,
+} from 'domains/game/components/AttemptsDial/styles';
 import { useAttempts } from 'domains/game/data/hooks/useAttempts';
 
 export const AttemptsDial = () => {
@@ -7,9 +12,12 @@ export const AttemptsDial = () => {
 
   return (
     <Container>
-      <Indicator active={attemptsLeft >= 1}>I</Indicator>
-      <Indicator active={attemptsLeft >= 2}>I</Indicator>
-      <Indicator active={attemptsLeft >= 3}>I</Indicator>
+      <LeftSpacer />
+      <DialContainer>
+        <Indicator active={attemptsLeft >= 1} />
+        <Indicator active={attemptsLeft >= 2} />
+        <Indicator active={attemptsLeft >= 3} />
+      </DialContainer>
     </Container>
   );
 };

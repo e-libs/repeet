@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
-import { Indicator } from 'domains/game/components/Timer/styles';
+import { Container, Indicator } from 'domains/game/components/Timer/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { getId } from 'helpers/getId';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
@@ -31,10 +30,8 @@ export const Timer = () => {
 
   const list = () =>
     numberToEmptyArray(currentPoolSize).map((i) => (
-      <Indicator active={timeLeft >= i + 1} key={`i${i}`}>
-        I
-      </Indicator>
+      <Indicator active={timeLeft >= i + 1} key={`i${i}`} />
     ));
 
-  return <View style={{ display: display ? 'flex' : 'none', flexDirection: 'row' }}>{list()}</View>;
+  return <Container visible={display}>{list()}</Container>;
 };
