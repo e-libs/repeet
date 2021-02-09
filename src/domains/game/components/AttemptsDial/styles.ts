@@ -15,6 +15,7 @@ export const DialContainer = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
+  padding-right: 15px;
 `;
 
 export const LeftSpacer = styled.View`

@@ -22,9 +22,9 @@ export default {
         label: 'Default',
         description: 'The default mode is the classic one, with 4 buttons',
       },
-      extended: {
-        label: 'Extended',
-        description: 'The extended has 6 buttons. It can get way harder',
+      advanced: {
+        label: 'Advanced',
+        description: 'The advanced has 6 buttons. It can get way harder',
       },
     },
     footer: {

@@ -2,8 +2,8 @@ import type { Action } from 'redux-actions';
 import type { ConfigState, ConfigActions } from 'domains/config/data/store/types';
 import { SET_MODE } from 'domains/config/data/store/actionTypes';
 import {
-  extendedPool,
-  extendedPoolSize,
+  advancedPool,
+  advancedPoolSize,
   standardPool,
   standardPoolSize,
 } from 'domains/game/data/modules/Sign';
@@ -19,8 +19,8 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
     case SET_MODE: {
       const { mode } = action.payload;
 
-      const pool = mode === 'DEFAULT' ? standardPool : extendedPool;
-      const poolSize = mode === 'DEFAULT' ? standardPoolSize : extendedPoolSize;
+      const pool = mode === 'DEFAULT' ? standardPool : advancedPool;
+      const poolSize = mode === 'DEFAULT' ? standardPoolSize : advancedPoolSize;
 
       return {
         ...initialState,

@@ -22,7 +22,7 @@ export default {
         label: 'Padrão',
         description: 'O modo padrão é o clássico, com 4 botões',
       },
-      extended: {
+      advanced: {
         label: 'Avançado',
         description: 'O modo avançado possui 6 botões. Pode ficar muito mais difícil',
       },

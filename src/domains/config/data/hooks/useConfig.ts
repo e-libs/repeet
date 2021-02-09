@@ -10,7 +10,7 @@ export const useConfig = () => {
   const currentPoolSize = useSelector(getPoolSize);
 
   const switchMode = () => {
-    const mode = currentMode === 'DEFAULT' ? 'EXTENDED' : 'DEFAULT';
+    const mode = currentMode === 'DEFAULT' ? 'ADVANCED' : 'DEFAULT';
     dispatch(setMode({ mode }));
   };
 

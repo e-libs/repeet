@@ -2,11 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import {
+  AdvancedButton,
   ButtonContainer,
   ButtonText,
   DefaultButton,
   Description,
-  ExtendedButton,
   Label,
 } from 'domains/config/components/ModeSelector/styles';
 import { useTranslation } from 'app/translation';
@@ -15,7 +15,7 @@ export const ModeSelector = () => {
   const { currentMode, switchMode } = useConfig();
   const { t } = useTranslation();
   const defaultButtonActive = currentMode === 'DEFAULT';
-  const extendedButtonActive = !defaultButtonActive;
+  const advancedButtonActive = !defaultButtonActive;
 
   return (
     <View style={{ flex: 1 }}>
@@ -28,13 +28,13 @@ export const ModeSelector = () => {
         >
           <ButtonText>{t('config.default.label')}</ButtonText>
         </DefaultButton>
-        <ExtendedButton
-          active={extendedButtonActive}
-          disabled={extendedButtonActive}
+        <AdvancedButton
+          active={advancedButtonActive}
+          disabled={advancedButtonActive}
           onPress={switchMode}
         >
-          <ButtonText>{t('config.extended.label')}</ButtonText>
-        </ExtendedButton>
+          <ButtonText>{t('config.advanced.label')}</ButtonText>
+        </AdvancedButton>
       </ButtonContainer>
       <Description>{t(`config.${currentMode.toLowerCase()}.description`)}</Description>
     </View>

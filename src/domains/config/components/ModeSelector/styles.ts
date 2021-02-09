@@ -23,7 +23,7 @@ export const DefaultButton = styled.TouchableOpacity<{ active: boolean }>`
   `}
 `;
 
-export const ExtendedButton = styled.TouchableOpacity<{ active: boolean }>`
+export const AdvancedButton = styled.TouchableOpacity<{ active: boolean }>`
   ${({ active }) => css`
     flex: 1;
     align-items: center;
