@@ -11,8 +11,7 @@ export const ButtonContainer = styled.View`
   margin-top: 20px;
 `;
 
-// TODO: reuse / share styles below
-export const DefaultButton = styled.TouchableOpacity<{ active: boolean }>`
+export const EasyButton = styled.TouchableOpacity<{ active: boolean }>`
   ${({ active }) => css`
     flex: 1;
     align-items: center;
@@ -23,7 +22,16 @@ export const DefaultButton = styled.TouchableOpacity<{ active: boolean }>`
   `}
 `;
 
-export const AdvancedButton = styled.TouchableOpacity<{ active: boolean }>`
+export const MediumButton = styled.TouchableOpacity<{ active: boolean }>`
+  ${({ active }) => css`
+    flex: 1;
+    align-items: center;
+    background-color: ${active ? '#26bd53' : '#AAA'};
+    padding: 15px;
+  `}
+`;
+
+export const HardButton = styled.TouchableOpacity<{ active: boolean }>`
   ${({ active }) => css`
     flex: 1;
     align-items: center;
@@ -36,7 +44,7 @@ export const AdvancedButton = styled.TouchableOpacity<{ active: boolean }>`
 
 export const ButtonText = styled.Text`
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
 `;
 
 export const Description = styled.Text`

@@ -40,7 +40,7 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
       const poolSize = mode === 'DEFAULT' ? standardPoolSize : advancedPoolSize;
 
       return {
-        ...initialState,
+        ...state,
         mode,
         pool,
         poolSize,
