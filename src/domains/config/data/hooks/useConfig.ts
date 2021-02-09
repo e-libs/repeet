@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setDifficulty, setMode } from 'domains/config/data/store/actions';
 import {
+  getAttempts,
   getDifficulty,
   getGameMode,
   getPool,
@@ -11,6 +12,7 @@ import type { Difficulty } from 'domains/config/data/store/types';
 export const useConfig = () => {
   const dispatch = useDispatch();
 
+  const currentAttempts = useSelector(getAttempts);
   const currentDifficulty = useSelector(getDifficulty);
   const currentMode = useSelector(getGameMode);
   const currentPool = useSelector(getPool);
@@ -26,6 +28,7 @@ export const useConfig = () => {
   };
 
   return {
+    currentAttempts,
     currentDifficulty,
     currentMode,
     currentPool,

@@ -14,7 +14,7 @@ import {
 } from 'domains/game/data/store/actionTypes';
 
 const initialState: GameState = {
-  attempts: initialAttempts,
+  attempts: 0,
   currentSequence: [],
   isOver: false,
   level: 0,
@@ -28,7 +28,13 @@ const initialState: GameState = {
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
   switch (action.type) {
-    case INIT_GAME:
+    case INIT_GAME: {
+      const { attempts } = action.payload;
+      return {
+        ...initialState,
+        attempts,
+      };
+    }
     case RESET_GAME: {
       return {
         ...initialState,
