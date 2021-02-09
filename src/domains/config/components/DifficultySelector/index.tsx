@@ -17,7 +17,7 @@ export const DifficultySelector = () => {
   const { t } = useTranslation();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <Label>{t('config.difficulty.label')}</Label>
       <ButtonContainer>
         <EasyButton

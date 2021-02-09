@@ -5,6 +5,7 @@ import {
   AdvancedButton,
   ButtonContainer,
   ButtonText,
+  Container,
   DefaultButton,
   Description,
   Label,
@@ -18,7 +19,7 @@ export const ModeSelector = () => {
   const advancedButtonActive = !defaultButtonActive;
 
   return (
-    <View style={{ flex: 1 }}>
+    <Container>
       <Label>{t('config.mode.label')}</Label>
       <ButtonContainer>
         <DefaultButton
@@ -37,6 +38,6 @@ export const ModeSelector = () => {
         </AdvancedButton>
       </ButtonContainer>
       <Description>{t(`config.mode.${currentMode.toLowerCase()}.description`)}</Description>
-    </View>
+    </Container>
   );
 };

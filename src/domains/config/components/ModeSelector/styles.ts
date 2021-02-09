@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components/native';
 
+export const Container = styled.View`
+  margin-top: 40px;
+`;
+
 export const Label = styled.Text`
   font-size: 30px;
   font-weight: bold;
@@ -29,7 +33,7 @@ export const AdvancedButton = styled.TouchableOpacity<{ active: boolean }>`
     align-items: center;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    background-color: ${active ? '#26bd53' : '#AAA'};
+    background-color: ${active ? '#fc972b' : '#AAA'};
     padding: 15px;
   `}
 `;
