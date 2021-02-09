@@ -1,11 +1,19 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { Image, TouchableOpacity } from 'react-native';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import { MainView, TapToStart, HomeContainer, ConfigContainer } from 'screens/Home/styles';
+import {
+  FooterContainer,
+  MainView,
+  TapToStart,
+  HomeContainer,
+  ConfigContainer,
+} from 'screens/Home/styles';
 import type { RootStackParamList } from 'screens/types';
 import { useTranslation } from 'app/translation';
 import { RotatingIcon } from 'domains/shell/components/RotatingIcon';
+import { Footer } from 'domains/shell/components/Footer';
+import { Logo } from 'domains/shell/components/Logo';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -25,14 +33,13 @@ export const Home = ({ navigation }: Props) => {
       </ConfigContainer>
       <HomeContainer>
         <TouchableOpacity onPress={() => navigation.navigate('Game')}>
-          <Image
-            resizeMode="contain"
-            source={require('assets/images/logo.png')}
-            style={{ width: 350, height: 120 }}
-          />
+          <Logo />
           <TapToStart color="#427FA7">{t('home.tapToStart')}</TapToStart>
         </TouchableOpacity>
       </HomeContainer>
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </MainView>
   );
 };

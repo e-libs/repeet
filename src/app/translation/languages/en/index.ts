@@ -27,5 +27,8 @@ export default {
         description: 'The extended has 6 buttons. It can get way harder',
       },
     },
+    footer: {
+      description: 'Powered by e-libs',
+    },
   },
 };

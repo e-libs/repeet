@@ -27,5 +27,8 @@ export default {
         description: 'O modo avançado possui 6 botões. Pode ficar muito mais difícil',
       },
     },
+    footer: {
+      description: 'Powered by e-libs',
+    },
   },
 };
