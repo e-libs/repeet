@@ -7,10 +7,17 @@ import {
   standardPool,
   standardPoolSize,
 } from 'domains/game/data/modules/Sign';
-import { initialAttempts } from 'domains/game/data/modules/Game/constants';
+import {
+  easyAttempts,
+  easyInitialSpeed,
+  hardAttempts,
+  hardInitialSpeed,
+  mediumAttempts,
+  mediumInitialSpeed,
+} from 'domains/game/data/modules/Game/constants';
 
 const initialState: ConfigState = {
-  attempts: initialAttempts,
+  attempts: easyAttempts,
   difficulty: 'MEDIUM',
   mode: 'DEFAULT',
   pool: standardPool,
@@ -23,15 +30,15 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
     case SET_DIFFICULTY: {
       const { difficulty } = action.payload;
 
-      let attempts = 3;
-      let speed = 500;
+      let attempts = mediumAttempts;
+      let speed = mediumInitialSpeed;
 
       if (difficulty === 'EASY') {
-        attempts = 5;
-        speed = 1000;
+        attempts = easyAttempts;
+        speed = easyInitialSpeed;
       } else if (difficulty === 'HARD') {
-        attempts = 2;
-        speed = 300;
+        attempts = hardAttempts;
+        speed = hardInitialSpeed;
       }
 
       return {

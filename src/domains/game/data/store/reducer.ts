@@ -11,17 +11,18 @@ import {
   RESET_MOVE,
   SET_SEQUENCE,
 } from 'domains/game/data/store/actionTypes';
+import { speedFactor } from 'domains/game/data/modules/Timing/constants';
 
 const initialState: GameState = {
   attempts: 0,
   currentSequence: [],
+  difficulty: 'EASY',
   isOver: false,
   level: 0,
   playerSequence: [],
   quit: false,
   rightSequences: 0,
   score: 0,
-  // speed: initialInterval,
   speed: 0,
   wrongSequences: 0,
 };
@@ -29,10 +30,11 @@ const initialState: GameState = {
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
   switch (action.type) {
     case INIT_GAME: {
-      const { attempts, speed } = action.payload;
+      const { attempts, difficulty, speed } = action.payload;
       return {
         ...initialState,
         attempts,
+        difficulty,
         speed,
       };
     }
@@ -68,7 +70,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       const { sequence } = action.payload;
       const newScore = state.score + increaseScoreFactor;
       const level = Levels[newScore] ? Levels[newScore].number : state.level;
-      const speed = Levels[newScore] ? state.speed - Levels[newScore].speed : state.speed;
+      const speed = Levels[newScore] ? state.speed - speedFactor[state.difficulty] : state.speed;
 
       return {
         ...state,
