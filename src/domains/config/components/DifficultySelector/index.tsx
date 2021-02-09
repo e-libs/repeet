@@ -11,36 +11,46 @@ import {
   Label,
 } from 'domains/config/components/DifficultySelector/styles';
 import { useTranslation } from 'app/translation';
+import type { Difficulty } from 'domains/config/data/store/types';
 
 export const DifficultySelector = () => {
   const { currentDifficulty, switchDifficulty } = useConfig();
   const { t } = useTranslation();
 
+  const Button = ({ difficulty }: { difficulty: Difficulty }) => {
+    let Component = EasyButton;
+    switch (difficulty) {
+      case 'MEDIUM': {
+        Component = MediumButton;
+        break;
+      }
+      case 'HARD': {
+        Component = HardButton;
+        break;
+      }
+      default: {
+        Component = EasyButton;
+        break;
+      }
+    }
+    return (
+      <Component
+        active={currentDifficulty === difficulty}
+        disabled={currentDifficulty === difficulty}
+        onPress={() => switchDifficulty(difficulty)}
+      >
+        <ButtonText>{t(`config.difficulty.${difficulty.toLowerCase()}.label`)}</ButtonText>
+      </Component>
+    );
+  };
+
   return (
     <View>
       <Label>{t('config.difficulty.label')}</Label>
       <ButtonContainer>
-        <EasyButton
-          active={currentDifficulty === 'EASY'}
-          disabled={currentDifficulty === 'EASY'}
-          onPress={() => switchDifficulty('EASY')}
-        >
-          <ButtonText>{t('config.difficulty.easy.label')}</ButtonText>
-        </EasyButton>
-        <MediumButton
-          active={currentDifficulty === 'MEDIUM'}
-          disabled={currentDifficulty === 'MEDIUM'}
-          onPress={() => switchDifficulty('MEDIUM')}
-        >
-          <ButtonText>{t('config.difficulty.medium.label')}</ButtonText>
-        </MediumButton>
-        <HardButton
-          active={currentDifficulty === 'HARD'}
-          disabled={currentDifficulty === 'HARD'}
-          onPress={() => switchDifficulty('HARD')}
-        >
-          <ButtonText>{t('config.difficulty.hard.label')}</ButtonText>
-        </HardButton>
+        <Button difficulty="EASY" />
+        <Button difficulty="MEDIUM" />
+        <Button difficulty="HARD" />
       </ButtonContainer>
       <Description>
         {t(`config.difficulty.${currentDifficulty.toLowerCase()}.description`)}
