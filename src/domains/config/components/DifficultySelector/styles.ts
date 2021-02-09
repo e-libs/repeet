@@ -26,7 +26,7 @@ export const MediumButton = styled.TouchableOpacity<{ active: boolean }>`
   ${({ active }) => css`
     flex: 1;
     align-items: center;
-    background-color: ${active ? '#26bd53' : '#AAA'};
+    background-color: ${active ? '#d6b222' : '#AAA'};
     padding: 15px;
   `}
 `;
@@ -37,14 +37,14 @@ export const HardButton = styled.TouchableOpacity<{ active: boolean }>`
     align-items: center;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    background-color: ${active ? '#26bd53' : '#AAA'};
+    background-color: ${active ? '#bd322d' : '#AAA'};
     padding: 15px;
   `}
 `;
 
 export const ButtonText = styled.Text`
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
 `;
 
 export const Description = styled.Text`

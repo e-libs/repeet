@@ -19,24 +19,24 @@ export const ModeSelector = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Label>{t('config.mode')}</Label>
+      <Label>{t('config.mode.label')}</Label>
       <ButtonContainer>
         <DefaultButton
           active={defaultButtonActive}
           disabled={defaultButtonActive}
           onPress={switchMode}
         >
-          <ButtonText>{t('config.default.label')}</ButtonText>
+          <ButtonText>{t('config.mode.default.label')}</ButtonText>
         </DefaultButton>
         <AdvancedButton
           active={advancedButtonActive}
           disabled={advancedButtonActive}
           onPress={switchMode}
         >
-          <ButtonText>{t('config.advanced.label')}</ButtonText>
+          <ButtonText>{t('config.mode.advanced.label')}</ButtonText>
         </AdvancedButton>
       </ButtonContainer>
-      <Description>{t(`config.${currentMode.toLowerCase()}.description`)}</Description>
+      <Description>{t(`config.mode.${currentMode.toLowerCase()}.description`)}</Description>
     </View>
   );
 };

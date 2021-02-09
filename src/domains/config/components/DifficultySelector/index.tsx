@@ -20,31 +20,33 @@ export const DifficultySelector = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Label>diff... </Label>
+      <Label>{t('config.difficulty.label')}</Label>
       <ButtonContainer>
         <EasyButton
           active={currentDifficulty === 'EASY'}
           disabled={currentDifficulty === 'EASY'}
           onPress={() => switchDifficulty('EASY')}
         >
-          <ButtonText>{t('config.default.label')}</ButtonText>
+          <ButtonText>{t('config.difficulty.easy.label')}</ButtonText>
         </EasyButton>
         <MediumButton
           active={currentDifficulty === 'MEDIUM'}
           disabled={currentDifficulty === 'MEDIUM'}
           onPress={() => switchDifficulty('MEDIUM')}
         >
-          <ButtonText>{t('config.advanced.label')}</ButtonText>
+          <ButtonText>{t('config.difficulty.medium.label')}</ButtonText>
         </MediumButton>
         <HardButton
           active={currentDifficulty === 'HARD'}
           disabled={currentDifficulty === 'HARD'}
           onPress={() => switchDifficulty('HARD')}
         >
-          <ButtonText>{t('config.advanced.label')}</ButtonText>
+          <ButtonText>{t('config.difficulty.hard.label')}</ButtonText>
         </HardButton>
       </ButtonContainer>
-      <Description>{t(`config.${currentDifficulty.toLowerCase()}.description`)}</Description>
+      <Description>
+        {t(`config.difficulty.${currentDifficulty.toLowerCase()}.description`)}
+      </Description>
     </View>
   );
 };
