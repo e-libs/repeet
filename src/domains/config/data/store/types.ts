@@ -9,6 +9,7 @@ export type ConfigState = {
   mode: GameMode;
   pool: Sign[];
   poolSize: number;
+  speed: number;
 };
 
 export type SetDifficultyAction = {

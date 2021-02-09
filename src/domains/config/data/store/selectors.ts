@@ -29,3 +29,8 @@ export const getDifficulty = createSelector<GlobalState, ConfigState, Difficulty
   getConfig,
   ({ difficulty }) => difficulty,
 );
+
+export const getSpeed = createSelector<GlobalState, ConfigState, number>(
+  getConfig,
+  ({ speed }) => speed,
+);

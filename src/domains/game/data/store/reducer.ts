@@ -1,7 +1,6 @@
 import type { Action } from 'redux-actions';
 import type { GameState, GameActions } from 'domains/game/data/store/types';
-import { increaseScoreFactor, initialAttempts } from 'domains/game/data/modules/Game/constants';
-import { initialInterval } from 'domains/game/data/modules/Timing/constants';
+import { increaseScoreFactor } from 'domains/game/data/modules/Game/constants';
 import { Levels } from 'domains/game/data/modules/Game';
 import {
   INIT_GAME,
@@ -22,17 +21,19 @@ const initialState: GameState = {
   quit: false,
   rightSequences: 0,
   score: 0,
-  speed: initialInterval,
+  // speed: initialInterval,
+  speed: 0,
   wrongSequences: 0,
 };
 
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
   switch (action.type) {
     case INIT_GAME: {
-      const { attempts } = action.payload;
+      const { attempts, speed } = action.payload;
       return {
         ...initialState,
         attempts,
+        speed,
       };
     }
     case RESET_GAME: {
@@ -67,7 +68,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       const { sequence } = action.payload;
       const newScore = state.score + increaseScoreFactor;
       const level = Levels[newScore] ? Levels[newScore].number : state.level;
-      const speed = Levels[newScore] ? Levels[newScore].speed : state.speed;
+      const speed = Levels[newScore] ? state.speed - Levels[newScore].speed : state.speed;
 
       return {
         ...state,

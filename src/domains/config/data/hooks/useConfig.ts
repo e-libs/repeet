@@ -6,6 +6,7 @@ import {
   getGameMode,
   getPool,
   getPoolSize,
+  getSpeed,
 } from 'domains/config/data/store/selectors';
 import type { Difficulty } from 'domains/config/data/store/types';
 
@@ -17,6 +18,7 @@ export const useConfig = () => {
   const currentMode = useSelector(getGameMode);
   const currentPool = useSelector(getPool);
   const currentPoolSize = useSelector(getPoolSize);
+  const currentSpeed = useSelector(getSpeed);
 
   const switchMode = () => {
     const mode = currentMode === 'DEFAULT' ? 'ADVANCED' : 'DEFAULT';
@@ -33,6 +35,7 @@ export const useConfig = () => {
     currentMode,
     currentPool,
     currentPoolSize,
+    currentSpeed,
     switchDifficulty,
     switchMode,
   };

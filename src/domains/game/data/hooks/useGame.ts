@@ -33,7 +33,7 @@ export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
 
-  const { currentAttempts, currentPoolSize } = useConfig();
+  const { currentAttempts, currentSpeed, currentPoolSize } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -49,7 +49,7 @@ export const useGame = () => {
 
   const init = () => {
     Conductor.init(currentPoolSize);
-    dispatch(initGame({ attempts: currentAttempts }));
+    dispatch(initGame({ attempts: currentAttempts, speed: currentSpeed }));
   };
 
   const reset = () => {

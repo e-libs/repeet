@@ -10,6 +10,7 @@ export type SetSequenceAction = {
 
 export type InitGameAction = {
   attempts: number;
+  speed: number;
 };
 
 export type MoveAction = {

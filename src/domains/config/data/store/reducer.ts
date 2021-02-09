@@ -15,6 +15,7 @@ const initialState: ConfigState = {
   mode: 'DEFAULT',
   pool: standardPool,
   poolSize: standardPoolSize,
+  speed: 0,
 };
 
 export const configReducer = (state = initialState, action: Action<ConfigActions>) => {
@@ -23,13 +24,20 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
       const { difficulty } = action.payload;
 
       let attempts = 3;
+      let speed = 500;
 
-      if (difficulty === 'EASY') attempts = 5;
-      else if (difficulty === 'HARD') attempts = 2;
+      if (difficulty === 'EASY') {
+        attempts = 5;
+        speed = 1000;
+      } else if (difficulty === 'HARD') {
+        attempts = 2;
+        speed = 300;
+      }
 
       return {
         ...state,
         attempts,
+        speed,
         difficulty,
       };
     }

@@ -16,8 +16,6 @@ export const DifficultySelector = () => {
   const { currentDifficulty, switchDifficulty } = useConfig();
   const { t } = useTranslation();
 
-  console.log('currentDifficulty', currentDifficulty);
-
   return (
     <View style={{ flex: 1 }}>
       <Label>{t('config.difficulty.label')}</Label>
