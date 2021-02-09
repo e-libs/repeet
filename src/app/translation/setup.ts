@@ -6,7 +6,7 @@ import resources from 'app/translation/languages';
 const deviceLanguage: string = (Platform.OS === 'ios'
   ? NativeModules.SettingsManager.settings.AppleLocale ||
     NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
-  : NativeModules.I18nManager.localeIdentifier
+  : NativeModules.I18nManager?.localeIdentifier || 'en'
 ).slice(0, 2);
 
 i18n.use(initReactI18next).init({

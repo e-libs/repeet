@@ -44,7 +44,7 @@ export const HardButton = styled.TouchableOpacity<{ active: boolean }>`
 
 export const ButtonText = styled.Text`
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
 `;
 
 export const Description = styled.Text`
