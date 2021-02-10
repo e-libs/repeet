@@ -17,7 +17,7 @@ export const ButtonContainer = styled.View`
 
 export const FarewellMessage = styled.Text`
   color: #fff;
-  font-size: 40px;
+  font-size: 35px;
   margin-bottom: 30px;
 `;
 
