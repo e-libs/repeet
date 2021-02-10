@@ -17,6 +17,7 @@ const initialState: GameState = {
   attempts: 0,
   currentSequence: [],
   difficulty: 'EASY',
+  isLoading: true,
   isOver: false,
   level: 0,
   playerSequence: [],
