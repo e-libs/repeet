@@ -10,10 +10,16 @@ export default {
         no: 'Não',
       },
     },
-    gameOver: {
-      message: 'Não foi dessa vez...',
-      tryAgain: 'Jogar de novo',
-      exit: 'Sair',
+    game: {
+      intro: {
+        getReady: 'Pronto?',
+        go: 'JÁ!',
+      },
+      gameOver: {
+        message: 'Não foi dessa vez...',
+        tryAgain: 'Jogar de novo',
+        exit: 'Sair',
+      },
     },
     config: {
       title: 'Configurações',

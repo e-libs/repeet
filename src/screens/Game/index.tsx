@@ -21,7 +21,7 @@ export const Game = ({ navigation }: Props) => {
   };
 
   useEffect(() => {
-    if (timer === 0) startGame();
+    if (timer === 0) setTimeout(() => startGame(), 1000);
   }, [timer]);
 
   if (isLoading) return <Intro secondsLeft={timer} />;

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import type { StackNavigationProp } from '@react-navigation/stack';
-import { MainView, HeaderView, PlayerView, SequencerView, TimerView } from 'domains/game/components/Board/styles';
+import {
+  MainView,
+  HeaderView,
+  PlayerView,
+  SequencerView,
+  TimerView,
+} from 'domains/game/components/Board/styles';
 import { useGame } from 'domains/game/data/hooks/useGame';
 import { Sequencer } from 'domains/game/components/Sequencer';
 import { KeyPad } from 'domains/player/components/KeyPad';
 import { StatusBar } from 'domains/game/components/StatusBar';
 import { Header } from 'domains/game/components/Header';
-import type { RootStackParamList } from 'screens/types';
 import { logSequenceOutput } from 'helpers/logSequenceOutput';
 import { GameOverModal } from 'domains/shell/components/GameOverModal';
-
-type GameScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 type BoardProps = {
   onGoHome: () => void;
