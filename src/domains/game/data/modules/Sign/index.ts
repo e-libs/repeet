@@ -40,9 +40,9 @@ export const standardPool = [Red, Green, Yellow, Blue];
 
 export const standardPoolSize = standardPool.length;
 
-export const extendedPool = [Red, Green, Yellow, Blue, Purple, Wine];
+export const advancedPool = [Red, Green, Yellow, Blue, Purple, Wine];
 
-export const extendedPoolSize = extendedPool.length;
+export const advancedPoolSize = advancedPool.length;
 
 export type AvailableSigns =
   | typeof Red

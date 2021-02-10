@@ -1,5 +1,10 @@
 import { createAction } from 'redux-actions';
-import type { MoveAction, NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
+import type {
+  InitGameAction,
+  MoveAction,
+  NextRoundAction,
+  SetSequenceAction,
+} from 'domains/game/data/store/types';
 import {
   INIT_GAME,
   MAKE_MOVE,
@@ -10,7 +15,7 @@ import {
   SET_SEQUENCE,
 } from 'domains/game/data/store/actionTypes';
 
-export const initGame = createAction(INIT_GAME);
+export const initGame = createAction<InitGameAction>(INIT_GAME);
 export const makeMove = createAction<MoveAction>(MAKE_MOVE);
 export const nextRound = createAction<NextRoundAction>(NEXT_ROUND);
 export const resetGame = createAction(RESET_GAME);

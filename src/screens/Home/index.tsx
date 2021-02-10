@@ -1,10 +1,19 @@
 import React from 'react';
-import { Image, TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import { MainView, TapToStart } from 'screens/Home/styles';
+import {
+  FooterContainer,
+  MainView,
+  TapToStart,
+  HomeContainer,
+  ConfigContainer,
+} from 'screens/Home/styles';
 import type { RootStackParamList } from 'screens/types';
 import { useTranslation } from 'app/translation';
-import { useConfig } from 'domains/config/data/hooks/useConfig';
+import { RotatingIcon } from 'domains/shell/components/RotatingIcon';
+import { Footer } from 'domains/shell/components/Footer';
+import { Logo } from 'domains/shell/components/Logo';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -15,21 +24,22 @@ type Props = {
 export const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
 
-  const { currentMode, switchMode } = useConfig();
+  const openMenu = () => navigation.navigate('Config');
 
   return (
     <MainView>
-      <TouchableOpacity onPress={() => navigation.navigate('Game')}>
-        <Image
-          resizeMode="contain"
-          source={require('assets/images/logo.png')}
-          style={{ width: 350, height: 120 }}
-        />
-        <TapToStart color="#427FA7">{t('home.tapToStart')}</TapToStart>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={switchMode}>
-        <Text style={{ marginTop: 50 }}>mode: {currentMode}</Text>
-      </TouchableOpacity>
+      <ConfigContainer>
+        <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
+      </ConfigContainer>
+      <HomeContainer>
+        <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+          <Logo />
+          <TapToStart color="#427FA7">{t('home.tapToStart')}</TapToStart>
+        </TouchableOpacity>
+      </HomeContainer>
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </MainView>
   );
 };
