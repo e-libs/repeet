@@ -9,6 +9,7 @@ import {
 } from 'domains/game/components/Intro/styles';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import { useTranslation } from 'app/translation';
+import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
 
 type IntroProps = {
   secondsLeft: number;
@@ -18,12 +19,8 @@ export const Intro = ({ secondsLeft }: IntroProps) => {
   const { currentDifficulty } = useConfig();
   const { t } = useTranslation();
 
-  let color = '#26bd53';
-  if (currentDifficulty === 'MEDIUM') color = '#d6b222';
-  if (currentDifficulty === 'HARD') color = '#bd322d';
-
   return (
-    <Container color={color}>
+    <Container color={DifficultyLevels[currentDifficulty].color}>
       <GetReadyContainer>
         <GetReadyLabel>{t('game.intro.getReady')}</GetReadyLabel>
       </GetReadyContainer>
