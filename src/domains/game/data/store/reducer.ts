@@ -10,6 +10,7 @@ import {
   RESET_GAME,
   RESET_MOVE,
   SET_SEQUENCE,
+  START_GAME,
 } from 'domains/game/data/store/actionTypes';
 import { speedFactor } from 'domains/game/data/modules/Timing/constants';
 
@@ -33,10 +34,16 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
     case INIT_GAME: {
       const { attempts, difficulty, speed } = action.payload;
       return {
-        ...initialState,
+        ...state,
         attempts,
         difficulty,
         speed,
+      };
+    }
+    case START_GAME: {
+      return {
+        ...state,
+        isLoading: false,
       };
     }
     case RESET_GAME: {
