@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Container,
   GetReadyContainer,
@@ -10,14 +10,18 @@ import {
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import { useTranslation } from 'app/translation';
 import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
+import { useCountdown } from 'helpers/useCountdown';
+import { useStatus } from 'domains/game/data/hooks/useStatus';
 
-type IntroProps = {
-  secondsLeft: number;
-};
-
-export const Intro = ({ secondsLeft }: IntroProps) => {
+export const Intro = () => {
   const { currentDifficulty } = useConfig();
   const { t } = useTranslation();
+  const { timer } = useCountdown(3);
+  const { startGame } = useStatus();
+
+  useEffect(() => {
+    if (timer === 0) setTimeout(() => startGame(), 1000);
+  }, [timer]);
 
   return (
     <Container color={DifficultyLevels[currentDifficulty].color}>
@@ -25,7 +29,7 @@ export const Intro = ({ secondsLeft }: IntroProps) => {
         <GetReadyLabel>{t('game.intro.getReady')}</GetReadyLabel>
       </GetReadyContainer>
       <TimerContainer>
-        {secondsLeft > 0 ? <Timer>{secondsLeft}</Timer> : <Go>{t('game.intro.go')}</Go>}
+        {timer > 0 ? <Timer>{timer}</Timer> : <Go>{t('game.intro.go')}</Go>}
       </TimerContainer>
     </Container>
   );

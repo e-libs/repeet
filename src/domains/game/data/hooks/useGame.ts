@@ -127,9 +127,9 @@ export const useGame = () => {
     level,
     playerSequence,
     quit,
+    reset,
     rightSequences,
     score,
     speed,
-    start,
   };
 };

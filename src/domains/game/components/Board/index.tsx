@@ -31,7 +31,7 @@ export const Board = ({ onGoHome }: BoardProps) => {
     rightSequences,
     score,
     speed,
-    start,
+    reset,
   } = useGame();
   const [choseExit, setChoseExit] = useState(false);
 
@@ -48,7 +48,7 @@ export const Board = ({ onGoHome }: BoardProps) => {
   };
 
   const tryAgain = () => {
-    start();
+    reset();
   };
 
   const exitGame = () => {
