@@ -23,6 +23,10 @@ export const Key = ({ color, id, onPress }: KeyProps) => {
     Conductor.on(KEYPAD_EVENT, eventId, (enableButton: boolean) => {
       setEnabled(enableButton);
     });
+
+    return () => {
+      Conductor.off(eventId);
+    };
   }, []);
 
   return (

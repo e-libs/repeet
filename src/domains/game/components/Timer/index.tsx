@@ -13,18 +13,20 @@ export const Timer = () => {
   const [timeLeft, setTimeLeft] = useState(currentPoolSize);
 
   useEffect(() => {
-    const id = getId();
+    const timerId = getId();
+    const timeBarId = getId();
 
-    Conductor.on(TIMER_EVENT, id, (displayTimer: boolean) => {
+    Conductor.on(TIMER_EVENT, timerId, (displayTimer: boolean) => {
       setDisplay(displayTimer);
     });
 
-    Conductor.on(TIME_BAR_EVENT, id, (time: number) => {
+    Conductor.on(TIME_BAR_EVENT, timeBarId, (time: number) => {
       setTimeLeft(time);
     });
 
     return () => {
-      Conductor.off(id);
+      Conductor.off(timerId);
+      Conductor.off(timeBarId);
     };
   }, []);
 
