@@ -3,7 +3,6 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
-    // "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,

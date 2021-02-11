@@ -1,7 +1,7 @@
-import type { Sign } from 'domains/game/data/modules/Sign/types';
-import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 import { PubSub } from 'app/events/PubSub';
 import type { IPubSub } from 'app/events/PubSub/types';
+import type { Sign } from 'domains/game/data/modules/Sign/types';
+import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 import {
   KEYPAD_EVENT,
   ROUND_OVER_EVENT,

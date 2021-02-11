@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Button } from 'domains/player/components/Key/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
-import { getId } from 'helpers/getId';
 import { KEYPAD_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { getId } from 'helpers/getId';
 
 type KeyProps = {
   id: number;

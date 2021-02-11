@@ -28,7 +28,6 @@ export type NextRoundAction = {
   sequenceDisplay: Sequence;
 };
 
-// Group all Game actions
 export type GameActions = InitGameAction &
   MoveAction &
   NextRoundAction &

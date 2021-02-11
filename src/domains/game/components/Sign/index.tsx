@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
-import { getId } from 'helpers/getId';
 import { Box } from 'domains/game/components/Sign/styles';
 import type { AvailableSigns } from 'domains/game/data/modules/Sign';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { useSpeed } from 'domains/game/data/hooks/useSpeed';
+import { getId } from 'helpers/getId';
 
 type SignProps = {
   sign: AvailableSigns;

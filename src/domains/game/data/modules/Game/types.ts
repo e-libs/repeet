@@ -10,11 +10,11 @@ export type Game = {
   isOver: boolean;
   level: number;
   playerSequence: Sequence;
+  quit: boolean;
   rightSequences: number;
-  wrongSequences: number;
   score: number;
   speed: number;
-  quit: boolean;
+  wrongSequences: number;
 };
 
 export type Level = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { StackNavigationProp } from '@react-navigation/stack';
+import { useTranslation } from 'app/translation';
 import type { RootStackParamList } from 'screens/types';
 import {
   BackButtonContainer,
@@ -11,7 +12,6 @@ import {
 } from 'screens/Config/styles';
 import { BackButton } from 'domains/shell/components/BackButton';
 import { ConfigPanel } from 'domains/config/components/ConfigPanel';
-import { useTranslation } from 'app/translation';
 
 type ConfigScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Config'>;
 
