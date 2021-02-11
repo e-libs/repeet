@@ -1,7 +1,7 @@
 import React from 'react';
+import { useTranslation } from 'app/translation';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import { ButtonText, Button } from 'domains/config/components/DifficultyButton/styles';
-import { useTranslation } from 'app/translation';
 import type { Difficulty } from 'domains/config/data/store/types';
 import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
 

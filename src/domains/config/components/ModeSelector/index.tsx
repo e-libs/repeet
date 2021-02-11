@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'app/translation';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import {
   AdvancedButton,
@@ -9,13 +10,11 @@ import {
   Description,
   Label,
 } from 'domains/config/components/ModeSelector/styles';
-import { useTranslation } from 'app/translation';
 
 export const ModeSelector = () => {
   const { currentMode, switchMode } = useConfig();
   const { t } = useTranslation();
   const defaultButtonActive = currentMode === 'DEFAULT';
-  const advancedButtonActive = !defaultButtonActive;
 
   return (
     <Container>
@@ -29,8 +28,8 @@ export const ModeSelector = () => {
           <ButtonText>{t('config.mode.default.label')}</ButtonText>
         </DefaultButton>
         <AdvancedButton
-          active={advancedButtonActive}
-          disabled={advancedButtonActive}
+          active={!defaultButtonActive}
+          disabled={!defaultButtonActive}
           onPress={switchMode}
         >
           <ButtonText>{t('config.mode.advanced.label')}</ButtonText>
