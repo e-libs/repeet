@@ -21,7 +21,7 @@ import {
   getScore,
   getSpeed,
 } from 'domains/game/data/store/selectors';
-import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
+import type { NextRoundAction } from 'domains/game/data/store/types';
 import {
   getRandomSequence,
   getShuffleSequence,
@@ -71,6 +71,10 @@ export const useGame = () => {
     dispatch(quitGame());
   };
 
+  const delayTwinkleSequence = () => {
+    setTimeout(() => Conductor.twinkleSequence(currentSequence, speed), roundDelay);
+  };
+
   const addPlayerMove = (id: number) => {
     const move = validateMove(currentSequence, playerSequence, id);
 
@@ -81,7 +85,7 @@ export const useGame = () => {
       dispatch(resetMove());
       Conductor.setFail();
       if (attemptsLeft > 1) {
-        setTimeout(() => Conductor.twinkleSequence(currentSequence, speed), roundDelay);
+        delayTwinkleSequence();
       }
     }
   };
@@ -109,7 +113,7 @@ export const useGame = () => {
   };
 
   useEffect(() => {
-    if (!isGameOver) Conductor.twinkleSequence(currentSequence, speed);
+    if (!isGameOver) delayTwinkleSequence();
   }, [currentSequence, isGameOver]);
 
   useEffect(() => {
