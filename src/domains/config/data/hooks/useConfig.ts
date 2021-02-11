@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setDifficulty, setMode } from 'domains/config/data/store/actions';
+import { setDifficulty, setMode, setShuffle } from 'domains/config/data/store/actions';
 import {
   getAttempts,
   getDifficulty,
   getGameMode,
+  getIsShuffle,
   getPool,
   getPoolSize,
   getSpeed,
@@ -19,10 +20,15 @@ export const useConfig = () => {
   const currentPool = useSelector(getPool);
   const currentPoolSize = useSelector(getPoolSize);
   const currentSpeed = useSelector(getSpeed);
+  const isShuffle = useSelector(getIsShuffle);
 
   const switchMode = () => {
     const mode = currentMode === 'DEFAULT' ? 'ADVANCED' : 'DEFAULT';
     dispatch(setMode({ mode }));
+  };
+
+  const switchShuffle = () => {
+    dispatch(setShuffle({ shuffle: !isShuffle }));
   };
 
   const switchDifficulty = (difficulty: Difficulty) => {
@@ -36,8 +42,9 @@ export const useConfig = () => {
     currentPool,
     currentPoolSize,
     currentSpeed,
+    isShuffle,
     switchDifficulty,
     switchMode,
-    isShuffle: false,
+    switchShuffle,
   };
 };

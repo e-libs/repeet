@@ -34,3 +34,8 @@ export const getSpeed = createSelector<GlobalState, ConfigState, number>(
   getConfig,
   ({ speed }) => speed,
 );
+
+export const getIsShuffle = createSelector<GlobalState, ConfigState, boolean>(
+  getConfig,
+  ({ isShuffle }) => isShuffle,
+);

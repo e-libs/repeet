@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import {
   AdvancedButton,

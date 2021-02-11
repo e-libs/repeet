@@ -49,6 +49,18 @@ export default {
           description: 'Você terá 2 chances, e o jogo começa um pouco mais rápido',
         },
       },
+      shuffle: {
+        label: 'Embaralhar',
+        on: {
+          label: 'Ligado',
+          description:
+            'Embaralhando é difícl! Os botões serão alterados aleatoriamente a cada rodada',
+        },
+        off: {
+          label: 'Desligado',
+          description: 'Sem embaralhar é mais fácil! A sequência exibida será sempre a mesma',
+        },
+      },
     },
     footer: {
       description: 'Powered by e-libs',

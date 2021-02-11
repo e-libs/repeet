@@ -1,6 +1,6 @@
 import type { Action } from 'redux-actions';
 import type { ConfigState, ConfigActions } from 'domains/config/data/store/types';
-import { SET_DIFFICULTY, SET_MODE } from 'domains/config/data/store/actionTypes';
+import { SET_DIFFICULTY, SET_MODE, SET_SHUFFLE } from 'domains/config/data/store/actionTypes';
 import {
   advancedPool,
   advancedPoolSize,
@@ -12,6 +12,7 @@ import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
 const initialState: ConfigState = {
   attempts: DifficultyLevels.MEDIUM.attempts,
   difficulty: 'MEDIUM',
+  isShuffle: false,
   mode: 'DEFAULT',
   pool: standardPool,
   poolSize: standardPoolSize,
@@ -43,6 +44,14 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
         mode,
         pool,
         poolSize,
+      };
+    }
+    case SET_SHUFFLE: {
+      const { shuffle } = action.payload;
+
+      return {
+        ...state,
+        isShuffle: shuffle,
       };
     }
     default:
