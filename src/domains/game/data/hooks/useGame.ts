@@ -76,7 +76,7 @@ export const useGame = () => {
     } else if (move === 'BAD') {
       dispatch(resetMove());
       Conductor.setFail();
-      Conductor.twinkleSequence(currentSequence, speed);
+      if (attemptsLeft > 1) Conductor.twinkleSequence(currentSequence, speed);
     }
   };
 
