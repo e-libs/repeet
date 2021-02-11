@@ -13,9 +13,13 @@ Memory games can be really simple, from the player's perspective, but I've found
 
 I hope you'll enjoy playing around with it, maybe one day downloading the app (soon).
 
+![](public/images/home.png)
+
 ## The Idea
 
 The idea is simple: I created one of those memory games where the computer tells you a sequence, and you have to repeat it in order to move to the next level. As you need to repeat it, hence the name: _**Repeet**_.
+
+![](public/images/game-sample.png)
 
 ## The Tech
 
@@ -40,6 +44,9 @@ At this moment, the game has two main views: the game itself (described above) a
 - Difficulty: easy, medium, hard
 - Mode: default, advanced
 - Shuffle: on, off
+
+![](public/images/config.png)
+
 
 Each of those configuration will determine how the game will roll.
 
@@ -79,7 +86,7 @@ If the player wants to make the game even harder, it's possible to turn the shuf
 
 When the shuffle mode is off, the top keys (the computer ones) will always remain in the same position.
 
-## Other Features
+## Features
 
 ### Countdown
 
