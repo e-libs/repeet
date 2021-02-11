@@ -33,7 +33,7 @@ export const Sign = ({ sign }: SignProps) => {
     return () => {
       Conductor.off(id);
     };
-  }, [blink]);
+  }, [sign]);
 
   return (
     <Animated.View style={{ flex: 1, opacity: highlight }}>

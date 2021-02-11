@@ -36,6 +36,12 @@ export const Wine: Sign = {
   number: 6,
 };
 
+export const Grey: Sign = {
+  color: '#222222',
+  name: 'Grey',
+  number: 7,
+};
+
 export const standardPool = [Red, Green, Yellow, Blue];
 
 export const standardPoolSize = standardPool.length;

@@ -54,3 +54,8 @@ export const getIsLoading = createSelector<GlobalState, GameState, boolean>(
   getGame,
   ({ isLoading }) => isLoading,
 );
+
+export const getSequenceDisplay = createSelector<GlobalState, GameState, Sequence>(
+  getGame,
+  ({ currentSequenceDisplay }) => currentSequenceDisplay,
+);

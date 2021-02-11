@@ -7,10 +7,14 @@ export type GameState = Game;
 
 export type SetSequenceAction = {
   sequence: Sequence;
+  sequenceDisplay: Sequence;
+};
+
+export type StartGameAction = {
+  attempts: number;
 };
 
 export type InitGameAction = {
-  attempts: number;
   difficulty: Difficulty;
   speed: number;
 };
@@ -21,7 +25,12 @@ export type MoveAction = {
 
 export type NextRoundAction = {
   sequence: Sequence;
+  sequenceDisplay: Sequence;
 };
 
 // Group all Game actions
-export type GameActions = InitGameAction & MoveAction & NextRoundAction & SetSequenceAction;
+export type GameActions = InitGameAction &
+  MoveAction &
+  NextRoundAction &
+  StartGameAction &
+  SetSequenceAction;

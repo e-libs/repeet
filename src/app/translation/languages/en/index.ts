@@ -49,6 +49,18 @@ export default {
           description: 'You will have 2 attempts, and it will start a little faster',
         },
       },
+      shuffle: {
+        label: 'Shuffle',
+        on: {
+          label: 'On',
+          description:
+            'Shuffling is hard! It will randomize the displayed sequence order every round',
+        },
+        off: {
+          label: 'Off',
+          description: 'Not shuffling is easy! The displayed sequences are always the same',
+        },
+      },
     },
     footer: {
       description: 'Powered by e-libs',

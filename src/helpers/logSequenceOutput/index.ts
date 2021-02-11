@@ -12,7 +12,7 @@ const mappedOutputColors: Record<string, outputColor> = {
   Yellow: { preffix: '\x1b[43m', name: Yellow.name },
   Blue: { preffix: '\x1b[44m', name: Blue.name },
   Purple: { preffix: '\x1b[45m', name: Purple.name },
-  Wine: { preffix: '\x1b[2m\x1b[41m', name: Wine.name },
+  Wine: { preffix: '\x1b[41m', name: Wine.name },
 };
 
 export const logSequenceOutput = (label: string, sequence: Sequence) => {

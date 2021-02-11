@@ -1,3 +1,7 @@
+0.0.11 (February 10th, 2021)
+  - Adding shuffle mode
+  - General improvements
+
 0.0.10 (February 10th, 2021)
   - Creating intro view
   - Changing logo

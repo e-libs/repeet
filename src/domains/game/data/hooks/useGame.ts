@@ -21,8 +21,12 @@ import {
   getScore,
   getSpeed,
 } from 'domains/game/data/store/selectors';
-import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
-import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
+import type { NextRoundAction } from 'domains/game/data/store/types';
+import {
+  getRandomSequence,
+  getShuffleSequence,
+  validateMove,
+} from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
 import { getId } from 'helpers/getId';
@@ -34,7 +38,7 @@ export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
 
-  const { currentAttempts, currentDifficulty, currentSpeed, currentPoolSize } = useConfig();
+  const { currentDifficulty, currentSpeed, currentPool, currentPoolSize, isShuffle } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -52,7 +56,6 @@ export const useGame = () => {
     Conductor.init(currentPoolSize);
     dispatch(
       initGame({
-        attempts: currentAttempts,
         difficulty: currentDifficulty,
         speed: currentSpeed,
       }),
@@ -68,6 +71,10 @@ export const useGame = () => {
     dispatch(quitGame());
   };
 
+  const delayTwinkleSequence = () => {
+    setTimeout(() => Conductor.twinkleSequence(currentSequence, speed), speed);
+  };
+
   const addPlayerMove = (id: number) => {
     const move = validateMove(currentSequence, playerSequence, id);
 
@@ -77,27 +84,36 @@ export const useGame = () => {
     } else if (move === 'BAD') {
       dispatch(resetMove());
       Conductor.setFail();
-      if (attemptsLeft > 1) Conductor.twinkleSequence(currentSequence, speed);
+      if (attemptsLeft > 1) {
+        delayTwinkleSequence();
+      }
     }
   };
 
-  const addSequence = (payload: SetSequenceAction) => dispatch(setSequence(payload));
+  const getSequencePayload = () => ({
+    sequence: getRandomSequence(currentPoolSize),
+    sequenceDisplay: isShuffle ? getShuffleSequence(currentPoolSize) : currentPool,
+  });
+
+  const addSequence = () => {
+    dispatch(setSequence(getSequencePayload()));
+  };
 
   const setNextRound = (payload: NextRoundAction) => dispatch(nextRound(payload));
 
   const start = () => {
     init();
-    addSequence({ sequence: getRandomSequence(currentPoolSize) });
+    addSequence();
   };
 
   const finishRound = () => {
     Conductor.resetTimer();
     dispatch(increaseScore());
-    setTimeout(() => setNextRound({ sequence: getRandomSequence(currentPoolSize) }), roundDelay);
+    setTimeout(() => setNextRound(getSequencePayload()), roundDelay);
   };
 
   useEffect(() => {
-    if (!isGameOver) Conductor.twinkleSequence(currentSequence, speed);
+    if (!isGameOver) delayTwinkleSequence();
   }, [currentSequence, isGameOver]);
 
   useEffect(() => {
@@ -114,7 +130,7 @@ export const useGame = () => {
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());
-        addSequence({ sequence: getRandomSequence(currentPoolSize) });
+        addSequence();
       });
     }
 

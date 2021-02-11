@@ -23,6 +23,12 @@ export class EventManager {
     this.events = new PubSub<boolean>();
   }
 
+  reset() {
+    this.events = new PubSub<boolean>();
+    this.isActive = true;
+    this.clearTimeouts();
+  }
+
   init(poolSize: number) {
     this.isActive = true;
     this.poolSize = poolSize;
