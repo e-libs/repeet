@@ -10,7 +10,7 @@ export const Container = styled.View<{ color: string }>`
 `;
 
 export const GetReadyContainer = styled.View`
-  flex: 1;
+  flex: 2.5;
   justify-content: flex-end;
   align-items: flex-end;
 `;
@@ -34,4 +34,8 @@ export const Timer = styled.Text`
 export const Go = styled.Text`
   font-weight: bold;
   font-size: 200px;
+`;
+
+export const BottomSpacer = styled.View`
+  flex: 3;
 `;

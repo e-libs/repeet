@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import {
+  BottomSpacer,
   Container,
   GetReadyContainer,
   GetReadyLabel,
@@ -32,6 +33,7 @@ export const Intro = () => {
       <TimerContainer>
         {timer > 0 ? <Timer>{timer}</Timer> : <Go>{t('game.intro.go')}</Go>}
       </TimerContainer>
+      <BottomSpacer />
     </Container>
   );
 };
