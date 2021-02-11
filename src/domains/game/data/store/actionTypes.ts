@@ -1,3 +1,4 @@
+export const INCREASE_SCORE = 'INCREASE_SCORE';
 export const INIT_GAME = 'INIT_GAME';
 export const MAKE_MOVE = 'MAKE_MOVE';
 export const NEXT_ROUND = 'NEXT_ROUND';

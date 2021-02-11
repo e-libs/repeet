@@ -12,6 +12,7 @@ import { useTranslation } from 'app/translation';
 import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
 import { useCountdown } from 'helpers/useCountdown';
 import { useStatus } from 'domains/game/data/hooks/useStatus';
+import { introDelay } from 'domains/game/data/modules/Timing/constants';
 
 export const Intro = () => {
   const { currentDifficulty } = useConfig();
@@ -20,7 +21,7 @@ export const Intro = () => {
   const { startGame } = useStatus();
 
   useEffect(() => {
-    if (timer === 0) setTimeout(() => startGame(), 1000);
+    if (timer === 0) setTimeout(() => startGame(), introDelay);
   }, [timer]);
 
   return (

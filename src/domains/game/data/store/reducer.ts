@@ -3,6 +3,7 @@ import type { GameState, GameActions } from 'domains/game/data/store/types';
 import { DifficultyLevels, increaseScoreFactor } from 'domains/game/data/modules/Game/constants';
 import { Levels } from 'domains/game/data/modules/Game';
 import {
+  INCREASE_SCORE,
   INIT_GAME,
   MAKE_MOVE,
   NEXT_ROUND,
@@ -73,11 +74,19 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         playerSequence: newSequence,
       };
     }
+    case INCREASE_SCORE: {
+      const score = state.score + increaseScoreFactor;
+
+      return {
+        ...state,
+        playerSequence: [],
+        score,
+      };
+    }
     case NEXT_ROUND: {
       const { sequence } = action.payload;
-      const newScore = state.score + increaseScoreFactor;
-      const level = Levels[newScore] ? Levels[newScore].number : state.level;
-      const speed = Levels[newScore]
+      const level = Levels[state.score] ? Levels[state.score].number : state.level;
+      const speed = Levels[state.score]
         ? state.speed - DifficultyLevels[state.difficulty].increaseSpeedFactor
         : state.speed;
 
@@ -87,7 +96,6 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         level,
         playerSequence: [],
         rightSequences: state.rightSequences + 1,
-        score: newScore,
         speed,
       };
     }
