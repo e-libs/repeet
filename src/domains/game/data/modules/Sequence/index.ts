@@ -1,11 +1,12 @@
 import type { MoveResult, Sequence } from 'domains/game/data/modules/Sequence/types';
-import { standardPool } from 'domains/game/data/modules/Sign';
+import { advancedPool, standardPool } from 'domains/game/data/modules/Sign';
 
 export const getRandomSequence = (poolSize: number): Sequence => {
   const sequence: Sequence = [];
+  const pool = poolSize === advancedPool.length ? advancedPool : standardPool;
 
   for (let i = 0; i < poolSize; i += 1) {
-    sequence.push(standardPool[Math.floor(Math.random() * standardPool.length)]);
+    sequence.push(pool[Math.floor(Math.random() * pool.length)]);
   }
 
   return sequence;
