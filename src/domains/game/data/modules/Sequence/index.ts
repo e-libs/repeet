@@ -12,6 +12,19 @@ export const getRandomSequence = (poolSize: number): Sequence => {
   return sequence;
 };
 
+export const getShuffleSequence = (poolSize: number) => {
+  const pool = poolSize === advancedPool.length ? advancedPool : standardPool;
+
+  for (let i = poolSize - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = pool[i];
+    pool[i] = pool[j];
+    pool[j] = temp;
+  }
+
+  return pool;
+};
+
 export const validateMove = (
   currentSequence: Sequence,
   playerSequence: Sequence,

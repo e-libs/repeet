@@ -4,6 +4,7 @@ import type { Difficulty } from 'domains/config/data/store/types';
 export type Game = {
   attempts: number;
   currentSequence: Sequence;
+  currentSequenceDisplay: Sequence;
   difficulty: Difficulty;
   isLoading: boolean;
   isOver: boolean;

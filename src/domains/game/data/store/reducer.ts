@@ -17,6 +17,7 @@ import {
 const initialState: GameState = {
   attempts: 0,
   currentSequence: [],
+  currentSequenceDisplay: [],
   difficulty: 'EASY',
   isLoading: true,
   isOver: false,
@@ -59,11 +60,12 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       };
     }
     case SET_SEQUENCE: {
-      const { sequence } = action.payload;
+      const { sequence, sequenceDisplay } = action.payload;
 
       return {
         ...state,
         currentSequence: sequence,
+        currentSequenceDisplay: sequenceDisplay,
       };
     }
     case MAKE_MOVE: {
@@ -85,7 +87,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       };
     }
     case NEXT_ROUND: {
-      const { sequence } = action.payload;
+      const { sequence, sequenceDisplay } = action.payload;
       const level = Levels[state.score] ? Levels[state.score].number : state.level;
       const speed = Levels[state.score]
         ? state.speed - DifficultyLevels[state.difficulty].increaseSpeedFactor
@@ -94,6 +96,7 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
       return {
         ...state,
         currentSequence: sequence,
+        currentSequenceDisplay: sequenceDisplay,
         level,
         playerSequence: [],
         rightSequences: state.rightSequences + 1,

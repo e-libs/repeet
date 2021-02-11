@@ -7,6 +7,7 @@ export type GameState = Game;
 
 export type SetSequenceAction = {
   sequence: Sequence;
+  sequenceDisplay: Sequence;
 };
 
 export type StartGameAction = {
@@ -24,6 +25,7 @@ export type MoveAction = {
 
 export type NextRoundAction = {
   sequence: Sequence;
+  sequenceDisplay: Sequence;
 };
 
 // Group all Game actions

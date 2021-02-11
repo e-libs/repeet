@@ -22,7 +22,11 @@ import {
   getSpeed,
 } from 'domains/game/data/store/selectors';
 import type { NextRoundAction, SetSequenceAction } from 'domains/game/data/store/types';
-import { getRandomSequence, validateMove } from 'domains/game/data/modules/Sequence';
+import {
+  getRandomSequence,
+  getShuffleSequence,
+  validateMove,
+} from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
 import { getId } from 'helpers/getId';
@@ -34,7 +38,7 @@ export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
 
-  const { currentDifficulty, currentSpeed, currentPoolSize } = useConfig();
+  const { currentDifficulty, currentSpeed, currentPool, currentPoolSize, isShuffle } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -82,19 +86,26 @@ export const useGame = () => {
     }
   };
 
-  const addSequence = (payload: SetSequenceAction) => dispatch(setSequence(payload));
+  const getSequencePayload = () => ({
+    sequence: getRandomSequence(currentPoolSize),
+    sequenceDisplay: isShuffle ? getShuffleSequence(currentPoolSize) : currentPool,
+  });
+
+  const addSequence = () => {
+    dispatch(setSequence(getSequencePayload()));
+  };
 
   const setNextRound = (payload: NextRoundAction) => dispatch(nextRound(payload));
 
   const start = () => {
     init();
-    addSequence({ sequence: getRandomSequence(currentPoolSize) });
+    addSequence();
   };
 
   const finishRound = () => {
     Conductor.resetTimer();
     dispatch(increaseScore());
-    setTimeout(() => setNextRound({ sequence: getRandomSequence(currentPoolSize) }), roundDelay);
+    setTimeout(() => setNextRound(getSequencePayload()), roundDelay);
   };
 
   useEffect(() => {
@@ -115,7 +126,7 @@ export const useGame = () => {
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());
-        addSequence({ sequence: getRandomSequence(currentPoolSize) });
+        addSequence();
       });
     }
 

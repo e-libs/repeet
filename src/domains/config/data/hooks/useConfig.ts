@@ -38,5 +38,6 @@ export const useConfig = () => {
     currentSpeed,
     switchDifficulty,
     switchMode,
+    isShuffle: false,
   };
 };
