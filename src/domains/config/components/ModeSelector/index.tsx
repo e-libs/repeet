@@ -2,14 +2,12 @@ import React from 'react';
 import { useTranslation } from 'app/translation';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import {
-  AdvancedButton,
   ButtonContainer,
-  ButtonText,
   Container,
-  DefaultButton,
   Description,
   Label,
 } from 'domains/config/components/ModeSelector/styles';
+import { ConfigButton } from 'domains/config/components/ConfigButton';
 
 export const ModeSelector = () => {
   const { currentMode, switchMode } = useConfig();
@@ -20,20 +18,24 @@ export const ModeSelector = () => {
     <Container>
       <Label>{t('config.mode.label')}</Label>
       <ButtonContainer>
-        <DefaultButton
+        <ConfigButton
           active={defaultButtonActive}
+          color="#26bd53"
           disabled={defaultButtonActive}
+          fontSize={25}
+          isLeft
           onPress={switchMode}
-        >
-          <ButtonText>{t('config.mode.default.label')}</ButtonText>
-        </DefaultButton>
-        <AdvancedButton
+          label={t('config.mode.default.label')}
+        />
+        <ConfigButton
           active={!defaultButtonActive}
+          color="#fc972b"
           disabled={!defaultButtonActive}
+          fontSize={25}
+          isRight
           onPress={switchMode}
-        >
-          <ButtonText>{t('config.mode.advanced.label')}</ButtonText>
-        </AdvancedButton>
+          label={t('config.mode.advanced.label')}
+        />
       </ButtonContainer>
       <Description>{t(`config.mode.${currentMode.toLowerCase()}.description`)}</Description>
     </Container>
