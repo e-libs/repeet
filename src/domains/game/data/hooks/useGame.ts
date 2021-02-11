@@ -72,7 +72,7 @@ export const useGame = () => {
   };
 
   const delayTwinkleSequence = () => {
-    setTimeout(() => Conductor.twinkleSequence(currentSequence, speed), roundDelay);
+    setTimeout(() => Conductor.twinkleSequence(currentSequence, speed), speed);
   };
 
   const addPlayerMove = (id: number) => {
