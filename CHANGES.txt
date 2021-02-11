@@ -1,3 +1,8 @@
+0.0.10 (February 10th, 2021)
+  - Creating intro view
+  - Changing logo
+  - Fixing flow issues
+
 0.0.9 (February 10th, 2021)
   - Adding the config page
   - Adding icons support
