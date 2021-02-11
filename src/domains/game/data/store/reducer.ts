@@ -32,17 +32,18 @@ const initialState: GameState = {
 export const gameReducer = (state = initialState, action: Action<GameActions>) => {
   switch (action.type) {
     case INIT_GAME: {
-      const { attempts, difficulty, speed } = action.payload;
+      const { difficulty, speed } = action.payload;
       return {
         ...state,
-        attempts,
         difficulty,
         speed,
       };
     }
     case START_GAME: {
+      const { attempts } = action.payload;
       return {
         ...state,
+        attempts,
         isLoading: false,
       };
     }

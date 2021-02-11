@@ -34,7 +34,7 @@ export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
 
-  const { currentAttempts, currentDifficulty, currentSpeed, currentPoolSize } = useConfig();
+  const { currentDifficulty, currentSpeed, currentPoolSize } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -52,7 +52,6 @@ export const useGame = () => {
     Conductor.init(currentPoolSize);
     dispatch(
       initGame({
-        attempts: currentAttempts,
         difficulty: currentDifficulty,
         speed: currentSpeed,
       }),
@@ -77,7 +76,9 @@ export const useGame = () => {
     } else if (move === 'BAD') {
       dispatch(resetMove());
       Conductor.setFail();
-      if (attemptsLeft > 1) Conductor.twinkleSequence(currentSequence, speed);
+      if (attemptsLeft > 1) {
+        setTimeout(() => Conductor.twinkleSequence(currentSequence, speed), roundDelay);
+      }
     }
   };
 

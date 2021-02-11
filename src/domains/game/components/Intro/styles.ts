@@ -28,12 +28,12 @@ export const GetReadyLabel = styled.Text`
 
 export const Timer = styled.Text`
   font-weight: bold;
-  font-size: 350px;
+  font-size: 280px;
 `;
 
 export const Go = styled.Text`
   font-weight: bold;
-  font-size: 200px;
+  font-size: 170px;
 `;
 
 export const BottomSpacer = styled.View`
