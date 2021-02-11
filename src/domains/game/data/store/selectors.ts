@@ -49,3 +49,8 @@ export const getHasQuit = createSelector<GlobalState, GameState, boolean>(
   getGame,
   ({ quit }) => quit,
 );
+
+export const getIsLoading = createSelector<GlobalState, GameState, boolean>(
+  getGame,
+  ({ isLoading }) => isLoading,
+);

@@ -10,10 +10,16 @@ export default {
         no: 'No',
       },
     },
-    gameOver: {
-      message: 'Better luck next time...',
-      tryAgain: 'Play again',
-      exit: 'Exit',
+    game: {
+      intro: {
+        getReady: 'Get ready!',
+        go: 'GO!',
+      },
+      gameOver: {
+        message: 'Better luck next time...',
+        tryAgain: 'Play again',
+        exit: 'Exit',
+      },
     },
     config: {
       title: 'Configurations',

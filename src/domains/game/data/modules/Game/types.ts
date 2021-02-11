@@ -5,6 +5,7 @@ export type Game = {
   attempts: number;
   currentSequence: Sequence;
   difficulty: Difficulty;
+  isLoading: boolean;
   isOver: boolean;
   level: number;
   playerSequence: Sequence;

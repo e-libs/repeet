@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  increaseScore,
   initGame,
   makeMove,
   nextRound,
@@ -26,7 +27,7 @@ import { getSignByNumber } from 'domains/game/data/modules/Sign';
 import { useIsMounted } from 'helpers/useIsMounted';
 import { getId } from 'helpers/getId';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
-import { ROUND_OVER_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { ROUND_OVER_EVENT, roundDelay } from 'domains/game/data/modules/Timing/constants';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 
 export const useGame = () => {
@@ -76,7 +77,7 @@ export const useGame = () => {
     } else if (move === 'BAD') {
       dispatch(resetMove());
       Conductor.setFail();
-      Conductor.twinkleSequence(currentSequence, speed);
+      if (attemptsLeft > 1) Conductor.twinkleSequence(currentSequence, speed);
     }
   };
 
@@ -89,14 +90,19 @@ export const useGame = () => {
     addSequence({ sequence: getRandomSequence(currentPoolSize) });
   };
 
+  const finishRound = () => {
+    Conductor.resetTimer();
+    dispatch(increaseScore());
+    setTimeout(() => setNextRound({ sequence: getRandomSequence(currentPoolSize) }), roundDelay);
+  };
+
   useEffect(() => {
     if (!isGameOver) Conductor.twinkleSequence(currentSequence, speed);
   }, [currentSequence, isGameOver]);
 
   useEffect(() => {
     if (playerSequence.length > 0 && playerSequence.length === currentSequence.length) {
-      setNextRound({ sequence: getRandomSequence(currentPoolSize) });
-      Conductor.resetTimer();
+      finishRound();
     }
   }, [playerSequence]);
 
@@ -104,7 +110,7 @@ export const useGame = () => {
     const id = getId();
 
     if (isMounted) {
-      start();
+      setTimeout(() => start(), roundDelay);
 
       Conductor.on(ROUND_OVER_EVENT, id, () => {
         dispatch(resetMove());
@@ -127,9 +133,9 @@ export const useGame = () => {
     level,
     playerSequence,
     quit,
+    reset,
     rightSequences,
     score,
     speed,
-    start,
   };
 };

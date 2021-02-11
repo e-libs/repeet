@@ -1,8 +1,9 @@
 import type { Action } from 'redux-actions';
 import type { GameState, GameActions } from 'domains/game/data/store/types';
-import { increaseScoreFactor } from 'domains/game/data/modules/Game/constants';
+import { DifficultyLevels, increaseScoreFactor } from 'domains/game/data/modules/Game/constants';
 import { Levels } from 'domains/game/data/modules/Game';
 import {
+  INCREASE_SCORE,
   INIT_GAME,
   MAKE_MOVE,
   NEXT_ROUND,
@@ -10,13 +11,14 @@ import {
   RESET_GAME,
   RESET_MOVE,
   SET_SEQUENCE,
+  START_GAME,
 } from 'domains/game/data/store/actionTypes';
-import { speedFactor } from 'domains/game/data/modules/Timing/constants';
 
 const initialState: GameState = {
   attempts: 0,
   currentSequence: [],
   difficulty: 'EASY',
+  isLoading: true,
   isOver: false,
   level: 0,
   playerSequence: [],
@@ -32,10 +34,16 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
     case INIT_GAME: {
       const { attempts, difficulty, speed } = action.payload;
       return {
-        ...initialState,
+        ...state,
         attempts,
         difficulty,
         speed,
+      };
+    }
+    case START_GAME: {
+      return {
+        ...state,
+        isLoading: false,
       };
     }
     case RESET_GAME: {
@@ -66,11 +74,21 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         playerSequence: newSequence,
       };
     }
+    case INCREASE_SCORE: {
+      const score = state.score + increaseScoreFactor;
+
+      return {
+        ...state,
+        playerSequence: [],
+        score,
+      };
+    }
     case NEXT_ROUND: {
       const { sequence } = action.payload;
-      const newScore = state.score + increaseScoreFactor;
-      const level = Levels[newScore] ? Levels[newScore].number : state.level;
-      const speed = Levels[newScore] ? state.speed - speedFactor[state.difficulty] : state.speed;
+      const level = Levels[state.score] ? Levels[state.score].number : state.level;
+      const speed = Levels[state.score]
+        ? state.speed - DifficultyLevels[state.difficulty].increaseSpeedFactor
+        : state.speed;
 
       return {
         ...state,
@@ -78,7 +96,6 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         level,
         playerSequence: [],
         rightSequences: state.rightSequences + 1,
-        score: newScore,
         speed,
       };
     }
