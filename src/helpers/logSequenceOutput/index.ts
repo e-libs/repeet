@@ -21,5 +21,6 @@ export const logSequenceOutput = (label: string, sequence: Sequence) => {
     (acc, color) => `${acc}${color.preffix} ${color.name.toUpperCase()} \x1b[0m  `,
     '',
   );
+  // eslint-disable-next-line no-console
   console.log(label, `${text}\x1b[0m`);
 };

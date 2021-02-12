@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Indicator } from 'domains/game/components/Timer/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
-import { getId } from 'helpers/getId';
-import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 import { TIME_BAR_EVENT, TIMER_EVENT } from 'domains/game/data/modules/Timing/constants';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
+import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
+import { getId } from 'helpers/getId';
 
 export const Timer = () => {
   const { currentPoolSize } = useConfig();
@@ -13,18 +13,20 @@ export const Timer = () => {
   const [timeLeft, setTimeLeft] = useState(currentPoolSize);
 
   useEffect(() => {
-    const id = getId();
+    const timerId = getId();
+    const timeBarId = getId();
 
-    Conductor.on(TIMER_EVENT, id, (displayTimer: boolean) => {
+    Conductor.on(TIMER_EVENT, timerId, (displayTimer: boolean) => {
       setDisplay(displayTimer);
     });
 
-    Conductor.on(TIME_BAR_EVENT, id, (time: number) => {
+    Conductor.on(TIME_BAR_EVENT, timeBarId, (time: number) => {
       setTimeLeft(time);
     });
 
     return () => {
-      Conductor.off(id);
+      Conductor.off(timerId);
+      Conductor.off(timeBarId);
     };
   }, []);
 

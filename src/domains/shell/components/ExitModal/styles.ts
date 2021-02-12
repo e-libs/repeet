@@ -25,18 +25,18 @@ export const ConfirmText = styled.Text`
   margin-bottom: 30px;
 `;
 
-export const ConfirmButton = styled.TouchableHighlight`
-  background-color: #c70039;
+const Button = styled.TouchableHighlight`
   border-radius: 20px;
   padding: 20px 30px;
   margin: 0 10px;
 `;
 
-export const CancelButton = styled.TouchableHighlight`
+export const ConfirmButton = styled(Button)`
+  background-color: #c70039;
+`;
+
+export const CancelButton = styled(Button)`
   background-color: #658d9a;
-  border-radius: 20px;
-  padding: 20px 30px;
-  margin: 0 10px;
 `;
 
 export const ButtonText = styled.Text`

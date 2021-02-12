@@ -1,8 +1,8 @@
 import React from 'react';
 import { Linking } from 'react-native';
-import { FooterContainer, FooterText } from 'domains/shell/components/Footer/styles';
-import { useTranslation } from 'app/translation';
 import { eLibsUrl } from 'app/config/constants';
+import { useTranslation } from 'app/translation';
+import { FooterContainer, FooterText } from 'domains/shell/components/Footer/styles';
 
 export const Footer = () => {
   const { t } = useTranslation();

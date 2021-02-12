@@ -54,7 +54,7 @@ export default {
         on: {
           label: 'Ligado',
           description:
-            'Embaralhando é difícl! Os botões serão alterados aleatoriamente a cada rodada',
+            'Embaralhando é mais difícl! Os botões serão alterados aleatoriamente a cada rodada',
         },
         off: {
           label: 'Desligado',

@@ -4,8 +4,8 @@ import type { GameState } from 'domains/game/data/store/types';
 import type { ConfigState } from 'domains/config/data/store/types';
 
 export type GlobalState = {
-  game: GameState;
-  shell: ShellState;
-  player: PlayerState;
   config: ConfigState;
+  game: GameState;
+  player: PlayerState;
+  shell: ShellState;
 };

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { logOutput } from 'app/config/logOutput';
 import {
   increaseScore,
   initGame,
@@ -28,11 +29,11 @@ import {
   validateMove,
 } from 'domains/game/data/modules/Sequence';
 import { getSignByNumber } from 'domains/game/data/modules/Sign';
-import { useIsMounted } from 'helpers/useIsMounted';
-import { getId } from 'helpers/getId';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { ROUND_OVER_EVENT, roundDelay } from 'domains/game/data/modules/Timing/constants';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
+import { useIsMounted } from 'helpers/useIsMounted';
+import { getId } from 'helpers/getId';
 
 export const useGame = () => {
   // TODO: consider remove, if not helping with render issue
@@ -114,6 +115,8 @@ export const useGame = () => {
 
   useEffect(() => {
     if (!isGameOver) delayTwinkleSequence();
+
+    logOutput('CURRENT', currentSequence, speed, score, level, rightSequences, attemptsLeft);
   }, [currentSequence, isGameOver]);
 
   useEffect(() => {
@@ -142,16 +145,9 @@ export const useGame = () => {
 
   return {
     addPlayerMove,
-    attemptsLeft,
-    currentSequence,
     hasQuit,
     isGameOver,
-    level,
-    playerSequence,
     quit,
     reset,
-    rightSequences,
-    score,
-    speed,
   };
 };

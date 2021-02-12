@@ -4,11 +4,11 @@ import { useTranslation } from 'app/translation';
 import {
   ButtonContainer,
   ButtonText,
-  TryAgainButton,
+  Container,
   ExitButton,
   FarewellMessage,
-  Container,
   ModalView,
+  TryAgainButton,
 } from 'domains/shell/components/GameOverModal/styles';
 
 type GameOverModalProps = {

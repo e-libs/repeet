@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 export const Label = styled.Text`
   font-size: 30px;

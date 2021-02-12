@@ -21,18 +21,18 @@ export const FarewellMessage = styled.Text`
   margin-bottom: 30px;
 `;
 
-export const ExitButton = styled.TouchableHighlight`
-  background-color: #222;
+const Button = styled.TouchableHighlight`
   border-radius: 20px;
   padding: 20px 50px;
   margin: 20px;
 `;
 
-export const TryAgainButton = styled.TouchableHighlight`
+export const ExitButton = styled(Button)`
+  background-color: #222;
+`;
+
+export const TryAgainButton = styled(Button)`
   background-color: #649700;
-  border-radius: 20px;
-  padding: 20px 50px;
-  margin: 20px;
 `;
 
 export const ButtonText = styled.Text<{ color: string }>`

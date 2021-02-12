@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { useTranslation } from 'app/translation';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import {
   ButtonContainer,
@@ -7,7 +8,6 @@ import {
   Label,
 } from 'domains/config/components/DifficultySelector/styles';
 import { DifficultyButton } from 'domains/config/components/DifficultyButton';
-import { useTranslation } from 'app/translation';
 
 export const DifficultySelector = () => {
   const { currentDifficulty } = useConfig();

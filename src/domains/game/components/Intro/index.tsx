@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'app/translation';
 import {
   BottomSpacer,
   Container,
@@ -9,11 +10,10 @@ import {
   TimerContainer,
 } from 'domains/game/components/Intro/styles';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
-import { useTranslation } from 'app/translation';
 import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
-import { useCountdown } from 'helpers/useCountdown';
 import { useStatus } from 'domains/game/data/hooks/useStatus';
 import { introDelay } from 'domains/game/data/modules/Timing/constants';
+import { useCountdown } from 'helpers/useCountdown';
 
 export const Intro = () => {
   const { currentDifficulty } = useConfig();

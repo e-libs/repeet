@@ -60,4 +60,4 @@ export type AvailableSigns =
 
 export const getSignByNumber = (id: number): Sign =>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  standardPool.find((item) => item.number === id)!;
+  advancedPool.find((item) => item.number === id)!;

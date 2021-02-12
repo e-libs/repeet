@@ -2,15 +2,15 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import type { StackNavigationProp } from '@react-navigation/stack';
+import { useTranslation } from 'app/translation';
 import {
+  ConfigContainer,
   FooterContainer,
+  HomeContainer,
   MainView,
   TapToStart,
-  HomeContainer,
-  ConfigContainer,
 } from 'screens/Home/styles';
 import type { RootStackParamList } from 'screens/types';
-import { useTranslation } from 'app/translation';
 import { RotatingIcon } from 'domains/shell/components/RotatingIcon';
 import { Footer } from 'domains/shell/components/Footer';
 import { Logo } from 'domains/shell/components/Logo';
