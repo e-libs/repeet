@@ -14,6 +14,7 @@ export type ConfigState = {
   attempts: number;
   difficulty: Difficulty;
   isShuffle: boolean;
+  isSoundOn: boolean;
   mode: GameMode;
   pool: Sign[];
   poolSize: number;
@@ -32,4 +33,8 @@ export type SetShuffleAction = {
   shuffle: boolean;
 };
 
-export type ConfigActions = SetModeAction & SetDifficultyAction & SetShuffleAction;
+export type SetSoundAction = {
+  isSoundOn: boolean;
+};
+
+export type ConfigActions = SetModeAction & SetDifficultyAction & SetShuffleAction & SetSoundAction;

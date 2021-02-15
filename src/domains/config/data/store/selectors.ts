@@ -39,3 +39,8 @@ export const getIsShuffle = createSelector<GlobalState, ConfigState, boolean>(
   getConfig,
   ({ isShuffle }) => isShuffle,
 );
+
+export const getIsSoundOn = createSelector<GlobalState, ConfigState, boolean>(
+  getConfig,
+  ({ isSoundOn }) => isSoundOn,
+);

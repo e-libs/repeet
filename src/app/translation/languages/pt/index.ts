@@ -23,6 +23,11 @@ export default {
     },
     config: {
       title: 'Configurações',
+      sound: {
+        label: 'Som',
+        on: 'Ligado',
+        off: 'Desligado',
+      },
       mode: {
         label: 'Modo',
         default: {

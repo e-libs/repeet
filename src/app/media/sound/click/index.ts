@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-console */
 import { useEffect, useState } from 'react';
-import { logConfig, soundConfig } from 'app/config/constants';
 import { Audio } from 'expo-av';
+import { logConfig, soundConfig } from 'app/config/constants';
 
 export const useClick = () => {
   if (!soundConfig.enabled) return { play: async () => {} };

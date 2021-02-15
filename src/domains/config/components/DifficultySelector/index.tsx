@@ -1,9 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import {
   ButtonContainer,
+  Container,
   Description,
   Label,
 } from 'domains/config/components/DifficultySelector/styles';
@@ -14,7 +14,7 @@ export const DifficultySelector = () => {
   const { t } = useTranslation();
 
   return (
-    <View>
+    <Container>
       <Label>{t('config.difficulty.label')}</Label>
       <ButtonContainer>
         <DifficultyButton difficulty="EASY" />
@@ -24,6 +24,6 @@ export const DifficultySelector = () => {
       <Description>
         {t(`config.difficulty.${currentDifficulty.toLowerCase()}.description`)}
       </Description>
-    </View>
+    </Container>
   );
 };
