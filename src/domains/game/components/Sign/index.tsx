@@ -13,7 +13,7 @@ type SignProps = {
 
 export const Sign = ({ sign }: SignProps) => {
   const highlight = useRef(new Animated.Value(1)).current;
-  const { play } = useSound('clickk.mp3');
+  const { play } = useSound('click');
 
   const { speed } = useSpeed();
 
@@ -25,7 +25,7 @@ export const Sign = ({ sign }: SignProps) => {
       useNativeDriver: true,
     }).start();
 
-    play();
+    await play();
   }, [highlight]);
 
   useEffect(() => {

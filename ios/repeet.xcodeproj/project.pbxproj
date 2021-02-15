@@ -15,7 +15,6 @@
 		96905EF65AED1B983A6B3ABC /* libPods-repeet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-repeet.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		EDA4F35025D629C200AC1F5A /* clickk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDA4F34F25D629C200AC1F5A /* clickk.mp3 */; };
-		EDA4F39E25D62DD800AC1F5A /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA4F39D25D62DD800AC1F5A /* libRNSound.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA4F39E25D62DD800AC1F5A /* libRNSound.a in Frameworks */,
 				96905EF65AED1B983A6B3ABC /* libPods-repeet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

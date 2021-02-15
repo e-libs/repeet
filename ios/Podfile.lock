@@ -3,6 +3,10 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (2.4.1):
     - UMCore
+  - EXAV (8.7.0):
+    - UMCore
+    - UMFileSystemInterface
+    - UMPermissionsInterface
   - EXConstants (9.3.5):
     - UMConstantsInterface
     - UMCore
@@ -296,11 +300,6 @@ PODS:
     - React-Core
   - RNScreens (2.15.2):
     - React-Core
-  - RNSound (0.11.0):
-    - React
-    - RNSound/Core (= 0.11.0)
-  - RNSound/Core (0.11.0):
-    - React
   - RNSVG (12.1.0):
     - React
   - UMAppLoader (1.4.0)
@@ -325,6 +324,7 @@ PODS:
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
+  - EXAV (from `../node_modules/expo-av/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
@@ -370,7 +370,6 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNSound (from `../node_modules/react-native-sound`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
@@ -396,6 +395,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXApplication:
     :path: "../node_modules/expo-application/ios"
+  EXAV:
+    :path: "../node_modules/expo-av/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
   EXErrorRecovery:
@@ -482,8 +483,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNSound:
-    :path: "../node_modules/react-native-sound"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   UMAppLoader:
@@ -519,6 +518,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXApplication: e3c201e7b913d081bbd37bd3c5d0e2cdc21733b4
+  EXAV: e32adf44c10a82f723172d5b01d5693890888dd6
   EXConstants: 54d0bf04319d1692c6c7bc03ca151ef7a71705a4
   EXErrorRecovery: b46af4b91e2b4ec598ab1fa51d2cf088aaf5511f
   EXFileSystem: 0e4974ab77bff04cda68d2886d070cbe64b93a6b
@@ -562,7 +562,6 @@ SPEC CHECKSUMS:
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: 3d682bcaba69a4f8e55543d90818704f34338db1
-  RNSound: da030221e6ac7e8290c6b43f2b5f2133a8e225b0
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
   UMBarCodeScannerInterface: 3f6c1b09ef4b867ce752b8c0b3893bcf9cd85f32
