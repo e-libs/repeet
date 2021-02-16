@@ -59,3 +59,8 @@ export const getSequenceDisplay = createSelector<GlobalState, GameState, Sequenc
   getGame,
   ({ currentSequenceDisplay }) => currentSequenceDisplay,
 );
+
+export const getIsTraining = createSelector<GlobalState, GameState, boolean>(
+  getGame,
+  ({ isTraining }) => isTraining,
+);

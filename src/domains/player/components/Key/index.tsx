@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from 'react';
+import { useSound } from 'app/media/sound/useSound';
 import { Container, Button } from 'domains/player/components/Key/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { KEYPAD_EVENT } from 'domains/game/data/modules/Timing/constants';
+import { useConfig } from 'domains/config/data/hooks/useConfig';
+import type { Sign } from 'domains/game/data/modules/Sign/types';
 import { getId } from 'helpers/getId';
+import { useIsMounted } from 'helpers/useIsMounted';
 
 type KeyProps = {
-  id: number;
-  color: string;
+  sign: Sign;
   onPress: (id: number) => void;
 };
 
-export const Key = ({ color, id, onPress }: KeyProps) => {
+export const Key = ({ sign, onPress }: KeyProps) => {
+  const isMounted = useIsMounted();
   const [enabled, setEnabled] = useState(false);
+  const { isBlindfolded } = useConfig();
+  const { play } = useSound(isBlindfolded ? sign.sound : 'sign');
 
   const onBoxClick = () => {
-    onPress(id);
+    play();
+    onPress(sign.number);
   };
 
   useEffect(() => {
     const eventId = getId();
 
     Conductor.on(KEYPAD_EVENT, eventId, (enableButton: boolean) => {
-      setEnabled(enableButton);
+      if (isMounted) setEnabled(enableButton);
     });
 
     return () => {
@@ -31,7 +38,7 @@ export const Key = ({ color, id, onPress }: KeyProps) => {
 
   return (
     <Container>
-      <Button color={color} disabled={!enabled} onPress={onBoxClick} />
+      <Button color={sign.color} disabled={!enabled} onPress={onBoxClick} />
     </Container>
   );
 };

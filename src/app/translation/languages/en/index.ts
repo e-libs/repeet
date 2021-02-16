@@ -21,8 +21,29 @@ export default {
         exit: 'Exit',
       },
     },
+    training: {
+      message:
+        'Tap the keys to get to know their sounds. Memorize them, as you will need to repeat what you hear.',
+      ready: 'I am ready',
+    },
     config: {
       title: 'Configurations',
+      sound: {
+        label: 'Sound',
+        on: 'On',
+        off: 'Off',
+      },
+      blind: {
+        label: 'Blindfolded',
+        off: {
+          label: 'Off',
+          description: 'You will see the computer buttons, and follow the sequence by their color',
+        },
+        on: {
+          label: 'On',
+          description: 'You will not see the buttons, you must play by ear',
+        },
+      },
       mode: {
         label: 'Mode',
         default: {

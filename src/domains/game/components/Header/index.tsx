@@ -5,11 +5,12 @@ import { ExitModal } from 'domains/shell/components/ExitModal';
 import { BackButton } from 'domains/shell/components/BackButton';
 
 type HeaderProps = {
-  isGameOver: boolean;
+  isGameOver?: boolean;
+  isTraining?: boolean;
   onExit: () => void;
 };
 
-export const Header = ({ isGameOver, onExit }: HeaderProps) => {
+export const Header = ({ isGameOver, isTraining = false, onExit }: HeaderProps) => {
   const { score } = useScore();
 
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
@@ -37,7 +38,7 @@ export const Header = ({ isGameOver, onExit }: HeaderProps) => {
       <BackButtonContainer>
         <BackButton onPress={openExitModal} />
       </BackButtonContainer>
-      <Score>{score}</Score>
+      {!isTraining && <Score>{score}</Score>}
     </Container>
   );
 };

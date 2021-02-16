@@ -39,3 +39,13 @@ export const getIsShuffle = createSelector<GlobalState, ConfigState, boolean>(
   getConfig,
   ({ isShuffle }) => isShuffle,
 );
+
+export const getIsSoundOn = createSelector<GlobalState, ConfigState, boolean>(
+  getConfig,
+  ({ isSoundOn }) => isSoundOn,
+);
+
+export const getIsBlindfolded = createSelector<GlobalState, ConfigState, boolean>(
+  getConfig,
+  ({ isBlindfolded }) => isBlindfolded,
+);

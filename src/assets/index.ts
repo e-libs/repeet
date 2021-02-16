@@ -1,0 +1,18 @@
+export default [
+  require('assets/sounds/button.mp3'),
+  require('assets/sounds/click.mp3'),
+  require('assets/sounds/countdown.mp3'),
+  require('assets/sounds/countdown-go.mp3'),
+  require('assets/sounds/exit.mp3'),
+  require('assets/sounds/game-over.mp3'),
+  require('assets/sounds/note-1.mp3'),
+  require('assets/sounds/note-2.mp3'),
+  require('assets/sounds/note-3.mp3'),
+  require('assets/sounds/note-4.mp3'),
+  require('assets/sounds/note-5.mp3'),
+  require('assets/sounds/note-6.mp3'),
+  require('assets/sounds/open-config.mp3'),
+  require('assets/sounds/sign.mp3'),
+  require('assets/sounds/start.mp3'),
+  require('assets/sounds/tick.mp3'),
+];

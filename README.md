@@ -86,6 +86,12 @@ If the player wants to make the game even harder, it's possible to turn the shuf
 
 When the shuffle mode is off, the top keys (the computer ones) will always remain in the same position.
 
+### Sounds
+
+There's also a configuration to enable/disable sounds, which won't affect the game flow, but it will play sounds accordingly. Thanks [Zapsplat.com](https://www.zapsplat.com/) for the amazing sounds.
+
+
+
 ## Features
 
 ### Countdown
@@ -114,6 +120,7 @@ The user may exit the game in two situations: by clicking on the back button at 
 
 The game supports _English_ and _Portuguese_ at the moment. It uses the device's language, therefore there's no configuration _in-app_ to change it. To implement that I used [i18next](https://www.npmjs.com/package/i18next) and [react-i18next](https://www.npmjs.com/package/react-i18next)
 
+
 ## Other Tech Features
 
 ### PubSub
@@ -129,6 +136,11 @@ At the component/React level, the main logic is orchestrated by the `useGame` ho
 The main state of the game is kept inside the Redux Store, and each domain has its own. Some of them will be persisted, even when the game is closed (such as the configuration ones). This way, when the player comes back, the previous configuration will still be there, persisted.
 
 In order to manipulate the state, I'm dispatching action, with _action creators_, and selecting the state pieces with [reselect](https://www.npmjs.com/package/reselect)'s `createSelector`.
+
+
+### Sounds
+
+I'm currently using [Expo-AV](https://docs.expo.io/versions/latest/sdk/audio/) to control the sounds.
 
 ### Styled Components
 

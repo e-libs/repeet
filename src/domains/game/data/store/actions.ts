@@ -5,6 +5,7 @@ import type {
   NextRoundAction,
   SetSequenceAction,
   StartGameAction,
+  SetTrainingAction,
 } from 'domains/game/data/store/types';
 import {
   INCREASE_SCORE,
@@ -15,6 +16,7 @@ import {
   RESET_GAME,
   RESET_MOVE,
   SET_SEQUENCE,
+  SET_TRAINING,
   START_GAME,
 } from 'domains/game/data/store/actionTypes';
 
@@ -26,4 +28,5 @@ export const quitGame = createAction(QUIT_GAME);
 export const resetGame = createAction(RESET_GAME);
 export const resetMove = createAction(RESET_MOVE);
 export const setSequence = createAction<SetSequenceAction>(SET_SEQUENCE);
+export const setTraining = createAction<SetTrainingAction>(SET_TRAINING);
 export const startGame = createAction<StartGameAction>(START_GAME);

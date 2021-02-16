@@ -1,3 +1,7 @@
+0.0.13 (February 16th, 2021)
+  - Adding sounds
+  - Adding blindfolded mode
+
 0.0.12 (February 11th, 2021)
   - Fixing component update issues
   - Temporarily replacing uuid library
