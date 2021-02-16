@@ -22,15 +22,11 @@ type TrainingBoardProps = {
 };
 
 export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
-  const { addTrainingMove } = useTraining();
+  const { setReady } = useTraining();
   const { t } = useTranslation();
 
   const exitGame = () => {
     onGoHome();
-  };
-
-  const onReady = () => {
-    console.log('READY!');
   };
 
   return (
@@ -44,15 +40,15 @@ export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
         </TrainingInstructions>
       </SequencerView>
       <ReadyView>
-        <ReadyButton onPress={onReady}>
+        <ReadyButton onPress={setReady}>
           <ReadyButtonText>{t('training.ready')}</ReadyButtonText>
         </ReadyButton>
         <ReadyButtonContainer>
-          <ForwardButton onPress={onReady} />
+          <ForwardButton onPress={setReady} />
         </ReadyButtonContainer>
       </ReadyView>
       <PlayerView>
-        <KeyPad onKeyPress={addTrainingMove} />
+        <KeyPad />
       </PlayerView>
     </MainView>
   );

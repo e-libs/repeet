@@ -103,6 +103,7 @@ export const useGame = () => {
   const setNextRound = (payload: NextRoundAction) => dispatch(nextRound(payload));
 
   const start = () => {
+    if (!isMounted) return;
     init();
     addSequence();
   };
@@ -128,14 +129,14 @@ export const useGame = () => {
   useEffect(() => {
     const id = getId();
 
-    if (isMounted) {
-      setTimeout(() => start(), roundDelay);
+    setTimeout(() => start(), roundDelay);
 
-      Conductor.on(ROUND_OVER_EVENT, id, () => {
-        dispatch(resetMove());
-        addSequence();
-      });
-    }
+    Conductor.on(ROUND_OVER_EVENT, id, () => {
+      if (!isMounted) return;
+
+      dispatch(resetMove());
+      addSequence();
+    });
 
     return () => {
       reset();

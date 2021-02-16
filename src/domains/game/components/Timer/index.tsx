@@ -6,8 +6,10 @@ import { TIME_BAR_EVENT, TIMER_EVENT } from 'domains/game/data/modules/Timing/co
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 import { getId } from 'helpers/getId';
+import { useIsMounted } from 'helpers/useIsMounted';
 
 export const Timer = () => {
+  const isMounted = useIsMounted();
   const { currentPoolSize } = useConfig();
   const { play } = useSound('tick');
   const [display, setDisplay] = useState(false);
@@ -18,12 +20,14 @@ export const Timer = () => {
     const timeBarId = getId();
 
     Conductor.on(TIMER_EVENT, timerId, (displayTimer: boolean) => {
-      setDisplay(displayTimer);
+      if (isMounted) setDisplay(displayTimer);
     });
 
     Conductor.on(TIME_BAR_EVENT, timeBarId, (time: number) => {
-      setTimeLeft(time);
-      play();
+      if (isMounted) {
+        setTimeLeft(time);
+        play();
+      }
     });
 
     return () => {

@@ -3,9 +3,10 @@ import { useSound } from 'app/media/sound/useSound';
 import { Container, Button } from 'domains/player/components/Key/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { KEYPAD_EVENT } from 'domains/game/data/modules/Timing/constants';
-import { getId } from 'helpers/getId';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import type { Sign } from 'domains/game/data/modules/Sign/types';
+import { getId } from 'helpers/getId';
+import { useIsMounted } from 'helpers/useIsMounted';
 
 type KeyProps = {
   sign: Sign;
@@ -13,10 +14,9 @@ type KeyProps = {
 };
 
 export const Key = ({ sign, onPress }: KeyProps) => {
+  const isMounted = useIsMounted();
   const [enabled, setEnabled] = useState(false);
-
   const { isBlindfolded } = useConfig();
-
   const { play } = useSound(isBlindfolded ? sign.sound : 'sign');
 
   const onBoxClick = () => {
@@ -28,7 +28,7 @@ export const Key = ({ sign, onPress }: KeyProps) => {
     const eventId = getId();
 
     Conductor.on(KEYPAD_EVENT, eventId, (enableButton: boolean) => {
-      setEnabled(enableButton);
+      if (isMounted) setEnabled(enableButton);
     });
 
     return () => {
