@@ -10,7 +10,7 @@ import {
 import { ConfigButton } from 'domains/config/components/ConfigButton';
 
 export const BlindSelector = () => {
-  const { isBlindModeOn, switchBlindMode } = useConfig();
+  const { isBlindfolded, switchBlindMode } = useConfig();
   const { t } = useTranslation();
 
   return (
@@ -18,25 +18,25 @@ export const BlindSelector = () => {
       <Label>{t('config.blind.label')}</Label>
       <ButtonContainer>
         <ConfigButton
-          active={!isBlindModeOn}
+          active={!isBlindfolded}
           color="#26bd53"
-          disabled={!isBlindModeOn}
+          disabled={!isBlindfolded}
           fontSize={25}
           isLeft
           onPress={switchBlindMode}
           label={t('config.blind.off.label')}
         />
         <ConfigButton
-          active={isBlindModeOn}
+          active={isBlindfolded}
           color="#bd322d"
-          disabled={isBlindModeOn}
+          disabled={isBlindfolded}
           fontSize={25}
           isRight
           onPress={switchBlindMode}
           label={t('config.blind.on.label')}
         />
       </ButtonContainer>
-      <Description>{t(`config.blind.${isBlindModeOn ? 'on' : 'off'}.description`)}</Description>
+      <Description>{t(`config.blind.${isBlindfolded ? 'on' : 'off'}.description`)}</Description>
     </Container>
   );
 };

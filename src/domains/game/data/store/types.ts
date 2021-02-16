@@ -14,6 +14,10 @@ export type StartGameAction = {
   attempts: number;
 };
 
+export type SetTrainingAction = {
+  isTraining: boolean;
+};
+
 export type InitGameAction = {
   difficulty: Difficulty;
   speed: number;
@@ -32,4 +36,5 @@ export type GameActions = InitGameAction &
   MoveAction &
   NextRoundAction &
   StartGameAction &
-  SetSequenceAction;
+  SetSequenceAction &
+  SetTrainingAction;

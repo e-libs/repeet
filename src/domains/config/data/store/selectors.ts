@@ -45,7 +45,7 @@ export const getIsSoundOn = createSelector<GlobalState, ConfigState, boolean>(
   ({ isSoundOn }) => isSoundOn,
 );
 
-export const getIsBlindModeOn = createSelector<GlobalState, ConfigState, boolean>(
+export const getIsBlindfolded = createSelector<GlobalState, ConfigState, boolean>(
   getConfig,
-  ({ isBlindModeOn }) => isBlindModeOn,
+  ({ isBlindfolded }) => isBlindfolded,
 );

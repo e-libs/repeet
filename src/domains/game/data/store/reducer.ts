@@ -11,6 +11,7 @@ import {
   RESET_GAME,
   RESET_MOVE,
   SET_SEQUENCE,
+  SET_TRAINING,
   START_GAME,
 } from 'domains/game/data/store/actionTypes';
 
@@ -21,6 +22,7 @@ const initialState: GameState = {
   difficulty: 'EASY',
   isLoading: true,
   isOver: false,
+  isTraining: false,
   level: 0,
   playerSequence: [],
   quit: false,
@@ -66,6 +68,14 @@ export const gameReducer = (state = initialState, action: Action<GameActions>) =
         ...state,
         currentSequence: sequence,
         currentSequenceDisplay: sequenceDisplay,
+      };
+    }
+    case SET_TRAINING: {
+      const { isTraining } = action.payload;
+
+      return {
+        ...state,
+        isTraining,
       };
     }
     case MAKE_MOVE: {

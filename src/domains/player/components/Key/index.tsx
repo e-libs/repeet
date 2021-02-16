@@ -15,9 +15,9 @@ type KeyProps = {
 export const Key = ({ sign, onPress }: KeyProps) => {
   const [enabled, setEnabled] = useState(false);
 
-  const { isBlindModeOn } = useConfig();
+  const { isBlindfolded } = useConfig();
 
-  const { play } = useSound(isBlindModeOn ? sign.sound : 'sign');
+  const { play } = useSound(isBlindfolded ? sign.sound : 'sign');
 
   const onBoxClick = () => {
     play();

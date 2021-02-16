@@ -8,6 +8,7 @@ export type Game = {
   difficulty: Difficulty;
   isLoading: boolean;
   isOver: boolean;
+  isTraining: boolean;
   level: number;
   playerSequence: Sequence;
   quit: boolean;

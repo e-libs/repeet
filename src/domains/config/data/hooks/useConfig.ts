@@ -10,7 +10,7 @@ import {
   getAttempts,
   getDifficulty,
   getGameMode,
-  getIsBlindModeOn,
+  getIsBlindfolded,
   getIsShuffle,
   getIsSoundOn,
   getPool,
@@ -30,7 +30,7 @@ export const useConfig = () => {
   const currentSpeed = useSelector(getSpeed);
   const isShuffle = useSelector(getIsShuffle);
   const isSoundOn = useSelector(getIsSoundOn);
-  const isBlindModeOn = useSelector(getIsBlindModeOn);
+  const isBlindfolded = useSelector(getIsBlindfolded);
 
   const switchMode = () => {
     const mode = currentMode === 'DEFAULT' ? 'ADVANCED' : 'DEFAULT';
@@ -38,7 +38,7 @@ export const useConfig = () => {
   };
 
   const switchBlindMode = () => {
-    dispatch(setBlindMode({ isBlindModeOn: !isBlindModeOn }));
+    dispatch(setBlindMode({ isBlindfolded: !isBlindfolded }));
   };
 
   const switchShuffle = () => {
@@ -60,7 +60,7 @@ export const useConfig = () => {
     currentPool,
     currentPoolSize,
     currentSpeed,
-    isBlindModeOn,
+    isBlindfolded,
     isShuffle,
     isSoundOn,
     switchDifficulty,

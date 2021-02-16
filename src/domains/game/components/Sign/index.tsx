@@ -15,16 +15,16 @@ type SignProps = {
 export const Sign = ({ sign }: SignProps) => {
   const highlight = useRef(new Animated.Value(1)).current;
 
-  const { isBlindModeOn } = useConfig();
+  const { isBlindfolded } = useConfig();
 
-  const { play } = useSound(isBlindModeOn ? sign.sound : 'sign');
+  const { play } = useSound(isBlindfolded ? sign.sound : 'sign');
 
   const { speed } = useSpeed();
 
-  const color = isBlindModeOn ? undefined : sign.color;
+  const color = isBlindfolded ? undefined : sign.color;
 
   const blink = useCallback(async () => {
-    if (!isBlindModeOn) {
+    if (!isBlindfolded) {
       highlight.setValue(0);
       Animated.timing(highlight, {
         toValue: 1,

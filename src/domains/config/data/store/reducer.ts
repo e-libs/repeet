@@ -18,7 +18,7 @@ import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
 const initialState: ConfigState = {
   attempts: DifficultyLevels.MEDIUM.attempts,
   difficulty: 'MEDIUM',
-  isBlindModeOn: false,
+  isBlindfolded: false,
   isShuffle: false,
   isSoundOn: true,
   mode: 'DEFAULT',
@@ -71,11 +71,11 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
       };
     }
     case SET_BLIND_MODE: {
-      const { isBlindModeOn } = action.payload;
+      const { isBlindfolded } = action.payload;
 
       return {
         ...state,
-        isBlindModeOn,
+        isBlindfolded,
       };
     }
     default:
