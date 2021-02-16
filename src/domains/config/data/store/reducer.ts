@@ -1,6 +1,7 @@
 import type { Action } from 'redux-actions';
 import type { ConfigState, ConfigActions } from 'domains/config/data/store/types';
 import {
+  SET_BLIND_MODE,
   SET_DIFFICULTY,
   SET_MODE,
   SET_SHUFFLE,
@@ -17,6 +18,7 @@ import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
 const initialState: ConfigState = {
   attempts: DifficultyLevels.MEDIUM.attempts,
   difficulty: 'MEDIUM',
+  isBlindModeOn: false,
   isShuffle: false,
   isSoundOn: true,
   mode: 'DEFAULT',
@@ -66,6 +68,14 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
       return {
         ...state,
         isSoundOn,
+      };
+    }
+    case SET_BLIND_MODE: {
+      const { isBlindModeOn } = action.payload;
+
+      return {
+        ...state,
+        isBlindModeOn,
       };
     }
     default:

@@ -1,9 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setDifficulty, setMode, setShuffle, setSound } from 'domains/config/data/store/actions';
+import {
+  setBlindMode,
+  setDifficulty,
+  setMode,
+  setShuffle,
+  setSound,
+} from 'domains/config/data/store/actions';
 import {
   getAttempts,
   getDifficulty,
   getGameMode,
+  getIsBlindModeOn,
   getIsShuffle,
   getIsSoundOn,
   getPool,
@@ -23,10 +30,15 @@ export const useConfig = () => {
   const currentSpeed = useSelector(getSpeed);
   const isShuffle = useSelector(getIsShuffle);
   const isSoundOn = useSelector(getIsSoundOn);
+  const isBlindModeOn = useSelector(getIsBlindModeOn);
 
   const switchMode = () => {
     const mode = currentMode === 'DEFAULT' ? 'ADVANCED' : 'DEFAULT';
     dispatch(setMode({ mode }));
+  };
+
+  const switchBlindMode = () => {
+    dispatch(setBlindMode({ isBlindModeOn: !isBlindModeOn }));
   };
 
   const switchShuffle = () => {
@@ -48,11 +60,13 @@ export const useConfig = () => {
     currentPool,
     currentPoolSize,
     currentSpeed,
+    isBlindModeOn,
     isShuffle,
     isSoundOn,
     switchDifficulty,
     switchMode,
     switchShuffle,
     switchSound,
+    switchBlindMode,
   };
 };

@@ -28,6 +28,17 @@ export default {
         on: 'On',
         off: 'Off',
       },
+      blind: {
+        label: 'Blind mode',
+        off: {
+          label: 'Off',
+          description: 'You will see the computer buttons, and follow the sequence by their color',
+        },
+        on: {
+          label: 'On',
+          description: 'You will not see the buttons, you must play by ear',
+        },
+      },
       mode: {
         label: 'Mode',
         default: {

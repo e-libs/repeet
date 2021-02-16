@@ -18,17 +18,17 @@ export const KeyPad = ({ onKeyPress }: KeyPadProps) => {
   return (
     <Container>
       <Line>
-        <Key id={Red.number} color={Red.color} onPress={onBoxClick}></Key>
-        <Key id={Green.number} color={Green.color} onPress={onBoxClick}></Key>
+        <Key sign={Red} onPress={onBoxClick}></Key>
+        <Key sign={Green} onPress={onBoxClick}></Key>
       </Line>
       <Line>
-        <Key id={Yellow.number} color={Yellow.color} onPress={onBoxClick}></Key>
-        <Key id={Blue.number} color={Blue.color} onPress={onBoxClick}></Key>
+        <Key sign={Yellow} onPress={onBoxClick}></Key>
+        <Key sign={Blue} onPress={onBoxClick}></Key>
       </Line>
       {currentPoolSize === 6 && (
         <Line>
-          <Key id={Purple.number} color={Purple.color} onPress={onBoxClick}></Key>
-          <Key id={Wine.number} color={Wine.color} onPress={onBoxClick}></Key>
+          <Key sign={Purple} onPress={onBoxClick}></Key>
+          <Key sign={Wine} onPress={onBoxClick}></Key>
         </Line>
       )}
     </Container>

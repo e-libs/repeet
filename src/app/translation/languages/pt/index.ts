@@ -28,6 +28,17 @@ export default {
         on: 'Ligado',
         off: 'Desligado',
       },
+      blind: {
+        label: 'Modo escuro',
+        off: {
+          label: 'Desligado',
+          description: 'Você verá os botões do computador, e seguirá as sequências pela cor',
+        },
+        on: {
+          label: 'Ligado',
+          description: 'Você não verá os botões, terá que jogar com os ouvidos',
+        },
+      },
       mode: {
         label: 'Modo',
         default: {

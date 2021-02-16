@@ -13,6 +13,7 @@ export type DifficultyLevel = Record<Difficulty, DifficultyConfig>;
 export type ConfigState = {
   attempts: number;
   difficulty: Difficulty;
+  isBlindModeOn: boolean;
   isShuffle: boolean;
   isSoundOn: boolean;
   mode: GameMode;
@@ -37,4 +38,12 @@ export type SetSoundAction = {
   isSoundOn: boolean;
 };
 
-export type ConfigActions = SetModeAction & SetDifficultyAction & SetShuffleAction & SetSoundAction;
+export type SetBlindModeAction = {
+  isBlindModeOn: boolean;
+};
+
+export type ConfigActions = SetModeAction &
+  SetDifficultyAction &
+  SetShuffleAction &
+  SetSoundAction &
+  SetBlindModeAction;
