@@ -48,7 +48,7 @@ export const TrainingInstructions = styled.View`
 `;
 
 export const TrainingMessage = styled.Text`
-  font-size: 40px;
+  font-size: 30px;
   color: #ffffff;
   text-align: justify;
 `;

@@ -36,7 +36,6 @@ import { useIsMounted } from 'helpers/useIsMounted';
 import { getId } from 'helpers/getId';
 
 export const useGame = () => {
-  // TODO: consider remove, if not helping with render issue
   const isMounted = useIsMounted();
 
   const { currentDifficulty, currentSpeed, currentPool, currentPoolSize, isShuffle } = useConfig();
