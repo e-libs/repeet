@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal } from 'react-native';
 import { useTranslation } from 'app/translation';
+import { useSound } from 'app/media/sound/useSound';
 import {
   ButtonContainer,
   ButtonText,
@@ -19,6 +20,11 @@ type GameOverModalProps = {
 
 export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps) => {
   const { t } = useTranslation();
+  const { play } = useSound('game-over');
+
+  useEffect(() => {
+    if (isOpen) play();
+  }, [isOpen]);
 
   return (
     <Modal animationType="fade" transparent={true} visible={isOpen} onRequestClose={onExit}>

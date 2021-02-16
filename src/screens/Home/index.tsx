@@ -25,10 +25,16 @@ type Props = {
 export const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
   const { play } = useSound('open-config');
+  const { play: play1 } = useSound('start');
 
   const openMenu = async () => {
     await play();
     navigation.navigate('Config');
+  };
+
+  const onStart = async () => {
+    await play1();
+    navigation.navigate('Game');
   };
 
   return (
@@ -37,7 +43,7 @@ export const Home = ({ navigation }: Props) => {
         <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
       </ConfigContainer>
       <HomeContainer>
-        <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+        <TouchableOpacity onPress={onStart}>
           <Logo />
           <TapToStart color="#427FA7">{t('home.tapToStart')}</TapToStart>
         </TouchableOpacity>
