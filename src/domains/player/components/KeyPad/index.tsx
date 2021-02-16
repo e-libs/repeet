@@ -5,14 +5,14 @@ import { Red, Green, Yellow, Blue, Purple, Wine } from 'domains/game/data/module
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 
 type KeyPadProps = {
-  onKeyPress?: (id: number) => void;
+  onKeyPress: (id: number) => void;
 };
 
 export const KeyPad = ({ onKeyPress }: KeyPadProps) => {
   const { currentPoolSize } = useConfig();
 
   const onBoxClick = (id: number) => {
-    onKeyPress?.(id);
+    onKeyPress(id);
   };
 
   return (

@@ -47,6 +47,10 @@ export class EventManager {
     this.events.off(eventId);
   }
 
+  emit(event: string, param?: any) {
+    this.events.emit(event, param);
+  }
+
   twinkle(keyName: string) {
     this.events.emit(keyName);
   }

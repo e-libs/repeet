@@ -6,11 +6,11 @@ import { BackButton } from 'domains/shell/components/BackButton';
 
 type HeaderProps = {
   isGameOver?: boolean;
-  isTraining: boolean;
+  isTraining?: boolean;
   onExit: () => void;
 };
 
-export const Header = ({ isGameOver, isTraining, onExit }: HeaderProps) => {
+export const Header = ({ isGameOver, isTraining = false, onExit }: HeaderProps) => {
   const { score } = useScore();
 
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);

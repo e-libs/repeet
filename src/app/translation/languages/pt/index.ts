@@ -21,6 +21,11 @@ export default {
         exit: 'Sair',
       },
     },
+    training: {
+      message:
+        'Pressione as teclas para conhecer seus sons. Memorize-os, pois você precisará repetir o que ouvir.',
+      ready: 'Estou pronto',
+    },
     config: {
       title: 'Configurações',
       sound: {

@@ -21,6 +21,11 @@ export default {
         exit: 'Exit',
       },
     },
+    training: {
+      message:
+        'Tap the keys to get to know their sounds. Memorize them, as you will need to repeat what you hear.',
+      ready: 'I am ready',
+    },
     config: {
       title: 'Configurations',
       sound: {

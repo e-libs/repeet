@@ -1,26 +1,36 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { useTranslation } from 'app/translation';
 import {
   HeaderView,
   MainView,
   PlayerView,
+  ReadyButton,
+  ReadyButtonContainer,
+  ReadyButtonText,
+  ReadyView,
   SequencerView,
-  TimerView,
-} from 'domains/game/components/Board/styles';
+  TrainingInstructions,
+  TrainingMessage,
+} from 'domains/game/components/TrainingBoard/styles';
 import { Header } from 'domains/game/components/Header';
 import { KeyPad } from 'domains/player/components/KeyPad';
-import { Sequencer } from 'domains/game/components/Sequencer';
+import { useTraining } from 'domains/game/data/hooks/useTraining';
+import { ForwardButton } from 'domains/shell/components/ForwardButton';
 
 type TrainingBoardProps = {
   onGoHome: () => void;
 };
 
 export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
-  console.log('Training');
+  const { addTrainingMove } = useTraining();
+  const { t } = useTranslation();
 
   const exitGame = () => {
-    console.log('GO');
     onGoHome();
+  };
+
+  const onReady = () => {
+    console.log('READY!');
   };
 
   return (
@@ -29,13 +39,20 @@ export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
         <Header isTraining onExit={exitGame} />
       </HeaderView>
       <SequencerView>
-        <Sequencer />
+        <TrainingInstructions>
+          <TrainingMessage>{t('training.message')}</TrainingMessage>
+        </TrainingInstructions>
       </SequencerView>
-      <TimerView>
-        <Text style={{ color: 'red' }}>ready?</Text>
-      </TimerView>
+      <ReadyView>
+        <ReadyButton onPress={onReady}>
+          <ReadyButtonText>{t('training.ready')}</ReadyButtonText>
+        </ReadyButton>
+        <ReadyButtonContainer>
+          <ForwardButton onPress={onReady} />
+        </ReadyButtonContainer>
+      </ReadyView>
       <PlayerView>
-        <KeyPad />
+        <KeyPad onKeyPress={addTrainingMove} />
       </PlayerView>
     </MainView>
   );
