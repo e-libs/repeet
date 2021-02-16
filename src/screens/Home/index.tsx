@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { useTranslation } from 'app/translation';
+import { useSound } from 'app/media/sound/useSound';
 import {
   ConfigContainer,
   FooterContainer,
@@ -23,8 +24,12 @@ type Props = {
 
 export const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
+  const { play } = useSound('open-config');
 
-  const openMenu = () => navigation.navigate('Config');
+  const openMenu = async () => {
+    await play();
+    navigation.navigate('Config');
+  };
 
   return (
     <MainView>

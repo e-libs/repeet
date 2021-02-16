@@ -1,1 +1,1 @@
-export type SoundType = 'click';
+export type SoundType = 'click' | 'open-config';
