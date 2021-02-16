@@ -13,7 +13,7 @@ type SignProps = {
 
 export const Sign = ({ sign }: SignProps) => {
   const highlight = useRef(new Animated.Value(1)).current;
-  const { play } = useSound('click');
+  const { play } = useSound('sign');
 
   const { speed } = useSpeed();
 
