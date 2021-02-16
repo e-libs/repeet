@@ -5,11 +5,12 @@ import { ExitModal } from 'domains/shell/components/ExitModal';
 import { BackButton } from 'domains/shell/components/BackButton';
 
 type HeaderProps = {
-  isGameOver: boolean;
-  onExit: () => void;
+  isGameOver?: boolean;
+  isTraining: boolean;
+  onExit?: () => void;
 };
 
-export const Header = ({ isGameOver, onExit }: HeaderProps) => {
+export const Header = ({ isGameOver, isTraining, onExit }: HeaderProps) => {
   const { score } = useScore();
 
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
@@ -24,7 +25,7 @@ export const Header = ({ isGameOver, onExit }: HeaderProps) => {
 
   const exitGame = () => {
     setIsExitModalOpen(false);
-    onExit();
+    onExit?.();
   };
 
   useEffect(() => {
@@ -33,11 +34,15 @@ export const Header = ({ isGameOver, onExit }: HeaderProps) => {
 
   return (
     <Container>
-      <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
-      <BackButtonContainer>
-        <BackButton onPress={openExitModal} />
-      </BackButtonContainer>
-      <Score>{score}</Score>
+      {!isTraining && (
+        <>
+          <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
+          <BackButtonContainer>
+            <BackButton onPress={openExitModal} />
+          </BackButtonContainer>
+          <Score>{score}</Score>
+        </>
+      )}
     </Container>
   );
 };
