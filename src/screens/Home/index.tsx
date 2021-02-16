@@ -24,16 +24,16 @@ type Props = {
 
 export const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
-  const { play } = useSound('open-config');
-  const { play: play1 } = useSound('start');
+  const config = useSound('open-config');
+  const start = useSound('start');
 
   const openMenu = async () => {
-    await play();
+    await config.play();
     navigation.navigate('Config');
   };
 
   const onStart = async () => {
-    await play1();
+    await start.play();
     navigation.navigate('Game');
   };
 
