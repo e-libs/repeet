@@ -20,10 +20,22 @@ type GameOverModalProps = {
 
 export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps) => {
   const { t } = useTranslation();
-  const { play } = useSound('game-over');
+  const gameOver = useSound('game-over');
+  const button = useSound('button');
+  const exitButton = useSound('exit');
+
+  const tryAgain = async () => {
+    await button.play();
+    onTryAgain();
+  };
+
+  const exit = async () => {
+    await exitButton.play();
+    onExit();
+  };
 
   useEffect(() => {
-    if (isOpen) play();
+    if (isOpen) gameOver.play();
   }, [isOpen]);
 
   return (
@@ -32,10 +44,10 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
         <ModalView>
           <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
           <ButtonContainer>
-            <TryAgainButton onPress={onTryAgain} underlayColor="#adcb72">
+            <TryAgainButton onPress={tryAgain} underlayColor="#adcb72">
               <ButtonText color="#000">{t('game.gameOver.tryAgain')}</ButtonText>
             </TryAgainButton>
-            <ExitButton onPress={onExit} underlayColor="#595959">
+            <ExitButton onPress={exit} underlayColor="#595959">
               <ButtonText color="#ff3a3a">{t('game.gameOver.exit')}</ButtonText>
             </ExitButton>
           </ButtonContainer>

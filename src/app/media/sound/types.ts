@@ -1,8 +1,9 @@
 export type SoundType =
-  | 'back'
+  | 'button'
   | 'click'
   | 'countdown'
   | 'countdown-go'
+  | 'exit'
   | 'game-over'
   | 'open-config'
   | 'note-1'

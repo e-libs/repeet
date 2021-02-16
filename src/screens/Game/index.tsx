@@ -22,7 +22,7 @@ export const Game = ({ navigation }: Props) => {
   };
 
   useEffect(() => {
-    if (isBlindfolded) setTraining(true);
+    setTraining(isBlindfolded);
   }, [isBlindfolded]);
 
   if (isTraining) return <TrainingBoard onGoHome={navigateHome} />;

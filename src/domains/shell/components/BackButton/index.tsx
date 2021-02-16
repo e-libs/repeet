@@ -9,7 +9,7 @@ type BackButtonProps = {
 };
 
 export const BackButton = ({ onPress }: BackButtonProps) => {
-  const { play } = useSound('back');
+  const { play } = useSound('button');
 
   const onBackButtonPress = async () => {
     await play();

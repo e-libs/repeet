@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'app/translation';
+import { useSound } from 'app/media/sound/useSound';
 import {
   HeaderView,
   MainView,
@@ -24,9 +25,15 @@ type TrainingBoardProps = {
 export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
   const { setReady } = useTraining();
   const { t } = useTranslation();
+  const { play } = useSound('button');
 
   const exitGame = () => {
     onGoHome();
+  };
+
+  const onReady = async () => {
+    await play();
+    setTimeout(() => setReady(), 500);
   };
 
   return (
@@ -40,11 +47,11 @@ export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
         </TrainingInstructions>
       </SequencerView>
       <ReadyView>
-        <ReadyButton onPress={setReady}>
+        <ReadyButton onPress={onReady}>
           <ReadyButtonText>{t('training.ready')}</ReadyButtonText>
         </ReadyButton>
         <ReadyButtonContainer>
-          <ForwardButton onPress={setReady} />
+          <ForwardButton onPress={onReady} />
         </ReadyButtonContainer>
       </ReadyView>
       <PlayerView>
