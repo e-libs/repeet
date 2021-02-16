@@ -29,7 +29,7 @@ export default {
         off: 'Off',
       },
       blind: {
-        label: 'Blind mode',
+        label: 'Blindfolded',
         off: {
           label: 'Off',
           description: 'You will see the computer buttons, and follow the sequence by their color',

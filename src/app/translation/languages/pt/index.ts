@@ -29,7 +29,7 @@ export default {
         off: 'Desligado',
       },
       blind: {
-        label: 'Modo escuro',
+        label: 'Modo Vendado',
         off: {
           label: 'Desligado',
           description: 'Você verá os botões do computador, e seguirá as sequências pela cor',
