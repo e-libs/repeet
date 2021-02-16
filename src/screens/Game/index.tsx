@@ -25,7 +25,7 @@ export const Game = ({ navigation }: Props) => {
     if (isBlindfolded) setTraining(true);
   }, [isBlindfolded]);
 
-  if (isTraining) return <TrainingBoard />;
+  if (isTraining) return <TrainingBoard onGoHome={navigateHome} />;
 
   if (isLoading) return <Intro />;
 

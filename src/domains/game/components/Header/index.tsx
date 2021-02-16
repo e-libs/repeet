@@ -7,7 +7,7 @@ import { BackButton } from 'domains/shell/components/BackButton';
 type HeaderProps = {
   isGameOver?: boolean;
   isTraining: boolean;
-  onExit?: () => void;
+  onExit: () => void;
 };
 
 export const Header = ({ isGameOver, isTraining, onExit }: HeaderProps) => {
@@ -25,7 +25,7 @@ export const Header = ({ isGameOver, isTraining, onExit }: HeaderProps) => {
 
   const exitGame = () => {
     setIsExitModalOpen(false);
-    onExit?.();
+    onExit();
   };
 
   useEffect(() => {
@@ -34,15 +34,11 @@ export const Header = ({ isGameOver, isTraining, onExit }: HeaderProps) => {
 
   return (
     <Container>
-      {!isTraining && (
-        <>
-          <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
-          <BackButtonContainer>
-            <BackButton onPress={openExitModal} />
-          </BackButtonContainer>
-          <Score>{score}</Score>
-        </>
-      )}
+      <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
+      <BackButtonContainer>
+        <BackButton onPress={openExitModal} />
+      </BackButtonContainer>
+      {!isTraining && <Score>{score}</Score>}
     </Container>
   );
 };

@@ -11,19 +11,28 @@ import { Header } from 'domains/game/components/Header';
 import { KeyPad } from 'domains/player/components/KeyPad';
 import { Sequencer } from 'domains/game/components/Sequencer';
 
-export const TrainingBoard = () => {
+type TrainingBoardProps = {
+  onGoHome: () => void;
+};
+
+export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
   console.log('Training');
+
+  const exitGame = () => {
+    console.log('GO');
+    onGoHome();
+  };
 
   return (
     <MainView>
       <HeaderView>
-        <Header isTraining />
+        <Header isTraining onExit={exitGame} />
       </HeaderView>
       <SequencerView>
         <Sequencer />
       </SequencerView>
       <TimerView>
-        <Text>ready?</Text>
+        <Text style={{ color: 'red' }}>ready?</Text>
       </TimerView>
       <PlayerView>
         <KeyPad />
