@@ -24,16 +24,19 @@ export const TimerContainer = styled.View`
 export const GetReadyLabel = styled.Text`
   font-weight: bold;
   font-size: 65px;
+  color: #000;
 `;
 
 export const Timer = styled.Text`
   font-weight: bold;
   font-size: 280px;
+  color: #000;
 `;
 
 export const Go = styled.Text`
   font-weight: bold;
   font-size: 170px;
+  color: #000;
 `;
 
 export const BottomSpacer = styled.View`

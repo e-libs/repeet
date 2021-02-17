@@ -8,4 +8,5 @@ export const FooterContainer = styled.View`
 export const FooterText = styled.Text`
   text-align: center;
   font-size: 15px;
+  color: #000;
 `;

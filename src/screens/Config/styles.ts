@@ -21,6 +21,7 @@ export const TitleContainer = styled.View`
 
 export const Title = styled.Text`
   font-size: 40px;
+  color: #000;
 `;
 
 export const HeaderContainer = styled.View`
