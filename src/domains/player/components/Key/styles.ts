@@ -6,9 +6,8 @@ export const Container = styled.View`
 
 export const Button = styled.TouchableOpacity<{ color: string; disabled: boolean }>`
   ${({ color, disabled }) => css`
-    background-color: ${color};
+    background-color: ${color}${disabled ? '1A' : 'FF'};
     flex: 1;
     border: 5px solid black;
-    opacity: ${disabled ? '0.1' : '1'};
   `}
 `;
