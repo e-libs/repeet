@@ -18,7 +18,7 @@ export const useSoundPlayer = (asset: Asset | undefined) => {
         await sound.playAsync();
       }
     } catch (ex) {
-      if (logConfig.enabled) console.log('ERROR WHILE LOADING SOUND', ex);
+      if (logConfig.enabled) console.log('ERROR WHILE LOADING SOUND', asset?.name, ex);
     }
   }
 
