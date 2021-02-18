@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { useTranslation } from 'app/translation';
 import type { RootStackParamList } from 'screens/types';
@@ -28,6 +29,7 @@ export const Config = ({ navigation }: Props) => {
 
   return (
     <MainView>
+      <StatusBar barStyle="dark-content" />
       <HeaderContainer>
         <BackButtonContainer>
           <BackButton onPress={goBack} />

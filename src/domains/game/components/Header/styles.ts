@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import ios from 'helpers/ios';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,10 +13,10 @@ export const Container = styled.View`
 export const Score = styled.Text`
   color: #f11;
   font-size: 60px;
-  font-weight: 500;
+  font-weight: bold;
   font-family: Verdana;
 `;
 
 export const BackButtonContainer = styled.View`
-  bottom: 13px;
+  bottom: ${ios ? 14 : 19}px;
 `;

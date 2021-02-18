@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
+import ios from 'helpers/ios';
 
 export const MainView = styled.View`
   flex: 1;
 `;
 
 export const HeaderView = styled.View`
-  flex: 2;
+  flex: ${ios ? 2.1 : 1.7};
 `;
 
 export const SequencerView = styled.View`

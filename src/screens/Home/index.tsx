@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StatusBar } from 'react-native';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { useTranslation } from 'app/translation';
@@ -39,6 +39,7 @@ export const Home = ({ navigation }: Props) => {
 
   return (
     <MainView>
+      <StatusBar barStyle="dark-content" />
       <ConfigContainer>
         <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
       </ConfigContainer>

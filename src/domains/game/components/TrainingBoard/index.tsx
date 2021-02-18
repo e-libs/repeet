@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -38,6 +39,7 @@ export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
 
   return (
     <MainView>
+      <StatusBar barStyle="light-content" />
       <HeaderView>
         <Header isTraining onExit={exitGame} />
       </HeaderView>

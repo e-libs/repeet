@@ -27,7 +27,6 @@ export const PlayerView = styled.View`
 `;
 
 export const ReadyButton = styled.TouchableOpacity`
-  /* color: red; */
   flex: 1;
   justify-content: center;
   align-items: flex-end;
@@ -38,6 +37,7 @@ export const ReadyButtonText = styled.Text`
   color: #315f7e;
   font-size: 40px;
   font-weight: bold;
+  bottom: 4px;
 `;
 
 export const TrainingInstructions = styled.View`

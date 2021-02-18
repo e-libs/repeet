@@ -7,6 +7,7 @@ export const Container = styled.View`
 export const Label = styled.Text`
   font-size: 30px;
   font-weight: bold;
+  color: #000;
 `;
 
 export const ButtonContainer = styled.View`

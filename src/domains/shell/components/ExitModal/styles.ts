@@ -23,6 +23,7 @@ export const ButtonContainer = styled.View`
 export const ConfirmText = styled.Text`
   font-size: 30px;
   margin-bottom: 30px;
+  color: #000;
 `;
 
 const Button = styled.TouchableHighlight`
