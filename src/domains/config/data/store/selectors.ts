@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import type { GlobalState } from 'app/store/types';
 import type { ConfigState, GameMode, Difficulty } from 'domains/config/data/store/types';
-import type { Sign } from 'domains/game/data/modules/Sign/types';
+import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 
 export const getConfig = (state: GlobalState) => state.config;
 
@@ -10,7 +10,7 @@ export const getGameMode = createSelector<GlobalState, ConfigState, GameMode>(
   ({ mode }) => mode,
 );
 
-export const getPool = createSelector<GlobalState, ConfigState, Sign[]>(
+export const getPool = createSelector<GlobalState, ConfigState, Sequence>(
   getConfig,
   ({ pool }) => pool,
 );

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Line } from 'domains/game/components/Sequencer/styles';
 import { Sign } from 'domains/game/components/Sign';
-// import { Grey } from 'domains/game/data/modules/Sign';
 import { useConfig } from 'domains/config/data/hooks/useConfig';
 import { useSequence } from 'domains/game/data/hooks/useSequence';
 
