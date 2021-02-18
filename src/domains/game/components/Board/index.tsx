@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { StatusBar as RNStatusBar } from 'react-native';
 import {
   HeaderView,
   MainView,
@@ -37,6 +38,7 @@ export const Board = ({ onGoHome }: BoardProps) => {
 
   return (
     <MainView>
+      <RNStatusBar barStyle="light-content" />
       <GameOverModal
         isOpen={!hasQuit && isGameOver && !choseExit}
         onExit={goHome}

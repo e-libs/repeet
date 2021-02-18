@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
-import ios from 'helpers/ios';
 
-export const MainView = styled.View`
+export const MainView = styled.SafeAreaView`
   flex: 1;
   justify-content: flex-end;
 `;
@@ -26,7 +25,7 @@ export const Title = styled.Text`
 `;
 
 export const HeaderContainer = styled.View`
-  flex: ${ios ? 1.7 : 1.3};
+  flex: 1.3;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/native';
-import ios from 'helpers/ios';
 
-export const MainView = styled.View`
+export const MainView = styled.SafeAreaView`
   flex: 1;
 `;
 
@@ -20,7 +19,7 @@ export const TapToStart = styled.Text<{ color: string }>`
 `;
 
 export const ConfigContainer = styled.View`
-  flex: ${ios ? 1.7 : 1.2};
+  flex: 1.2;
   justify-content: flex-end;
   align-items: flex-end;
   padding-right: 20px;

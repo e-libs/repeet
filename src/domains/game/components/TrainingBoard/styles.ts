@@ -27,7 +27,6 @@ export const PlayerView = styled.View`
 `;
 
 export const ReadyButton = styled.TouchableOpacity`
-  /* color: red; */
   flex: 1;
   justify-content: center;
   align-items: flex-end;
