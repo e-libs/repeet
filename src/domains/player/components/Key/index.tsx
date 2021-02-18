@@ -38,7 +38,7 @@ export const Key = ({ sign, onPress }: KeyProps) => {
 
   return (
     <Container>
-      <Button color={sign.color} disabled={!enabled} onPress={onBoxClick} />
+      <Button color={sign.color} disabled={!enabled} onPressIn={onBoxClick} />
     </Container>
   );
 };
