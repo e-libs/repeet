@@ -49,12 +49,7 @@ export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
         </TrainingInstructions>
       </SequencerView>
       <ReadyView>
-        <ReadyButton onPress={onReady}>
-          <ReadyButtonText>{t('training.ready')}</ReadyButtonText>
-        </ReadyButton>
-        <ReadyButtonContainer>
-          <ForwardButton onPress={onReady} />
-        </ReadyButtonContainer>
+        <ForwardButton onPress={onReady} text={t('training.ready')} />
       </ReadyView>
       <PlayerView>
         <KeyPad />
