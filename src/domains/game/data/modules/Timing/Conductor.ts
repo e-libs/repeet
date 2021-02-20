@@ -8,10 +8,11 @@ import {
   TIME_BAR_EVENT,
   TIMER_EVENT,
 } from 'domains/game/data/modules/Timing/constants';
+import type { EventTypes } from 'domains/game/data/modules/Timing/types';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 
 export class EventManager {
-  protected events: IPubSub<any>;
+  protected events: IPubSub<EventTypes>;
 
   private isActive = false;
 
@@ -34,12 +35,7 @@ export class EventManager {
     this.poolSize = poolSize;
   }
 
-  stop() {
-    this.isActive = false;
-    this.setRoundOver();
-  }
-
-  on<T>(keyName: string, eventId: string, callback: (value: T) => void) {
+  on(keyName: string, eventId: string, callback: (value: EventTypes) => void) {
     this.events.on(keyName, eventId, callback);
   }
 
@@ -47,15 +43,17 @@ export class EventManager {
     this.events.off(eventId);
   }
 
-  emit(event: string, param?: any) {
+  emit(event: string, param?: EventTypes) {
     this.events.emit(event, param);
   }
 
   twinkle(keyName: string) {
+    if (!this.isActive) return;
     this.events.emit(keyName);
   }
 
   setTimeBar(time: number) {
+    if (!this.isActive) return;
     this.events.emit(TIME_BAR_EVENT, this.poolSize - time);
   }
 
@@ -99,8 +97,6 @@ export class EventManager {
 
       this.timers.push(
         setTimeout(() => {
-          if (!this.isActive) return;
-
           this.setTimeBar(time);
 
           if (time === lastIndex) {
@@ -117,8 +113,6 @@ export class EventManager {
 
       this.timers.push(
         setTimeout(() => {
-          if (!this.isActive) return;
-
           this.twinkle(key.name);
 
           if (i === lastIndex) {

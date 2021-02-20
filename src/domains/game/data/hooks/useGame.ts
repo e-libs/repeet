@@ -63,7 +63,7 @@ export const useGame = () => {
   };
 
   const reset = () => {
-    Conductor.stop();
+    Conductor.reset();
     dispatch(resetGame());
   };
 

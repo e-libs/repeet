@@ -1,14 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { useTranslation } from 'app/translation';
-import { useSound } from 'app/media/sound/useSound';
 import {
   HeaderView,
   MainView,
   PlayerView,
-  ReadyButton,
-  ReadyButtonContainer,
-  ReadyButtonText,
   ReadyView,
   SequencerView,
   TrainingInstructions,
@@ -26,14 +22,12 @@ type TrainingBoardProps = {
 export const TrainingBoard = ({ onGoHome }: TrainingBoardProps) => {
   const { setReady } = useTraining();
   const { t } = useTranslation();
-  const { play } = useSound('button');
 
   const exitGame = () => {
     onGoHome();
   };
 
-  const onReady = async () => {
-    await play();
+  const onReady = () => {
     setTimeout(() => setReady(), 500);
   };
 
