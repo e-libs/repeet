@@ -1,42 +1,24 @@
 import React from 'react';
 import { useTranslation } from 'app/translation';
-import { useConfig } from 'domains/config/data/hooks/useConfig';
-import {
-  ButtonContainer,
-  Container,
-  Description,
-  Label,
-} from 'domains/config/components/BlindSelector/styles';
-import { ConfigButton } from 'domains/config/components/ConfigButton';
+import { ConfigSelector } from 'domains/config/components/ConfigSelector';
+import type { ConfigOption } from 'domains/config/data/types';
 
 export const BlindSelector = () => {
-  const { isBlindfolded, switchBlindMode } = useConfig();
   const { t } = useTranslation();
+  const options: ConfigOption[] = [
+    {
+      color: '#26bd53',
+      description: t('config.blind.off.description'),
+      label: t('config.blind.off.label'),
+      value: false,
+    },
+    {
+      color: '#bd322d',
+      description: t('config.blind.on.description'),
+      label: t('config.blind.on.label'),
+      value: true,
+    },
+  ];
 
-  return (
-    <Container>
-      <Label>{t('config.blind.label')}</Label>
-      <ButtonContainer>
-        <ConfigButton
-          active={!isBlindfolded}
-          color="#26bd53"
-          disabled={!isBlindfolded}
-          fontSize={25}
-          isLeft
-          onPress={switchBlindMode}
-          label={t('config.blind.off.label')}
-        />
-        <ConfigButton
-          active={isBlindfolded}
-          color="#bd322d"
-          disabled={isBlindfolded}
-          fontSize={25}
-          isRight
-          onPress={switchBlindMode}
-          label={t('config.blind.on.label')}
-        />
-      </ButtonContainer>
-      <Description>{t(`config.blind.${isBlindfolded ? 'on' : 'off'}.description`)}</Description>
-    </Container>
-  );
+  return <ConfigSelector title={t('config.blind.label')} options={options} configType="BLIND" />;
 };
