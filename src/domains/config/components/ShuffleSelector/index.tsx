@@ -2,9 +2,11 @@ import React from 'react';
 import { useTranslation } from 'app/translation';
 import { ConfigSelector } from 'domains/config/components/ConfigSelector';
 import type { ConfigOption } from 'domains/config/data/types';
+import { useConfig } from 'domains/config/data/hooks/useConfig';
 
 export const ShuffleSelector = () => {
   const { t } = useTranslation();
+  const { isBlindfolded } = useConfig();
   const options: ConfigOption[] = [
     {
       color: '#26bd53',
@@ -19,8 +21,16 @@ export const ShuffleSelector = () => {
       value: true,
     },
   ];
+  const disabled = isBlindfolded;
+  const disabledReason = isBlindfolded ? t('config.shuffle.disabledReason') : '';
 
   return (
-    <ConfigSelector title={t('config.shuffle.label')} options={options} configType="SHUFFLE" />
+    <ConfigSelector
+      title={t('config.shuffle.label')}
+      options={options}
+      configType="SHUFFLE"
+      disabled={disabled}
+      disabledReason={disabledReason}
+    />
   );
 };

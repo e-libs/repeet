@@ -43,6 +43,7 @@ export default {
           label: 'Ligado',
           description: 'Você não verá os botões, terá que jogar com os ouvidos',
         },
+        disabledReason: 'Esse modo é desabilitado quando o som está desligado',
       },
       mode: {
         label: 'Modo',
@@ -81,6 +82,7 @@ export default {
           label: 'Desligado',
           description: 'Sem embaralhar é mais fácil! A sequência exibida será sempre a mesma',
         },
+        disabledReason: 'Esse modo é desabilitado quando o modo vendado está ligado',
       },
     },
     footer: {

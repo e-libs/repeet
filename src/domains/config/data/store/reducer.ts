@@ -65,17 +65,23 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
     case SET_SOUND: {
       const { isSoundOn } = action.payload;
 
+      const isBlindfolded = !isSoundOn ? false : state.isBlindfolded;
+
       return {
         ...state,
         isSoundOn,
+        isBlindfolded,
       };
     }
     case SET_BLIND_MODE: {
       const { isBlindfolded } = action.payload;
 
+      const isShuffle = isBlindfolded ? false : state.isShuffle;
+
       return {
         ...state,
         isBlindfolded,
+        isShuffle,
       };
     }
     default:

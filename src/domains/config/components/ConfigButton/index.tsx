@@ -40,7 +40,7 @@ export const ConfigButton = ({
       isRight={isRight}
       onPress={onButtonPress}
     >
-      <ButtonText fontColor={optionDisabled ? '#888' : '#fff'} fontSize={fontSize}>
+      <ButtonText disabled={optionDisabled} fontSize={fontSize}>
         {label}
       </ButtonText>
     </Button>

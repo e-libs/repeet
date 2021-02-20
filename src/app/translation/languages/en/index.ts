@@ -82,6 +82,7 @@ export default {
           label: 'Off',
           description: 'Not shuffling is easy! The displayed sequences are always the same',
         },
+        disabledReason: 'This mode is disabled when blindfolded mode is on',
       },
     },
     footer: {
