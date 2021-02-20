@@ -42,7 +42,14 @@ export const useGame = () => {
   const negative = useSound('negative');
   const levelUp = useSound('level-up');
 
-  const { currentDifficulty, currentSpeed, currentPool, currentPoolSize, isShuffle } = useConfig();
+  const {
+    currentAttempts,
+    currentDifficulty,
+    currentSpeed,
+    currentPool,
+    currentPoolSize,
+    isShuffle,
+  } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -87,7 +94,6 @@ export const useGame = () => {
       const sign = getSignByNumber(id);
       dispatch(makeMove({ sign }));
     } else if (move === 'BAD') {
-      negative.play();
       dispatch(resetMove());
       Conductor.setFail();
       if (attemptsLeft > 1) {
@@ -128,6 +134,10 @@ export const useGame = () => {
   useEffect(() => {
     if (level > 0) levelUp.play();
   }, [level]);
+
+  useEffect(() => {
+    if (attemptsLeft < currentAttempts) negative.play();
+  }, [attemptsLeft]);
 
   useEffect(() => {
     if (playerSequence.length > 0 && playerSequence.length === currentSequence.length) {
