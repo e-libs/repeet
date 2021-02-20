@@ -1,13 +1,15 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
   margin-top: 40px;
 `;
 
-export const Label = styled.Text`
+export const Label = styled.Text<{ disabled: boolean }>`
+  ${({ disabled }) => css`
+    color: ${disabled ? '#999' : '#000'};
+  `}
   font-size: 30px;
   font-weight: bold;
-  color: #000;
 `;
 
 export const ButtonContainer = styled.View`
@@ -16,8 +18,10 @@ export const ButtonContainer = styled.View`
   margin-top: 20px;
 `;
 
-export const Description = styled.Text`
+export const Description = styled.Text<{ disabled: boolean }>`
+  ${({ disabled }) => css`
+    color: ${disabled ? '#888' : '#000'};
+  `}
   margin-top: 20px;
   font-size: 18px;
-  color: #000;
 `;

@@ -11,11 +11,19 @@ import type { ConfigType, ConfigOption } from 'domains/config/data/types';
 
 type ConfigSelectorProps = {
   configType: ConfigType;
+  disabled?: boolean;
+  disabledReason?: string;
   options: ConfigOption[];
   title: string;
 };
 
-export const ConfigSelector = ({ configType, options, title }: ConfigSelectorProps) => {
+export const ConfigSelector = ({
+  configType,
+  disabled = false,
+  disabledReason,
+  options,
+  title,
+}: ConfigSelectorProps) => {
   const { config } = useConfig();
   const currentConfig = config[configType];
   let description: string | undefined = '';
@@ -33,19 +41,21 @@ export const ConfigSelector = ({ configType, options, title }: ConfigSelectorPro
 
       const button = (
         <ConfigButton
-          active={isSelected}
+          active={!disabled && isSelected}
           color={option.color}
-          disabled={isSelected}
+          disabled={disabled || isSelected}
           fontSize={option.fontSize ?? 25}
           isLeft={i === 0}
           isRight={i === options.length - 1}
           key={i}
           onPress={onPress}
+          optionDisabled={disabled}
           label={option.label}
         />
       );
 
-      if (isSelected && !!option.description) description = option.description;
+      if (disabledReason) description = disabledReason;
+      else if (isSelected && !!option.description) description = option.description;
 
       i += 1;
 
@@ -55,9 +65,9 @@ export const ConfigSelector = ({ configType, options, title }: ConfigSelectorPro
 
   return (
     <Container>
-      <Label>{title}</Label>
+      <Label disabled={disabled}>{title}</Label>
       <ButtonContainer>{buttons()}</ButtonContainer>
-      {!!description && <Description>{description}</Description>}
+      {!!description && <Description disabled={disabled}>{description}</Description>}
     </Container>
   );
 };

@@ -43,6 +43,7 @@ export default {
           label: 'On',
           description: 'You will not see the buttons, you must play by ear',
         },
+        disabledReason: 'This mode is disabled when the sound is off',
       },
       mode: {
         label: 'Mode',

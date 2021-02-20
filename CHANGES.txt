@@ -1,3 +1,10 @@
+0.0.15 (February xth, 2021)
+  - Reducing code with reusable config Components
+  - Improving blindfolded sounds
+  - TODO: create config consistency
+  - TODO: add score sounds
+
+
 0.0.14 (February 16th, 2021)
   - Adding Android support
   - Fixing StatusBar color/contrast

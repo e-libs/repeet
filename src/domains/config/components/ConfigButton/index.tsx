@@ -11,6 +11,7 @@ type ConfigButtonProps = {
   isRight?: boolean;
   label: string;
   onPress: () => void;
+  optionDisabled: boolean;
 };
 
 export const ConfigButton = ({
@@ -22,6 +23,7 @@ export const ConfigButton = ({
   isRight = false,
   label,
   onPress,
+  optionDisabled,
 }: ConfigButtonProps) => {
   const { play } = useSound('click');
   const onButtonPress = async () => {
@@ -38,7 +40,9 @@ export const ConfigButton = ({
       isRight={isRight}
       onPress={onButtonPress}
     >
-      <ButtonText fontSize={fontSize}>{label}</ButtonText>
+      <ButtonText fontColor={optionDisabled ? '#888' : '#fff'} fontSize={fontSize}>
+        {label}
+      </ButtonText>
     </Button>
   );
 };

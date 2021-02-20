@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'app/translation';
 import { ConfigSelector } from 'domains/config/components/ConfigSelector';
+import { useConfig } from 'domains/config/data/hooks/useConfig';
 import type { ConfigOption } from 'domains/config/data/types';
 
 export const BlindSelector = () => {
   const { t } = useTranslation();
+  const { isSoundOn } = useConfig();
   const options: ConfigOption[] = [
     {
       color: '#26bd53',
@@ -19,6 +21,16 @@ export const BlindSelector = () => {
       value: true,
     },
   ];
+  const disabled = !isSoundOn;
+  const disabledReason = !isSoundOn ? t('config.blind.disabledReason') : '';
 
-  return <ConfigSelector title={t('config.blind.label')} options={options} configType="BLIND" />;
+  return (
+    <ConfigSelector
+      configType="BLIND"
+      disabled={disabled}
+      disabledReason={disabledReason}
+      options={options}
+      title={t('config.blind.label')}
+    />
+  );
 };
