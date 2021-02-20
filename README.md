@@ -1,6 +1,6 @@
 ![](src/assets/images/logo-docs.jpeg)
 
-# repeet
+# Repeet
 
 > A game experiment with React Native
 
@@ -11,7 +11,8 @@ This project is an attempt to create a simple but thorough gaming experience.
 
 Memory games can be really simple, from the player's perspective, but I've found it to be somewhat challenging after the first steps.
 
-I hope you'll enjoy playing around with it, maybe one day downloading the app (soon).
+I hope you'll enjoy playing around with it, maybe one day downloading the app (soon). And if you want to know more about this project and other work I've done, check out my page at [https://www.e-libs.dev](https://www.e-libs.dev).
+
 
 ![](public/images/home.png)
 
@@ -41,14 +42,27 @@ Here's the basic game timeline:
 
 At this moment, the game has two main views: the game itself (described above) and the configuration panel. On the configuration panel, the player may set three different configurations:
 
+- Sound: on, off
 - Difficulty: easy, medium, hard
 - Mode: default, advanced
 - Shuffle: on, off
+- Blindfolded: on, off
 
 ![](public/images/config.png)
 
 
 Each of those configuration will determine how the game will roll.
+
+## Sound
+
+### On
+
+The whole app will play sounds as the user interacts with it by playing or clicking on the buttons.
+
+### Off
+
+No sound will be played at all. This will also disable the blindfolded mode, as it would make no sense.
+
 
 ## Difficulty
 
@@ -82,13 +96,31 @@ It has 6 keys instead of 4, and the randomized sequence will contain 6 keys.
 
 If the player wants to make the game even harder, it's possible to turn the shuffle mode on. With that, at each round, the computer keys order will be randomized to something different than the bottom key pad (the player's one). Therefore, the player will have to memorize the actual colors, and not their position.
 
+> Note: If the player turns this configuration on, it will automatically turn the blindfolded mode off, if it was previously on, as it would make no sense.
+
 ### Off
 
 When the shuffle mode is off, the top keys (the computer ones) will always remain in the same position.
 
+## Blindfolded
+
+### On
+
+For those that really want to challenge themselves, how about playing without seeing the keys to tap? In this mode, players must play based on what they hear, as the computer key pad will be hidden, and the keys will have different sounds (musical notes). Any musicians out there?
+
+> Note: If the player turns this configuration on, it will automatically turn the shuffle mode off, if it was previously on, as it would make no sense.
+
+### Off
+
+When the blindfolded mode is off, the top keys (the computer ones) will always remain visible, and the sounds will be all the same.
+
 ### Sounds
 
-There's also a configuration to enable/disable sounds, which won't affect the game flow, but it will play sounds accordingly. Thanks [Zapsplat.com](https://www.zapsplat.com/) for the amazing sounds.
+There's also a configuration to enable/disable sounds, which won't affect the game flow, but it will play sounds accordingly. Thanks [Zapsplat.com](https://www.zapsplat.com/) for the amazing sounds. The only sounds I made myself are the notes on the blindfolded mode.
+
+### Combining different configurations
+
+The cool thing about all these different game mode is that you may combine them as you wish, giving the game a whole different difficulty. Default mode on easy? Piece of cake! How about shuffling it? Hum, a bit harder. What if you change it to medium or hard instead of easy? It's getting interesting, right? Could you make it even harder by change it to the advanced mode, with 6 keys? Yes sir! And last, but not least (and definitely my favorite), how about going blindfolded? Oh, this is madness!
 
 
 
@@ -111,6 +143,10 @@ In order to give the player a progress feedback, as the right keys are being tap
 ### Intro
 
 Instead of going straight to the game after the user taps the initial button to start the game, a middle screen is shown, the Intro, so the player can get ready to start. It will countdown from 3 to 0, then the game will start.
+
+### Training
+
+Only when on blindfolded mode, there will always be a intermediate training screen before starting the game. The idea is to give the player the opportunity to get to know the key sounds, before actually plaing.
 
 ### Modals
 
