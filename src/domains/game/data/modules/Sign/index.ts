@@ -49,13 +49,14 @@ export const Grey: Sign = {
   sound: 'note-F',
 };
 
-export const standardPool = [Red, Green, Yellow, Blue];
+export const getStandardPool = () => [Red, Green, Yellow, Blue].sort((a, b) => a.number - b.number);
 
-export const standardPoolSize = standardPool.length;
+export const standardPoolSize = getStandardPool().length;
 
-export const advancedPool = [Red, Green, Yellow, Blue, Purple, Wine];
+export const getAdvancedPool = () =>
+  [Red, Green, Yellow, Blue, Purple, Wine].sort((a, b) => a.number - b.number);
 
-export const advancedPoolSize = advancedPool.length;
+export const advancedPoolSize = getAdvancedPool().length;
 
 export type AvailableSigns =
   | typeof Red
@@ -67,4 +68,4 @@ export type AvailableSigns =
 
 export const getSignByNumber = (id: number): Sign =>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  advancedPool.find((item) => item.number === id)!;
+  getAdvancedPool().find((item) => item.number === id)!;

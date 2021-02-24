@@ -1,9 +1,11 @@
 0.0.15 (February xth, 2021)
   - Reducing code with reusable config Components
   - Improving blindfolded sounds
-  - TODO: create config consistency
-  - TODO: add score sounds
+  - Adding config consistency, disabling modes
   - TODO: fix persisting last shuffled sequence
+  - TODO: show level
+  - TODO: highlight points (and level)
+  - TODO: replace timebar
 
 
 0.0.14 (February 16th, 2021)

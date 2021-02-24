@@ -8,9 +8,9 @@ import {
   SET_SOUND,
 } from 'domains/config/data/store/actionTypes';
 import {
-  advancedPool,
+  getAdvancedPool,
   advancedPoolSize,
-  standardPool,
+  getStandardPool,
   standardPoolSize,
 } from 'domains/game/data/modules/Sign';
 import { DifficultyLevels } from 'domains/game/data/modules/Game/constants';
@@ -22,7 +22,7 @@ const initialState: ConfigState = {
   isShuffle: false,
   isSoundOn: true,
   mode: 'DEFAULT',
-  pool: standardPool,
+  pool: getStandardPool(),
   poolSize: standardPoolSize,
   speed: 0,
 };
@@ -44,7 +44,7 @@ export const configReducer = (state = initialState, action: Action<ConfigActions
     case SET_MODE: {
       const { mode } = action.payload;
 
-      const pool = mode === 'DEFAULT' ? standardPool : advancedPool;
+      const pool = mode === 'DEFAULT' ? getStandardPool() : getAdvancedPool();
       const poolSize = mode === 'DEFAULT' ? standardPoolSize : advancedPoolSize;
 
       return {
