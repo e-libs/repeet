@@ -2,7 +2,7 @@
   - Reducing code with reusable config Components
   - Improving blindfolded sounds
   - Adding config consistency, disabling modes
-  - TODO: fix persisting last shuffled sequence
+  - Fixing persisting last shuffled sequence
   - TODO: show level
   - TODO: highlight points (and level)
   - TODO: replace timebar

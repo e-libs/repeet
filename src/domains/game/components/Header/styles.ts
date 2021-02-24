@@ -11,8 +11,6 @@ export const Container = styled.View`
 `;
 
 export const Score = styled.Text`
-  color: #f11;
-  font-size: 60px;
   font-weight: bold;
   font-family: Verdana;
 `;
