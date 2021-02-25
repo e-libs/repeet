@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
-  margin-top: 40px;
+  margin-bottom: 40px;
 `;
 
 export const Label = styled.Text<{ disabled: boolean }>`
