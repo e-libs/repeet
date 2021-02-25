@@ -6,12 +6,26 @@ export const Container = styled.View`
   background-color: rgba(0, 0, 0, 0.93);
 `;
 
-export const ModalView = styled.View`
-  align-items: center;
+export const ModalView = styled.SafeAreaView`
+  /* align-items: center; */
+  flex: 1;
 `;
 
 export const NewScoreContainer = styled.View`
-  /* margin-top: 50%; */
+  flex: 3;
+  border: 1px solid red;
+  padding: 20px;
+  /* justify-content: center; */
+  /* align-items: center; */
+`;
+
+export const TextContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const InputContainer = styled.View`
+  border: 1px solid red;
   justify-content: center;
   align-items: center;
 `;
@@ -35,8 +49,21 @@ export const InitialsMessage = styled.Text`
 `;
 
 export const ButtonContainer = styled.View`
+  flex: 3;
   margin-top: 50%;
   justify-content: space-evenly;
+`;
+
+export const FarewellMessageContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const SkipContainer = styled.View`
+  justify-content: center;
+  align-items: center;
 `;
 
 export const FarewellMessage = styled.Text`

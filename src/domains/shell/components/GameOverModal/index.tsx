@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, TouchableOpacity, Text } from 'react-native';
+import { Modal, TouchableOpacity, Text, TextInput } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -8,11 +8,15 @@ import {
   Container,
   ExitButton,
   FarewellMessage,
+  FarewellMessageContainer,
   InitialsMessage,
+  InputContainer,
   ModalView,
   NewScoreContainer,
   PlayerLevel,
   PlayerScore,
+  SkipContainer,
+  TextContainer,
   TryAgainButton,
 } from 'domains/shell/components/GameOverModal/styles';
 import { useScore } from 'domains/game/data/hooks/useScore';
@@ -34,6 +38,7 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
   // TODO: rollback after testing
   // const [skip, setSkip] = useState(score === 0);
   const [skip, setSkip] = useState(false);
+  const [initials, setInitials] = useState('');
 
   const tryAgain = async () => {
     await button.play();
@@ -49,6 +54,11 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
     setSkip(true);
   };
 
+  const changeText = (text: string) => {
+    if (!/^[a-zA-Z]*$/.test(text)) return;
+    setInitials(text);
+  };
+
   useEffect(() => {
     if (isOpen) gameOver.play();
   }, [isOpen]);
@@ -57,15 +67,30 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
     <Modal animationType="fade" transparent={true} visible={isOpen} onRequestClose={onExit}>
       <Container>
         <ModalView>
-          <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
+          <FarewellMessageContainer>
+            <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
+          </FarewellMessageContainer>
           {!skip && (
             <NewScoreContainer>
-              <PlayerScore>score: {score}</PlayerScore>
-              <PlayerLevel>level: {level}</PlayerLevel>
-              <InitialsMessage>Enter your initials</InitialsMessage>
-              <TouchableOpacity onPress={onSkip}>
-                <Text style={{ color: 'red' }}>skip</Text>
-              </TouchableOpacity>
+              <TextContainer>
+                <PlayerScore>score: {score}</PlayerScore>
+                <PlayerLevel>level: {level}</PlayerLevel>
+                <InitialsMessage>Enter your initials</InitialsMessage>
+              </TextContainer>
+              <InputContainer>
+                <TextInput
+                  autoCompleteType="off"
+                  value={initials}
+                  onChangeText={changeText}
+                  maxLength={3}
+                  style={{ backgroundColor: '#fff', fontSize: 50, width: 120, textAlign: 'center' }}
+                ></TextInput>
+              </InputContainer>
+              <SkipContainer>
+                <TouchableOpacity onPress={onSkip}>
+                  <Text style={{ color: 'red' }}>skip</Text>
+                </TouchableOpacity>
+              </SkipContainer>
             </NewScoreContainer>
           )}
           {skip && (
