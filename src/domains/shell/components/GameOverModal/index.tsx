@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Modal } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Modal, View, TouchableOpacity, Text } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -23,6 +23,7 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
   const gameOver = useSound('game-over');
   const button = useSound('button');
   const exitButton = useSound('exit');
+  const [skip, setSkip] = useState(false);
 
   const tryAgain = async () => {
     await button.play();
@@ -34,6 +35,10 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
     onExit();
   };
 
+  const onSkip = () => {
+    setSkip(true);
+  };
+
   useEffect(() => {
     if (isOpen) gameOver.play();
   }, [isOpen]);
@@ -43,14 +48,23 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
       <Container>
         <ModalView>
           <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
-          <ButtonContainer>
-            <TryAgainButton onPress={tryAgain} underlayColor="#adcb72">
-              <ButtonText color="#000">{t('game.gameOver.tryAgain')}</ButtonText>
-            </TryAgainButton>
-            <ExitButton onPress={exit} underlayColor="#595959">
-              <ButtonText color="#ff3a3a">{t('game.gameOver.exit')}</ButtonText>
-            </ExitButton>
-          </ButtonContainer>
+          {!skip && (
+            <View>
+              <TouchableOpacity onPress={onSkip}>
+                <Text style={{ color: 'red' }}>skip</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          {skip && (
+            <ButtonContainer>
+              <TryAgainButton onPress={tryAgain} underlayColor="#adcb72">
+                <ButtonText color="#000">{t('game.gameOver.tryAgain')}</ButtonText>
+              </TryAgainButton>
+              <ExitButton onPress={exit} underlayColor="#595959">
+                <ButtonText color="#ff3a3a">{t('game.gameOver.exit')}</ButtonText>
+              </ExitButton>
+            </ButtonContainer>
+          )}
         </ModalView>
       </Container>
     </Modal>
