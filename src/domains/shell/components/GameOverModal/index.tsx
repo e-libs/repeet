@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, View, TouchableOpacity, Text } from 'react-native';
+import { Modal, TouchableOpacity, Text } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -8,9 +8,15 @@ import {
   Container,
   ExitButton,
   FarewellMessage,
+  InitialsMessage,
   ModalView,
+  NewScoreContainer,
+  PlayerLevel,
+  PlayerScore,
   TryAgainButton,
 } from 'domains/shell/components/GameOverModal/styles';
+import { useScore } from 'domains/game/data/hooks/useScore';
+import { useLevel } from 'domains/game/data/hooks/useLevel';
 
 type GameOverModalProps = {
   isOpen: boolean;
@@ -23,6 +29,10 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
   const gameOver = useSound('game-over');
   const button = useSound('button');
   const exitButton = useSound('exit');
+  const { score } = useScore();
+  const { level } = useLevel();
+  // TODO: rollback after testing
+  // const [skip, setSkip] = useState(score === 0);
   const [skip, setSkip] = useState(false);
 
   const tryAgain = async () => {
@@ -49,11 +59,14 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
         <ModalView>
           <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
           {!skip && (
-            <View>
+            <NewScoreContainer>
+              <PlayerScore>score: {score}</PlayerScore>
+              <PlayerLevel>level: {level}</PlayerLevel>
+              <InitialsMessage>Enter your initials</InitialsMessage>
               <TouchableOpacity onPress={onSkip}>
                 <Text style={{ color: 'red' }}>skip</Text>
               </TouchableOpacity>
-            </View>
+            </NewScoreContainer>
           )}
           {skip && (
             <ButtonContainer>

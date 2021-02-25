@@ -10,6 +10,30 @@ export const ModalView = styled.View`
   align-items: center;
 `;
 
+export const NewScoreContainer = styled.View`
+  /* margin-top: 50%; */
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PlayerScore = styled.Text`
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 30px;
+`;
+
+export const PlayerLevel = styled.Text`
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 30px;
+`;
+
+export const InitialsMessage = styled.Text`
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 30px;
+`;
+
 export const ButtonContainer = styled.View`
   margin-top: 50%;
   justify-content: space-evenly;
