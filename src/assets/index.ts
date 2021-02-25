@@ -16,6 +16,5 @@ export default [
   require('assets/sounds/open-config.mp3'),
   require('assets/sounds/sign.mp3'),
   require('assets/sounds/start.mp3'),
-  require('assets/sounds/tick.mp3'),
   require('assets/sounds/win-round.mp3'),
 ];

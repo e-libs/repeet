@@ -16,5 +16,4 @@ export type SoundType =
   | 'open-config'
   | 'sign'
   | 'start'
-  | 'tick'
   | 'win-round';
