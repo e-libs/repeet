@@ -1,3 +1,10 @@
+0.0.16 (February xth, 2021)
+  - TODO: Create initials prompt
+  - TODO: Saving data to history store
+  - TODO: Create the high scores icon link
+  - TODO: Create the high scores screen
+  - TODO: Create the admin "purge" helper
+
 0.0.15 (February 24th, 2021)
   - Reducing code with reusable config Components
   - Adding more sounds
