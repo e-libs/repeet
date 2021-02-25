@@ -4,58 +4,59 @@ export const Red: Sign = {
   color: '#FF48A6',
   name: 'Red',
   number: 1,
-  sound: 'note-1',
+  sound: 'note-F',
 };
 
 export const Green: Sign = {
   color: '#649700',
   name: 'Green',
   number: 2,
-  sound: 'note-2',
+  sound: 'note-D',
 };
 
 export const Yellow: Sign = {
   color: '#FFE067',
   name: 'Yellow',
   number: 3,
-  sound: 'note-3',
+  sound: 'note-B',
 };
 
 export const Blue: Sign = {
   color: '#2BCFFF',
   name: 'Blue',
   number: 4,
-  sound: 'note-4',
+  sound: 'note-G',
 };
 
 export const Purple: Sign = {
   color: '#3C1361',
   name: 'Purple',
   number: 5,
-  sound: 'note-5',
+  sound: 'note-E',
 };
 
 export const Wine: Sign = {
   color: '#800000',
   name: 'Wine',
   number: 6,
-  sound: 'note-6',
+  sound: 'note-C',
 };
 
 export const Grey: Sign = {
   color: '#222222',
   name: 'Grey',
   number: 7,
-  sound: 'note-1',
+  sound: 'note-F',
 };
 
-export const standardPool = [Red, Green, Yellow, Blue];
+export const getStandardPool = () => [Red, Green, Yellow, Blue].sort((a, b) => a.number - b.number);
 
-export const standardPoolSize = standardPool.length;
+export const standardPoolSize = getStandardPool().length;
 
-export const advancedPool = [Red, Green, Yellow, Blue, Purple, Wine];
+export const getAdvancedPool = () =>
+  [Red, Green, Yellow, Blue, Purple, Wine].sort((a, b) => a.number - b.number);
 
-export const advancedPoolSize = advancedPool.length;
+export const advancedPoolSize = getAdvancedPool().length;
 
 export type AvailableSigns =
   | typeof Red
@@ -67,4 +68,4 @@ export type AvailableSigns =
 
 export const getSignByNumber = (id: number): Sign =>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  advancedPool.find((item) => item.number === id)!;
+  getAdvancedPool().find((item) => item.number === id)!;

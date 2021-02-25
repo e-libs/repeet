@@ -18,9 +18,9 @@ export const Button = styled.TouchableOpacity<{
   `}
 `;
 
-export const ButtonText = styled.Text<{ fontSize: number }>`
-  ${({ fontSize }) => css`
-    color: #fff;
+export const ButtonText = styled.Text<{ disabled: boolean; fontSize: number; }>`
+  ${({ disabled, fontSize }) => css`
+    color: ${disabled ? '#888' : '#fff'};
     font-size: ${fontSize}px;
   `}
 `;

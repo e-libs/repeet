@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSound } from 'app/media/sound/useSound';
 import { Container, Indicator } from 'domains/game/components/Timer/styles';
 import { Conductor } from 'domains/game/data/modules/Timing/Conductor';
 import { TIME_BAR_EVENT, TIMER_EVENT } from 'domains/game/data/modules/Timing/constants';
@@ -11,7 +10,6 @@ import { useIsMounted } from 'helpers/useIsMounted';
 export const Timer = () => {
   const isMounted = useIsMounted();
   const { currentPoolSize } = useConfig();
-  const { play } = useSound('tick');
   const [display, setDisplay] = useState(false);
   const [timeLeft, setTimeLeft] = useState(currentPoolSize);
 
@@ -26,7 +24,6 @@ export const Timer = () => {
     Conductor.on(TIME_BAR_EVENT, timeBarId, (time: number) => {
       if (isMounted) {
         setTimeLeft(time);
-        play();
       }
     });
 

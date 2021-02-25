@@ -20,6 +20,9 @@ export default {
         tryAgain: 'Play again',
         exit: 'Exit',
       },
+      status: {
+        level: 'level',
+      },
     },
     training: {
       message:
@@ -43,6 +46,7 @@ export default {
           label: 'On',
           description: 'You will not see the buttons, you must play by ear',
         },
+        disabledReason: 'This mode is disabled when the sound is off',
       },
       mode: {
         label: 'Mode',
@@ -81,6 +85,7 @@ export default {
           label: 'Off',
           description: 'Not shuffling is easy! The displayed sequences are always the same',
         },
+        disabledReason: 'This mode is disabled when blindfolded mode is on',
       },
     },
     footer: {

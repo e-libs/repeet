@@ -6,5 +6,5 @@ export const Panel = styled.ScrollView`
 `;
 
 export const BottomSpace = styled.View`
-  height: 100px;
+  height: 70px;
 `;

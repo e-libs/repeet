@@ -1,4 +1,4 @@
-import type { Sign } from 'domains/game/data/modules/Sign/types';
+import type { Sequence } from 'domains/game/data/modules/Sequence/types';
 
 export type GameMode = 'DEFAULT' | 'ADVANCED';
 export type Difficulty = 'EASY' | 'MEDIUM' | 'HARD';
@@ -17,7 +17,7 @@ export type ConfigState = {
   isShuffle: boolean;
   isSoundOn: boolean;
   mode: GameMode;
-  pool: Sign[];
+  pool: Sequence;
   poolSize: number;
   speed: number;
 };

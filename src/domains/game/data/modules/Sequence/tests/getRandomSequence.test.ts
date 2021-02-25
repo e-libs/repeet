@@ -1,8 +1,8 @@
 import { getRandomSequence } from 'domains/game/data/modules/Sequence';
 import {
-  standardPool,
+  getStandardPool,
   standardPoolSize,
-  advancedPool,
+  getAdvancedPool,
   advancedPoolSize,
 } from 'domains/game/data/modules/Sign';
 
@@ -12,14 +12,14 @@ describe('getRandomSequence', () => {
     expect(sequence.length).toBe(standardPoolSize);
 
     for (let i = 0; i < standardPoolSize; i += 1) {
-      expect(standardPool).toContain(sequence[i]);
+      expect(getStandardPool()).toContain(sequence[i]);
     }
 
     const anotherSequence = getRandomSequence(advancedPoolSize);
     expect(anotherSequence.length).toBe(advancedPoolSize);
 
     for (let i = 0; i < advancedPoolSize; i += 1) {
-      expect(advancedPool).toContain(anotherSequence[i]);
+      expect(getAdvancedPool()).toContain(anotherSequence[i]);
     }
   });
 });

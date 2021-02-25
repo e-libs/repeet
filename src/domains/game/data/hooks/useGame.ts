@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutput } from 'app/config/logOutput';
+import { useSound } from 'app/media/sound/useSound';
 import {
   increaseScore,
   initGame,
@@ -37,8 +38,18 @@ import { getId } from 'helpers/getId';
 
 export const useGame = () => {
   const isMounted = useIsMounted();
+  const winRound = useSound('win-round');
+  const negative = useSound('negative');
+  const levelUp = useSound('level-up');
 
-  const { currentDifficulty, currentSpeed, currentPool, currentPoolSize, isShuffle } = useConfig();
+  const {
+    currentAttempts,
+    currentDifficulty,
+    currentSpeed,
+    currentPool,
+    currentPoolSize,
+    isShuffle,
+  } = useConfig();
 
   const attemptsLeft = useSelector(getAttemptsLeft);
   const currentSequence = useSelector(getCurrentSequence);
@@ -63,11 +74,12 @@ export const useGame = () => {
   };
 
   const reset = () => {
-    Conductor.stop();
+    Conductor.reset();
     dispatch(resetGame());
   };
 
   const quit = () => {
+    Conductor.reset();
     dispatch(quitGame());
   };
 
@@ -120,7 +132,16 @@ export const useGame = () => {
   }, [currentSequence, isGameOver]);
 
   useEffect(() => {
+    if (level > 0) levelUp.play();
+  }, [level]);
+
+  useEffect(() => {
+    if (attemptsLeft < currentAttempts) negative.play();
+  }, [attemptsLeft]);
+
+  useEffect(() => {
     if (playerSequence.length > 0 && playerSequence.length === currentSequence.length) {
+      winRound.play();
       finishRound();
     }
   }, [playerSequence]);
