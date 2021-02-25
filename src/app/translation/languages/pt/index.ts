@@ -20,6 +20,9 @@ export default {
         tryAgain: 'Jogar de novo',
         exit: 'Sair',
       },
+      status: {
+        level: 'nível',
+      },
     },
     training: {
       message:

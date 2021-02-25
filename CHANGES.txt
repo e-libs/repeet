@@ -3,9 +3,12 @@
   - Improving blindfolded sounds
   - Adding config consistency, disabling modes
   - Fixing persisting last shuffled sequence
+  - Highlighting points when score changes
+  - Preventing screen rotation, forcing potrait mode
   - TODO: show level
-  - TODO: highlight points (and level)
-  - TODO: replace timebar
+  - TODO: highlight level
+  - TODO: replace timebar?
+  - TODO: prevent screen rotation
 
 
 0.0.14 (February 16th, 2021)

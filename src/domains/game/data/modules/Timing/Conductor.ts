@@ -8,11 +8,10 @@ import {
   TIME_BAR_EVENT,
   TIMER_EVENT,
 } from 'domains/game/data/modules/Timing/constants';
-import type { EventTypes } from 'domains/game/data/modules/Timing/types';
 import { numberToEmptyArray } from 'helpers/numberToEmptyArray';
 
 export class EventManager {
-  protected events: IPubSub<EventTypes>;
+  protected events: IPubSub<boolean | number | string>;
 
   private isActive = false;
 
@@ -35,7 +34,7 @@ export class EventManager {
     this.poolSize = poolSize;
   }
 
-  on(keyName: string, eventId: string, callback: (value: EventTypes) => void) {
+  on(keyName: string, eventId: string, callback: (value: any) => void) {
     this.events.on(keyName, eventId, callback);
   }
 
@@ -43,7 +42,7 @@ export class EventManager {
     this.events.off(eventId);
   }
 
-  emit(event: string, param?: EventTypes) {
+  emit(event: string, param?: boolean | number | string) {
     this.events.emit(event, param);
   }
 

@@ -20,6 +20,9 @@ export default {
         tryAgain: 'Play again',
         exit: 'Exit',
       },
+      status: {
+        level: 'level',
+      },
     },
     training: {
       message:
