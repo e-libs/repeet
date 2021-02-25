@@ -7,7 +7,6 @@ export const Container = styled.View`
 `;
 
 export const Label = styled.Text`
-  color: #77f;
   font-weight: bold;
   font-size: 15px;
 `;

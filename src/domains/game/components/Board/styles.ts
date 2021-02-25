@@ -6,7 +6,7 @@ export const MainView = styled.View`
 `;
 
 export const HeaderView = styled.View`
-  flex: ${ios ? 2.1 : 1.7};
+  flex: ${ios ? 2.4 : 2};
 `;
 
 export const SequencerView = styled.View`

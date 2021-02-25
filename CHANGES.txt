@@ -5,11 +5,7 @@
   - Fixing persisting last shuffled sequence
   - Highlighting points when score changes
   - Preventing screen rotation, forcing potrait mode
-  - TODO: show level
-  - TODO: highlight level
-  - TODO: replace timebar?
-  - TODO: prevent screen rotation
-
+  - Adding Level display
 
 0.0.14 (February 16th, 2021)
   - Adding Android support

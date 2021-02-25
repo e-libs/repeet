@@ -1,9 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Animated } from 'react-native';
-import { BackButtonContainer, Container, Score } from 'domains/game/components/Header/styles';
+import {
+  BackButtonContainer,
+  BottomContent,
+  Container,
+  Score,
+  TopContent,
+} from 'domains/game/components/Header/styles';
 import { useScore } from 'domains/game/data/hooks/useScore';
 import { ExitModal } from 'domains/shell/components/ExitModal';
 import { BackButton } from 'domains/shell/components/BackButton';
+import { Level } from 'domains/game/components/Level';
 
 type HeaderProps = {
   isGameOver?: boolean;
@@ -50,15 +57,20 @@ export const Header = ({ isGameOver, isTraining = false, onExit }: HeaderProps) 
 
   return (
     <Container>
-      <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
-      <BackButtonContainer>
-        <BackButton onPress={openExitModal} />
-      </BackButtonContainer>
-      {!isTraining && (
-        <Animated.Text style={{ color }}>
-          <Score>{score}</Score>
-        </Animated.Text>
-      )}
+      <TopContent>
+        <ExitModal isOpen={isExitModalOpen} onCancel={cancelExit} onExit={exitGame} />
+        <BackButtonContainer>
+          <BackButton onPress={openExitModal} />
+        </BackButtonContainer>
+        {!isTraining && (
+          <Animated.Text style={{ color }}>
+            <Score>{score}</Score>
+          </Animated.Text>
+        )}
+      </TopContent>
+      <BottomContent>
+        <Level />
+      </BottomContent>
     </Container>
   );
 };
