@@ -61,7 +61,7 @@ export const FarewellMessageContainer = styled.View`
   padding: 20px;
 `;
 
-export const SkipContainer = styled.View`
+export const SaveScoreContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
@@ -84,6 +84,10 @@ export const ExitButton = styled(Button)`
 
 export const TryAgainButton = styled(Button)`
   background-color: #649700;
+`;
+
+export const HighScoresButton = styled(Button)`
+  background-color: #77f;
 `;
 
 export const ButtonText = styled.Text<{ color: string }>`

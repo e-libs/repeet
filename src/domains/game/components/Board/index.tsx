@@ -16,9 +16,10 @@ import { useGame } from 'domains/game/data/hooks/useGame';
 
 type BoardProps = {
   onGoHome: () => void;
+  onSeeHighScores: () => void;
 };
 
-export const Board = ({ onGoHome }: BoardProps) => {
+export const Board = ({ onGoHome, onSeeHighScores }: BoardProps) => {
   const { addPlayerMove, hasQuit, isGameOver, quit, reset } = useGame();
   const [choseExit, setChoseExit] = useState(false);
 
@@ -36,12 +37,18 @@ export const Board = ({ onGoHome }: BoardProps) => {
     onGoHome();
   };
 
+  const goToHighScores = () => {
+    setChoseExit(true);
+    onSeeHighScores();
+  };
+
   return (
     <MainView>
       <RNStatusBar barStyle="light-content" />
       <GameOverModal
         isOpen={!hasQuit && isGameOver && !choseExit}
         onExit={goHome}
+        onSeeHighScores={goToHighScores}
         onTryAgain={tryAgain}
       />
       <HeaderView>

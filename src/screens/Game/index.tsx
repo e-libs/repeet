@@ -21,6 +21,11 @@ export const Game = ({ navigation }: Props) => {
     navigation.navigate('Home');
   };
 
+  const navigateHighScores = () => {
+    // TODO: navigate to new screen
+    navigation.navigate('Home');
+  };
+
   useEffect(() => {
     setTraining(isBlindfolded);
   }, [isBlindfolded]);
@@ -29,5 +34,5 @@ export const Game = ({ navigation }: Props) => {
 
   if (isLoading) return <Intro />;
 
-  return <Board onGoHome={navigateHome} />;
+  return <Board onGoHome={navigateHome} onSeeHighScores={navigateHighScores} />;
 };

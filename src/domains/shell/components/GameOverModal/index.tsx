@@ -9,13 +9,14 @@ import {
   ExitButton,
   FarewellMessage,
   FarewellMessageContainer,
+  HighScoresButton,
   InitialsMessage,
   InputContainer,
   ModalView,
   NewScoreContainer,
   PlayerLevel,
   PlayerScore,
-  SkipContainer,
+  SaveScoreContainer,
   TextContainer,
   TryAgainButton,
 } from 'domains/shell/components/GameOverModal/styles';
@@ -25,10 +26,16 @@ import { useLevel } from 'domains/game/data/hooks/useLevel';
 type GameOverModalProps = {
   isOpen: boolean;
   onExit: () => void;
+  onSeeHighScores: () => void;
   onTryAgain: () => void;
 };
 
-export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps) => {
+export const GameOverModal = ({
+  isOpen,
+  onExit,
+  onSeeHighScores,
+  onTryAgain,
+}: GameOverModalProps) => {
   const { t } = useTranslation();
   const gameOver = useSound('game-over');
   const button = useSound('button');
@@ -38,6 +45,7 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
   // TODO: rollback after testing
   // const [skip, setSkip] = useState(score === 0);
   const [skip, setSkip] = useState(false);
+  const [saved, setSaved] = useState(false);
   const [initials, setInitials] = useState('');
 
   const tryAgain = async () => {
@@ -52,6 +60,17 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
 
   const onSkip = () => {
     setSkip(true);
+  };
+
+  const onSave = () => {
+    // TODO: call save action
+    setSaved(true);
+  };
+
+  const seeHighScores = async () => {
+    // TODO: go to new screen
+    await button.play();
+    onSeeHighScores();
   };
 
   const changeText = (text: string) => {
@@ -70,7 +89,7 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
           <FarewellMessageContainer>
             <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
           </FarewellMessageContainer>
-          {!skip && (
+          {!skip && !saved && (
             <NewScoreContainer>
               <TextContainer>
                 <PlayerScore>score: {score}</PlayerScore>
@@ -86,15 +105,22 @@ export const GameOverModal = ({ isOpen, onExit, onTryAgain }: GameOverModalProps
                   style={{ backgroundColor: '#fff', fontSize: 50, width: 120, textAlign: 'center' }}
                 ></TextInput>
               </InputContainer>
-              <SkipContainer>
+              <SaveScoreContainer>
+                <TouchableOpacity onPress={onSave}>
+                  <Text style={{ color: 'red' }}>Save</Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={onSkip}>
                   <Text style={{ color: 'red' }}>skip</Text>
                 </TouchableOpacity>
-              </SkipContainer>
+              </SaveScoreContainer>
             </NewScoreContainer>
           )}
-          {skip && (
+          {(saved || skip) && (
             <ButtonContainer>
+              {saved && <Text style={{ color: 'red' }}>Saved!</Text>}
+              <HighScoresButton onPress={seeHighScores} underlayColor="#55d">
+                <ButtonText color="#000">See high scores</ButtonText>
+              </HighScoresButton>
               <TryAgainButton onPress={tryAgain} underlayColor="#adcb72">
                 <ButtonText color="#000">{t('game.gameOver.tryAgain')}</ButtonText>
               </TryAgainButton>
