@@ -88,6 +88,9 @@ export default {
         disabledReason: 'This mode is disabled when blindfolded mode is on',
       },
     },
+    highScores: {
+      title: 'High Scores',
+    },
     footer: {
       description: 'Powered by e-libs',
     },

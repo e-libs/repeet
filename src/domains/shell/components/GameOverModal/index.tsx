@@ -68,7 +68,6 @@ export const GameOverModal = ({
   };
 
   const seeHighScores = async () => {
-    // TODO: go to new screen
     await button.play();
     onSeeHighScores();
   };

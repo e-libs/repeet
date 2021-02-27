@@ -22,8 +22,7 @@ export const Game = ({ navigation }: Props) => {
   };
 
   const navigateHighScores = () => {
-    // TODO: navigate to new screen
-    navigation.navigate('Home');
+    navigation.navigate('HighScores');
   };
 
   useEffect(() => {
