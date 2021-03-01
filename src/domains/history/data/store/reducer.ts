@@ -6,9 +6,11 @@ const initialState: HistoryState = {
   // records: [],
   // TODO: temp
   records: [
-    { date: new Date(), level: 1, playerInitials: 'BIG', score: 600, totalSequences: 6 },
-    { date: new Date('2019'), level: 1, playerInitials: 'EMM', score: 500, totalSequences: 5 },
-    { date: new Date('2020'), level: 0, playerInitials: 'PQP', score: 200, totalSequences: 2 },
+    { date: new Date(), level: 10, playerInitials: 'EMM', score: 50000000, totalSequences: 6 },
+    { date: new Date('2019'), level: 5, playerInitials: 'BIG', score: 60000, totalSequences: 5 },
+    { date: new Date('2020'), level: 3, playerInitials: 'PQP', score: 3000, totalSequences: 2 },
+    { date: new Date('2020'), level: 2, playerInitials: 'OMG', score: 1000, totalSequences: 2 },
+    { date: new Date('2020'), level: 0, playerInitials: 'WTF', score: 200, totalSequences: 2 },
   ],
 };
 
