@@ -12,6 +12,7 @@ import {
   TitleContainer,
 } from 'screens/HighScores/styles';
 import { BackButton } from 'domains/shell/components/BackButton';
+import { HighScoresPanel } from 'domains/history/components/HighScoresPanel';
 
 type HighScoresScreenNavigationProp = StackNavigationProp<RootStackParamList, 'HighScores'>;
 
@@ -38,6 +39,7 @@ export const HighScores = ({ navigation }: Props) => {
         </TitleContainer>
       </HeaderContainer>
       <HighScoresContainer>
+        <HighScoresPanel />
       </HighScoresContainer>
     </MainView>
   );

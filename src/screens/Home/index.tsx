@@ -7,6 +7,8 @@ import { useSound } from 'app/media/sound/useSound';
 import {
   ConfigContainer,
   FooterContainer,
+  HeaderContainer,
+  HistoryContainer,
   HomeContainer,
   MainView,
   TapToStart,
@@ -32,6 +34,12 @@ export const Home = ({ navigation }: Props) => {
     navigation.navigate('Config');
   };
 
+  const openHighScores = async () => {
+    // TODO: change sound
+    await config.play();
+    navigation.navigate('HighScores');
+  };
+
   const onStart = async () => {
     await start.play();
     navigation.navigate('Game');
@@ -40,9 +48,14 @@ export const Home = ({ navigation }: Props) => {
   return (
     <MainView>
       <StatusBar barStyle="dark-content" />
-      <ConfigContainer>
-        <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
-      </ConfigContainer>
+      <HeaderContainer>
+        <HistoryContainer>
+          <RotatingIcon degrees={360} onPress={openHighScores} icon={faCog} size={45} />
+        </HistoryContainer>
+        <ConfigContainer>
+          <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
+        </ConfigContainer>
+      </HeaderContainer>
       <HomeContainer>
         <TouchableOpacity onPress={onStart}>
           <Logo />

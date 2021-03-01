@@ -88,6 +88,9 @@ export default {
         disabledReason: 'Esse modo é desabilitado quando o modo vendado está ligado',
       },
     },
+    highScores: {
+      title: 'Maiores Pontuações',
+    },
     footer: {
       description: 'Powered by e-libs',
     },

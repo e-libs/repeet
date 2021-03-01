@@ -26,6 +26,7 @@ import { useLevel } from 'domains/game/data/hooks/useLevel';
 type GameOverModalProps = {
   isOpen: boolean;
   onExit: () => void;
+  onSave: (initials: string) => void;
   onSeeHighScores: () => void;
   onTryAgain: () => void;
 };
@@ -33,6 +34,7 @@ type GameOverModalProps = {
 export const GameOverModal = ({
   isOpen,
   onExit,
+  onSave,
   onSeeHighScores,
   onTryAgain,
 }: GameOverModalProps) => {
@@ -62,8 +64,8 @@ export const GameOverModal = ({
     setSkip(true);
   };
 
-  const onSave = () => {
-    // TODO: call save action
+  const onSaveScore = () => {
+    onSave(initials);
     setSaved(true);
   };
 
@@ -105,7 +107,7 @@ export const GameOverModal = ({
                 ></TextInput>
               </InputContainer>
               <SaveScoreContainer>
-                <TouchableOpacity onPress={onSave}>
+                <TouchableOpacity onPress={onSaveScore}>
                   <Text style={{ color: 'red' }}>Save</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={onSkip}>
