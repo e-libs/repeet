@@ -39,8 +39,9 @@ export const InitialsMessage = styled.Text`
 `;
 
 export const ButtonContainer = styled.View`
-  flex: 3;
+  flex: 5;
   justify-content: space-evenly;
+  padding: 100px 0;
 `;
 
 export const FarewellMessageContainer = styled.View`

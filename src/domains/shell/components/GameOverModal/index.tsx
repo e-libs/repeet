@@ -94,9 +94,9 @@ export const GameOverModal = ({
           {!skip && !saved && (
             <>
               <NewScoreContainer>
-                <PlayerScore>score: {score}</PlayerScore>
-                <PlayerLevel>level: {level}</PlayerLevel>
-                <InitialsMessage>Enter your initials</InitialsMessage>
+                <PlayerScore>{`${t('game.gameOver.score')} ${score}`}</PlayerScore>
+                <PlayerLevel>{`${t('game.gameOver.level')} ${level}`}</PlayerLevel>
+                <InitialsMessage>{t('game.gameOver.enterInitials')}</InitialsMessage>
                 <InputContainer>
                   <TextInput
                     autoCompleteType="off"
@@ -114,10 +114,10 @@ export const GameOverModal = ({
               </NewScoreContainer>
               <SaveScoreContainer>
                 <SaveButton onPress={onSaveScore} underlayColor="#adcb72">
-                  <ButtonText color="#000">Save</ButtonText>
+                  <ButtonText color="#000">{t('game.gameOver.save')}</ButtonText>
                 </SaveButton>
                 <SkipButton onPress={onSkip} underlayColor="#595959">
-                  <ButtonText color="#ff3a3a">Skip</ButtonText>
+                  <ButtonText color="#ff3a3a">{t('game.gameOver.skip')}</ButtonText>
                 </SkipButton>
               </SaveScoreContainer>
             </>
@@ -126,7 +126,7 @@ export const GameOverModal = ({
             <ButtonContainer>
               {saved && <Text style={{ color: 'red' }}>Saved!</Text>}
               <HighScoresButton onPress={seeHighScores} underlayColor="#55d">
-                <ButtonText color="#000">See high scores</ButtonText>
+                <ButtonText color="#000">{t('game.gameOver.seeHighScores')}</ButtonText>
               </HighScoresButton>
               <TryAgainButton onPress={tryAgain} underlayColor="#adcb72">
                 <ButtonText color="#000">{t('game.gameOver.tryAgain')}</ButtonText>

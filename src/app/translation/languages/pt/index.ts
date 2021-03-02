@@ -19,6 +19,12 @@ export default {
         message: 'Não foi dessa vez...',
         tryAgain: 'Jogar de novo',
         exit: 'Sair',
+        score: 'pontos:',
+        level: 'nível:',
+        enterInitials: 'Digite suas iniciais',
+        seeHighScores: 'Ver pontuações',
+        save: 'Salvar',
+        skip: 'Pular',
       },
       status: {
         level: 'nível',

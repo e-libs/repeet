@@ -19,6 +19,12 @@ export default {
         message: 'Better luck next time...',
         tryAgain: 'Play again',
         exit: 'Exit',
+        score: 'score:',
+        level: 'level:',
+        enterInitials: 'Enter your initials',
+        seeHighScores: 'See high scores',
+        save: 'Save',
+        skip: 'Skip',
       },
       status: {
         level: 'level',
