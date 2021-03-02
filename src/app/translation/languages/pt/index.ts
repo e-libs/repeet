@@ -24,6 +24,7 @@ export default {
         enterInitials: 'Digite suas iniciais',
         seeHighScores: 'Ver pontuações',
         save: 'Salvar',
+        saved: 'Pontuação salva!',
         skip: 'Pular',
       },
       status: {
@@ -95,7 +96,7 @@ export default {
       },
     },
     highScores: {
-      title: 'Maiores Pontuações',
+      title: 'Pontuações',
     },
     footer: {
       description: 'Powered by e-libs',

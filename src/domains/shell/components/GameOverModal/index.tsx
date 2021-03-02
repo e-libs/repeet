@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Modal, Text, TextInput } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import { Modal, TextInput } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -9,7 +9,9 @@ import {
   ExitButton,
   FarewellMessage,
   FarewellMessageContainer,
+  HiddenTextInput,
   HighScoresButton,
+  Initial,
   InitialsMessage,
   InputContainer,
   ModalView,
@@ -17,6 +19,8 @@ import {
   PlayerLevel,
   PlayerScore,
   SaveButton,
+  SavedMessage,
+  SavedMessageContainer,
   SaveScoreContainer,
   SkipButton,
   TryAgainButton,
@@ -50,6 +54,7 @@ export const GameOverModal = ({
   const [skip, setSkip] = useState(false);
   const [saved, setSaved] = useState(false);
   const [initials, setInitials] = useState('');
+  const inputRef = useRef();
 
   const tryAgain = async () => {
     await button.play();
@@ -66,7 +71,7 @@ export const GameOverModal = ({
   };
 
   const onSaveScore = () => {
-    onSave(initials);
+    onSave(initials.toUpperCase());
     setSaved(true);
   };
 
@@ -79,6 +84,17 @@ export const GameOverModal = ({
     if (!/^[a-zA-Z]*$/.test(text)) return;
     setInitials(text);
   };
+
+  const Button = (i: number) => (
+    <Initial
+      backgroundColor={initials[i] ? '#fff' : '#555'}
+      borderColor={initials.length === i ? 'yellow' : 'green'}
+      borderWidth={initials.length >= i ? 5 : 0}
+      onPress={() => inputRef.current?.focus()}
+    >
+      {(initials[i] || '').toUpperCase()}
+    </Initial>
+  );
 
   useEffect(() => {
     if (isOpen) gameOver.play();
@@ -98,23 +114,28 @@ export const GameOverModal = ({
                 <PlayerLevel>{`${t('game.gameOver.level')} ${level}`}</PlayerLevel>
                 <InitialsMessage>{t('game.gameOver.enterInitials')}</InitialsMessage>
                 <InputContainer>
-                  <TextInput
+                  {Button(0)}
+                  {Button(1)}
+                  {Button(2)}
+                  <HiddenTextInput
                     autoCompleteType="off"
-                    value={initials}
-                    onChangeText={changeText}
+                    autoCorrect={false}
                     maxLength={3}
-                    style={{
-                      backgroundColor: '#fff',
-                      fontSize: 50,
-                      width: 120,
-                      textAlign: 'center',
-                    }}
-                  ></TextInput>
+                    onChangeText={changeText}
+                    ref={inputRef}
+                    value={initials}
+                  ></HiddenTextInput>
                 </InputContainer>
               </NewScoreContainer>
               <SaveScoreContainer>
-                <SaveButton onPress={onSaveScore} underlayColor="#adcb72">
-                  <ButtonText color="#000">{t('game.gameOver.save')}</ButtonText>
+                <SaveButton
+                  disabled={initials.length < 3}
+                  onPress={onSaveScore}
+                  underlayColor="#adcb72"
+                >
+                  <ButtonText color={initials.length < 3 ? '#444' : '#000'}>
+                    {t('game.gameOver.save')}
+                  </ButtonText>
                 </SaveButton>
                 <SkipButton onPress={onSkip} underlayColor="#595959">
                   <ButtonText color="#ff3a3a">{t('game.gameOver.skip')}</ButtonText>
@@ -124,7 +145,11 @@ export const GameOverModal = ({
           )}
           {(saved || skip) && (
             <ButtonContainer>
-              {saved && <Text style={{ color: 'red' }}>Saved!</Text>}
+              {saved && (
+                <SavedMessageContainer>
+                  <SavedMessage>{t('game.gameOver.saved')}</SavedMessage>
+                </SavedMessageContainer>
+              )}
               <HighScoresButton onPress={seeHighScores} underlayColor="#55d">
                 <ButtonText color="#000">{t('game.gameOver.seeHighScores')}</ButtonText>
               </HighScoresButton>

@@ -11,16 +11,16 @@ export const ModalView = styled.SafeAreaView`
 `;
 
 export const NewScoreContainer = styled.View`
-  flex: 5;
-  /* border: 1px solid red; */
+  flex: 4;
   padding-top: 10px;
-  justify-content: space-evenly;
   align-items: center;
 `;
 
 export const InputContainer = styled.View`
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex: 1;
+  flex-direction: row;
 `;
 
 export const PlayerScore = styled.Text`
@@ -53,7 +53,6 @@ export const FarewellMessageContainer = styled.View`
 
 export const SaveScoreContainer = styled.View`
   flex: 5;
-  justify-content: center;
 `;
 
 export const FarewellMessage = styled.Text`
@@ -79,8 +78,31 @@ export const TryAgainButton = styled(Button)`
   background-color: #649700;
 `;
 
-export const SaveButton = styled(Button)`
-  background-color: #649700;
+export const Initial = styled.Text<{
+  backgroundColor: string;
+  borderColor: string;
+  borderWidth: number;
+}>`
+  ${({ backgroundColor, borderColor, borderWidth }) => css`
+    background-color: ${backgroundColor};
+    border-color: ${borderColor};
+    border-width: ${borderWidth}px;
+    width: 80px;
+    height: 80px;
+    font-size: 60px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+  `}
+`;
+
+export const SaveButton = styled.TouchableHighlight<{ disabled: boolean }>`
+  ${({ disabled }) => css`
+    border-radius: 20px;
+    padding: 20px 50px;
+    margin: 20px;
+    background-color: ${disabled ? 'grey' : '#649700'};
+  `}
 `;
 
 export const HighScoresButton = styled(Button)`
@@ -94,4 +116,19 @@ export const ButtonText = styled.Text<{ color: string }>`
     font-weight: bold;
     text-align: center;
   `}
+`;
+
+export const SavedMessageContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+`;
+
+export const SavedMessage = styled.Text`
+  color: red;
+  font-size: 40px;
+`;
+
+export const HiddenTextInput = styled.TextInput`
+  display: none;
 `;

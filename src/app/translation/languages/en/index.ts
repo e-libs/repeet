@@ -24,6 +24,7 @@ export default {
         enterInitials: 'Enter your initials',
         seeHighScores: 'See high scores',
         save: 'Save',
+        saved: 'Score saved!',
         skip: 'Skip',
       },
       status: {
