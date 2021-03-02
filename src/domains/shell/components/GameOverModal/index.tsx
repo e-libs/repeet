@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, TouchableOpacity, Text, TextInput } from 'react-native';
+import { Modal, Text, TextInput } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -16,8 +16,9 @@ import {
   NewScoreContainer,
   PlayerLevel,
   PlayerScore,
+  SaveButton,
   SaveScoreContainer,
-  TextContainer,
+  SkipButton,
   TryAgainButton,
 } from 'domains/shell/components/GameOverModal/styles';
 import { useScore } from 'domains/game/data/hooks/useScore';
@@ -91,30 +92,35 @@ export const GameOverModal = ({
             <FarewellMessage>{t('game.gameOver.message')}</FarewellMessage>
           </FarewellMessageContainer>
           {!skip && !saved && (
-            <NewScoreContainer>
-              <TextContainer>
+            <>
+              <NewScoreContainer>
                 <PlayerScore>score: {score}</PlayerScore>
                 <PlayerLevel>level: {level}</PlayerLevel>
                 <InitialsMessage>Enter your initials</InitialsMessage>
-              </TextContainer>
-              <InputContainer>
-                <TextInput
-                  autoCompleteType="off"
-                  value={initials}
-                  onChangeText={changeText}
-                  maxLength={3}
-                  style={{ backgroundColor: '#fff', fontSize: 50, width: 120, textAlign: 'center' }}
-                ></TextInput>
-              </InputContainer>
+                <InputContainer>
+                  <TextInput
+                    autoCompleteType="off"
+                    value={initials}
+                    onChangeText={changeText}
+                    maxLength={3}
+                    style={{
+                      backgroundColor: '#fff',
+                      fontSize: 50,
+                      width: 120,
+                      textAlign: 'center',
+                    }}
+                  ></TextInput>
+                </InputContainer>
+              </NewScoreContainer>
               <SaveScoreContainer>
-                <TouchableOpacity onPress={onSaveScore}>
-                  <Text style={{ color: 'red' }}>Save</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={onSkip}>
-                  <Text style={{ color: 'red' }}>skip</Text>
-                </TouchableOpacity>
+                <SaveButton onPress={onSaveScore} underlayColor="#adcb72">
+                  <ButtonText color="#000">Save</ButtonText>
+                </SaveButton>
+                <SkipButton onPress={onSkip} underlayColor="#595959">
+                  <ButtonText color="#ff3a3a">Skip</ButtonText>
+                </SkipButton>
               </SaveScoreContainer>
-            </NewScoreContainer>
+            </>
           )}
           {(saved || skip) && (
             <ButtonContainer>
