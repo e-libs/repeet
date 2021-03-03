@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.93);
 `;
 
@@ -130,5 +129,6 @@ export const SavedMessage = styled.Text`
 `;
 
 export const HiddenTextInput = styled.TextInput`
-  display: none;
+  opacity: 0;
+  position: absolute;
 `;

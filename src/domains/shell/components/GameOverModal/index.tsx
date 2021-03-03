@@ -54,7 +54,7 @@ export const GameOverModal = ({
   const [skip, setSkip] = useState(false);
   const [saved, setSaved] = useState(false);
   const [initials, setInitials] = useState('');
-  const inputRef = useRef();
+  const inputRef = useRef(null);
 
   const tryAgain = async () => {
     await button.play();
@@ -82,6 +82,7 @@ export const GameOverModal = ({
 
   const changeText = (text: string) => {
     if (!/^[a-zA-Z]*$/.test(text)) return;
+    if (text.length === 3) inputRef.current?.blur();
     setInitials(text);
   };
 
