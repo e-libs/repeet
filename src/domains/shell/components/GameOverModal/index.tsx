@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Modal, TextInput } from 'react-native';
+import { Modal } from 'react-native';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {

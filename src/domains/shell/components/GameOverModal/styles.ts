@@ -11,7 +11,7 @@ export const ModalView = styled.SafeAreaView`
 
 export const NewScoreContainer = styled.View`
   flex: 4;
-  padding-top: 10px;
+  padding: 20px;
   align-items: center;
 `;
 
@@ -35,6 +35,7 @@ export const PlayerLevel = styled.Text`
 export const InitialsMessage = styled.Text`
   color: #fff;
   font-size: 30px;
+  margin-bottom: 30px;
 `;
 
 export const ButtonContainer = styled.View`

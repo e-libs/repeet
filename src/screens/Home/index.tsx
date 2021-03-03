@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, StatusBar } from 'react-native';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import type { StackNavigationProp } from '@react-navigation/stack';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
@@ -50,7 +51,9 @@ export const Home = ({ navigation }: Props) => {
       <StatusBar barStyle="dark-content" />
       <HeaderContainer>
         <HistoryContainer>
-          <RotatingIcon degrees={360} onPress={openHighScores} icon={faCog} size={45} />
+          <TouchableOpacity onPress={openHighScores}>
+            <FontAwesomeIcon icon={faTrophy} size={45} />
+          </TouchableOpacity>
         </HistoryContainer>
         <ConfigContainer>
           <RotatingIcon onPress={openMenu} icon={faCog} size={45} />

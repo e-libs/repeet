@@ -8,6 +8,7 @@ export const HeaderContainer = styled.View`
   flex: 1.2;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const HomeContainer = styled.View`
