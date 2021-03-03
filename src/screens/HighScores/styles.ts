@@ -10,7 +10,7 @@ export const HighScoresContainer = styled.View`
 `;
 
 export const BackButtonContainer = styled.View`
-  left: 10px;
+  right: 10px;
   position: absolute;
   bottom: 13px;
 `;

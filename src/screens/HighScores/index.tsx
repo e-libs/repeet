@@ -11,7 +11,7 @@ import {
   Title,
   TitleContainer,
 } from 'screens/HighScores/styles';
-import { BackButton } from 'domains/shell/components/BackButton';
+import { ForwardButton } from 'domains/shell/components/ForwardButton';
 import { HighScoresPanel } from 'domains/history/components/HighScoresPanel';
 
 type HighScoresScreenNavigationProp = StackNavigationProp<RootStackParamList, 'HighScores'>;
@@ -31,12 +31,12 @@ export const HighScores = ({ navigation }: Props) => {
     <MainView>
       <StatusBar barStyle="dark-content" />
       <HeaderContainer>
-        <BackButtonContainer>
-          <BackButton onPress={goBack} />
-        </BackButtonContainer>
         <TitleContainer>
           <Title>{t('highScores.title')}</Title>
         </TitleContainer>
+        <BackButtonContainer>
+          <ForwardButton onPress={goBack} />
+        </BackButtonContainer>
       </HeaderContainer>
       <HighScoresContainer>
         <HighScoresPanel />
