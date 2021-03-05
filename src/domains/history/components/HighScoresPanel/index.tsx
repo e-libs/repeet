@@ -12,32 +12,31 @@ import { ScoreChar } from 'domains/history/components/ScoreChar';
 
 export const HighScoresPanel = () => {
   const { purge, records } = useHistory();
-
-  const highlight = records.length > 3;
+  const highlight = records.length > 1;
+  let index = 1;
 
   const colors = [
-    ['#14F', '#2bcfff'],
-    ['#ffe067', '#f11'],
+    ['#58ed8f', 'black', '#58ed8f', 'black'],
+    ['#517996', 'white', '#779fbd', 'white'],
   ];
-
-  let index = 1;
 
   return (
     <Container>
       {records.map((record: HighScore) => {
-        const h = highlight && index <= 3 ? [1, 0] : [0, 1];
+        const isFirst = highlight && index === 1;
+        const color = isFirst ? colors[0] : colors[1];
 
         index += 1;
 
         return (
           <ScoreRow key={`${record.playerInitials}_${record.date.getTime()}`}>
             <InitialsPlace>
-              <ScoreChar bgColor={colors[0][h[0]]} color={colors[0][h[1]]}>
+              <ScoreChar bgColor={color[0]} color={color[1]} isFirst={isFirst}>
                 {record.playerInitials}
               </ScoreChar>
             </InitialsPlace>
             <Score>
-              <ScoreChar bgColor={colors[1][h[0]]} color={colors[1][h[1]]}>
+              <ScoreChar bgColor={color[2]} color={color[3]} isFirst={isFirst}>
                 {record.score}
               </ScoreChar>
             </Score>

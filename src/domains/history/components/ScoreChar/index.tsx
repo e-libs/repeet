@@ -5,16 +5,19 @@ type ScoreCharProps = {
   bgColor: string;
   children: string | number;
   color: string;
+  isFirst: boolean;
 };
 
-export const ScoreChar = ({ bgColor, children, color }: ScoreCharProps) => (
+export const ScoreChar = ({ bgColor, children, color, isFirst }: ScoreCharProps) => (
   <Placeholder>
     {children
       .toString()
       .split('')
       .map((char, i) => (
-        <Char color={bgColor} key={i}>
-          <Text color={color}>{char}</Text>
+        <Char color={bgColor} isFirst={isFirst} key={i}>
+          <Text color={color} isFirst={isFirst}>
+            {char}
+          </Text>
         </Char>
       ))}
   </Placeholder>

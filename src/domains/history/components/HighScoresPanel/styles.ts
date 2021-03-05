@@ -2,26 +2,27 @@ import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   flex: 1;
-  padding: 30px;
+  padding: 7px;
 `;
 
 export const ScoreRow = styled.View`
-  /* flex: 1; */
   flex-direction: row;
   justify-content: center;
   padding: 5px 0;
+  border-bottom-color: #ccc;
+  border-bottom-width: 1px;
 `;
 
 export const InitialsPlace = styled.View`
-  flex: 0.4;
-  justify-content: flex-end;
-  align-items: flex-end;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding-right: 2px;
 `;
 
 export const Score = styled.View`
   flex: 1;
-  align-items: flex-start;
+  align-items: flex-end;
   padding-left: 2px;
 `;
 
