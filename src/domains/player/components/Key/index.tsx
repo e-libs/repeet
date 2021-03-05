@@ -20,8 +20,11 @@ export const Key = ({ sign, onPress }: KeyProps) => {
   const { play } = useSound(isBlindfolded ? sign.sound : 'sign');
 
   const onBoxClick = () => {
-    play();
     onPress(sign.number);
+  };
+
+  const onPressIn = () => {
+    play();
   };
 
   useEffect(() => {
@@ -38,7 +41,7 @@ export const Key = ({ sign, onPress }: KeyProps) => {
 
   return (
     <Container>
-      <Button color={sign.color} disabled={!enabled} onPressIn={onBoxClick} />
+      <Button color={sign.color} disabled={!enabled} onPress={onBoxClick} onPressIn={onPressIn} />
     </Container>
   );
 };
