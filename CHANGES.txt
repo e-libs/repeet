@@ -1,3 +1,10 @@
+0.0.16 (March 4th, 2021)
+  - Added the 'enter your initials' on Game Over modal
+  - Created the High Scores screen
+  - Added temporary "clear" button
+  - Improving UX on tapping delay
+  - Standardizing the screen transitions on iOS and Android
+
 0.0.15 (February 24th, 2021)
   - Reducing code with reusable config Components
   - Adding more sounds

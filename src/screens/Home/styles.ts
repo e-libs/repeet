@@ -4,6 +4,13 @@ export const MainView = styled.SafeAreaView`
   flex: 1;
 `;
 
+export const HeaderContainer = styled.View`
+  flex: 1.2;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+
 export const HomeContainer = styled.View`
   align-items: center;
   justify-content: center;
@@ -19,10 +26,11 @@ export const TapToStart = styled.Text<{ color: string }>`
 `;
 
 export const ConfigContainer = styled.View`
-  flex: 1.2;
-  justify-content: flex-end;
-  align-items: flex-end;
   padding-right: 20px;
+`;
+
+export const HistoryContainer = styled.View`
+  padding-left: 20px;
 `;
 
 export const FooterContainer = styled.View`

@@ -19,6 +19,13 @@ export default {
         message: 'Não foi dessa vez...',
         tryAgain: 'Jogar de novo',
         exit: 'Sair',
+        score: 'pontos:',
+        level: 'nível:',
+        enterInitials: 'Digite suas iniciais',
+        seeHighScores: 'Ver pontuações',
+        save: 'Salvar',
+        saved: 'Pontuação salva!',
+        skip: 'Pular',
       },
       status: {
         level: 'nível',
@@ -87,6 +94,10 @@ export default {
         },
         disabledReason: 'Esse modo é desabilitado quando o modo vendado está ligado',
       },
+    },
+    highScores: {
+      title: 'Pontuações',
+      emptyResult: 'Sem registros por enquanto',
     },
     footer: {
       description: 'Powered by e-libs',

@@ -1,12 +1,15 @@
 import React from 'react';
 import { TouchableOpacity, StatusBar } from 'react-native';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import type { StackNavigationProp } from '@react-navigation/stack';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useTranslation } from 'app/translation';
 import { useSound } from 'app/media/sound/useSound';
 import {
   ConfigContainer,
   FooterContainer,
+  HeaderContainer,
+  HistoryContainer,
   HomeContainer,
   MainView,
   TapToStart,
@@ -32,6 +35,12 @@ export const Home = ({ navigation }: Props) => {
     navigation.navigate('Config');
   };
 
+  const openHighScores = async () => {
+    // TODO: change sound
+    await config.play();
+    navigation.navigate('HighScores');
+  };
+
   const onStart = async () => {
     await start.play();
     navigation.navigate('Game');
@@ -40,9 +49,16 @@ export const Home = ({ navigation }: Props) => {
   return (
     <MainView>
       <StatusBar barStyle="dark-content" />
-      <ConfigContainer>
-        <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
-      </ConfigContainer>
+      <HeaderContainer>
+        <HistoryContainer>
+          <TouchableOpacity onPress={openHighScores}>
+            <FontAwesomeIcon icon={faTrophy} size={45} />
+          </TouchableOpacity>
+        </HistoryContainer>
+        <ConfigContainer>
+          <RotatingIcon onPress={openMenu} icon={faCog} size={45} />
+        </ConfigContainer>
+      </HeaderContainer>
       <HomeContainer>
         <TouchableOpacity onPress={onStart}>
           <Logo />

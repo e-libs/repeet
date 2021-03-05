@@ -1,11 +1,11 @@
-export type GameRecord = {
-  player: string;
-  date: Date;
-  score: number;
-  totalSequences: number;
-  level: number;
+import type { HighScore } from 'domains/history/data/types';
+
+export type HistoryState = {
+  records: HighScore[];
 };
 
-export type History = {
-  records: GameRecord[];
+export type AddScoreAction = {
+  newScore: HighScore;
 };
+
+export type HistoryActions = AddScoreAction;

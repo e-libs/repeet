@@ -168,7 +168,10 @@ export const useGame = () => {
     addPlayerMove,
     hasQuit,
     isGameOver,
+    level,
     quit,
     reset,
+    rightSequences,
+    score,
   };
 };

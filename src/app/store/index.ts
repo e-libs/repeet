@@ -6,16 +6,18 @@ import { configReducer } from 'domains/config/data/store/reducer';
 import { gameReducer } from 'domains/game/data/store/reducer';
 import { playerReducer } from 'domains/player/data/store/reducer';
 import { shellReducer } from 'domains/shell/data/store/reducer';
+import { historyReducer } from 'domains/history/data/store/reducer';
 
 const rootPersistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['shell', 'config'],
+  whitelist: ['shell', 'config', 'history'],
 };
 
 const combinedReducers = combineReducers<GlobalState>({
   config: configReducer,
   game: gameReducer,
+  history: historyReducer,
   player: playerReducer,
   shell: shellReducer,
 });

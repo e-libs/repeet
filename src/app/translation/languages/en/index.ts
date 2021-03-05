@@ -19,6 +19,13 @@ export default {
         message: 'Better luck next time...',
         tryAgain: 'Play again',
         exit: 'Exit',
+        score: 'score:',
+        level: 'level:',
+        enterInitials: 'Enter your initials',
+        seeHighScores: 'See high scores',
+        save: 'Save',
+        saved: 'Score saved!',
+        skip: 'Skip',
       },
       status: {
         level: 'level',
@@ -87,6 +94,10 @@ export default {
         },
         disabledReason: 'This mode is disabled when blindfolded mode is on',
       },
+    },
+    highScores: {
+      title: 'High Scores',
+      emptyResult: 'No records yet',
     },
     footer: {
       description: 'Powered by e-libs',
