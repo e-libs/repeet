@@ -3,6 +3,7 @@ import { Button } from 'react-native';
 import { useHistory } from 'domains/history/data/hooks/useHistory';
 import type { HighScore } from 'domains/history/data/types';
 import {
+  BottomSpace,
   Container,
   InitialsPlace,
   Score,
@@ -17,7 +18,7 @@ export const HighScoresPanel = () => {
 
   const colors = [
     ['#58ed8f', 'black', '#58ed8f', 'black'],
-    ['#517996', 'white', '#779fbd', 'white'],
+    ['#456b87', 'white', '#6e97b5', 'white'],
   ];
 
   return (
@@ -44,6 +45,7 @@ export const HighScoresPanel = () => {
         );
       })}
       <Button title="clear" onPress={purge}></Button>
+      <BottomSpace />
     </Container>
   );
 };
