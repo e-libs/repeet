@@ -10,6 +10,7 @@ export const Char = styled.View<{ color: string; isFirst: boolean }>`
     align-items: center;
     box-shadow: ${isFirst ? '4px 8px 2px #777' : '3px 7px 4px #888888'};
     background-color: ${color};
+    elevation: 5;
     margin: 0 1px;
     border-radius: 5px;
   `}
