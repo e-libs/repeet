@@ -97,6 +97,7 @@ export default {
     },
     highScores: {
       title: 'Pontuações',
+      emptyResult: 'Sem registros por enquanto',
     },
     footer: {
       description: 'Powered by e-libs',

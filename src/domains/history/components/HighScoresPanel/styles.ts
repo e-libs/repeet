@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   flex: 1;
-  padding: 15px 7px;
+  padding: 40px 7px 0;
 `;
 
 export const ScoreRow = styled.View`
@@ -33,4 +33,17 @@ export const Text = styled.Text`
 
 export const BottomSpace = styled.View`
   height: 70px;
+`;
+
+export const EmptyResult = styled.View`
+  flex: 1;
+  margin: 100px 10px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const EmptyResultText = styled.Text`
+  font-size: 30px;
+  color: #777;
+  margin-bottom: 40px;
 `;

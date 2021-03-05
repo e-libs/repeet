@@ -1,10 +1,15 @@
 import React from 'react';
 import { Button } from 'react-native';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useTranslation } from 'app/translation';
 import { useHistory } from 'domains/history/data/hooks/useHistory';
 import type { HighScore } from 'domains/history/data/types';
 import {
   BottomSpace,
   Container,
+  EmptyResult,
+  EmptyResultText,
   InitialsPlace,
   Score,
   ScoreRow,
@@ -12,6 +17,7 @@ import {
 import { ScoreChar } from 'domains/history/components/ScoreChar';
 
 export const HighScoresPanel = () => {
+  const { t } = useTranslation();
   const { purge, records } = useHistory();
   const highlight = records.length > 1;
   let index = 1;
@@ -21,7 +27,14 @@ export const HighScoresPanel = () => {
     ['#456b87', 'white', '#6e97b5', 'white'],
   ];
 
-  return (
+  return records.length === 0 ? (
+    <Container>
+      <EmptyResult>
+        <EmptyResultText>{t('highScores.emptyResult')}</EmptyResultText>
+        <FontAwesomeIcon color="#AAA" icon={faTrophy} size={170} />
+      </EmptyResult>
+    </Container>
+  ) : (
     <Container>
       {records.map((record: HighScore) => {
         const isFirst = highlight && index === 1;

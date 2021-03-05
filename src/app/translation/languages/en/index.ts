@@ -97,6 +97,7 @@ export default {
     },
     highScores: {
       title: 'High Scores',
+      emptyResult: 'No records yet',
     },
     footer: {
       description: 'Powered by e-libs',

@@ -1,4 +1,4 @@
-0.0.16 (February xth, 2021)
+0.0.16 (March xth, 2021)
   - TODO: Create initials prompt
   - TODO: Saving data to history store
   - TODO: Create the high scores icon link

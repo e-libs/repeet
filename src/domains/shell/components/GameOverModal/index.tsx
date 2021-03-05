@@ -49,9 +49,7 @@ export const GameOverModal = ({
   const exitButton = useSound('exit');
   const { score } = useScore();
   const { level } = useLevel();
-  // TODO: rollback after testing
-  // const [skip, setSkip] = useState(score === 0);
-  const [skip, setSkip] = useState(false);
+  const [skip, setSkip] = useState(true);
   const [saved, setSaved] = useState(false);
   const [initials, setInitials] = useState('');
   const inputRef = useRef(null);
@@ -100,6 +98,10 @@ export const GameOverModal = ({
   useEffect(() => {
     if (isOpen) gameOver.play();
   }, [isOpen]);
+
+  useEffect(() => {
+    if (score > 0) setSkip(false);
+  }, [score]);
 
   return (
     <Modal animationType="fade" transparent={true} visible={isOpen} onRequestClose={onExit}>

@@ -11,8 +11,7 @@ import { historyReducer } from 'domains/history/data/store/reducer';
 const rootPersistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  // whitelist: ['shell', 'config', 'history'],
-  whitelist: ['shell', 'config'],
+  whitelist: ['shell', 'config', 'history'],
 };
 
 const combinedReducers = combineReducers<GlobalState>({
