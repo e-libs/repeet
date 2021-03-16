@@ -2,6 +2,7 @@
   "name": "repeet",
   "version": "0.0.16",
   "description": "A gaming experiment with React Native",
+  "license": "GPL-3.0-or-later",
   "author": "e-libs",
   "contributors": [
     {
