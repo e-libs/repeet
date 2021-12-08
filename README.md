@@ -11,7 +11,7 @@ This project is an attempt to create a simple but thorough gaming experience.
 
 Memory games can be really simple, from the player's perspective, but I've found it to be somewhat challenging after the first steps.
 
-I hope you'll enjoy playing around with it, maybe one day downloading the app (soon). And if you want to know more about this project and other work I've done, check out my page at [https://www.e-libs.dev](https://www.e-libs.dev).
+I hope you'll enjoy playing around with it, maybe one day downloading the app (soon). And if you want to know more about this project and other work I've done, check out my page at [ericmarques.dev](https://ericmarques.dev).
 
 
 ![](public/images/home.png)
